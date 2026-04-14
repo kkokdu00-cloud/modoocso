@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모두의CSO | 제약 CSO 수수료 투명, 80개 제약사 제휴</title>
+  <meta name="description" content="20년 현장 경험, 80여개 제약사 제휴. CSO 수수료 투명 공개. 제약 CSO 법인 설립부터 첫 정산까지 모두의CSO가 함께합니다." />
+  <meta name="keywords" content="CSO 수수료, 제약 CSO 법인, CSO 신고제, CSO란, 의약품 CSO, CSO 딜러" />
+  <meta property="og:title" content="모두의CSO | 제약 영업의 새로운 기준" />
+  <meta property="og:description" content="투명한 수수료, 20년 경험, 80여개 제약사 제휴. 지금 바로 시작하세요." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://new.modoocso.co.kr/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --royal: #2952E3;
+      --royal-dark: #1D3DB8;
+      --royal-light: #4A6FFF;
+      --royal-pale: #EEF2FF;
+      --gold: #F4B400;
+      --gold-dark: #D69B00;
+      --white: #FFFFFF;
+      --gray-50: #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-500: #64748B;
+      --gray-700: #334155;
+      --gray-900: #0F172A;
+      --font: 'Noto Sans KR', -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--gray-900);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 68px;
+      background: rgba(41,82,227,0.97);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 38px; width: 38px;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--white); letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex; gap: 0.25rem; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      padding: 0.45rem 0.9rem; border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.12); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: #1a1a1a !important;
+      font-weight: 700 !important;
+      padding: 0.5rem 1.2rem !important;
+    }
+    .nav-cta:hover { background: var(--gold-dark) !important; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px; transition: all 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--royal);
+      display: flex; align-items: center;
+      padding: 130px 5vw 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 40%, rgba(255,255,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 15% 85%, rgba(255,255,255,0.05) 0%, transparent 45%);
+    }
+    /* floating coins 배경 효과 */
+    .hero-bg-deco {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .coin {
+      position: absolute;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FFD700, #F4B400 50%, #C8960C);
+      box-shadow: inset -4px -4px 8px rgba(0,0,0,0.2), 0 4px 20px rgba(244,180,0,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.9);
+      animation: floatCoin linear infinite;
+      opacity: 0.85;
+    }
+    .coin::after {
+      content: '₩';
+      font-family: var(--font);
+    }
+    @keyframes floatCoin {
+      0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      5% { opacity: 0.85; }
+      95% { opacity: 0.85; }
+      100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      padding: 0.4rem 1rem; border-radius: 100px;
+      font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-eyebrow-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold);
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-title .highlight {
+      color: var(--gold);
+      display: inline-block;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold);
+      color: #1a1a1a;
+      padding: 1rem 2.2rem;
+      border-radius: 10px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(244,180,0,0.45);
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(244,180,0,0.55);
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent;
+      color: rgba(255,255,255,0.9);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    /* 히어로 우측 */
+    .hero-right {
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+    .hero-card-main {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 2.5rem;
+      backdrop-filter: blur(12px);
+    }
+    .hero-card-label {
+      font-size: 0.8rem; font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .stat-box:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-3px);
+    }
+    .stat-num {
+      font-size: 2.6rem; font-weight: 800;
+      color: var(--white); line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .stat-num .accent { color: var(--gold); }
+    .stat-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.55);
+      margin-top: 0.4rem; font-weight: 500;
+    }
+    .hero-card-footer {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(244,180,0,0.12);
+      border: 1px solid rgba(244,180,0,0.25);
+      border-radius: 14px;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-card-footer-icon {
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .hero-card-footer p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.5;
+    }
+    .hero-card-footer strong { color: var(--gold); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: #1E3EC8;
+      padding: 1.1rem 5vw;
+    }
+    .trust-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; color: rgba(255,255,255,0.85); font-weight: 500;
+    }
+    .trust-check { color: var(--gold); font-size: 0.95rem; }
+    .trust-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.2); }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 100px 5vw; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--royal);
+      background: var(--royal-pale);
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--gray-900);
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--gray-500);
+      line-height: 1.85; max-width: 540px;
+    }
+
+    /* ─── WHY ─── */
+    .why-header { text-align:center; margin-bottom:3.5rem; }
+    .why-header .section-desc { margin:0 auto; }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    .why-card {
+      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .why-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--royal), var(--royal-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .why-card:hover {
+      border-color: rgba(41,82,227,0.2);
+      box-shadow: 0 16px 48px rgba(41,82,227,0.08);
+      transform: translateY(-5px);
+    }
+    .why-card:hover::after { transform: scaleX(1); }
+    .why-icon {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: var(--royal-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 1.25rem;
+    }
+    .why-card h3 {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--gray-900); margin-bottom: 0.7rem;
+      letter-spacing: -0.02em;
+    }
+    .why-card p {
+      font-size: 0.88rem; color: var(--gray-500); line-height: 1.75;
+    }
+
+    /* ─── DIFF ─── */
+    .diff-section {
+      background: var(--royal);
+      position: relative; overflow: hidden;
+    }
+    .diff-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 85% 50%, rgba(255,255,255,0.07) 0%, transparent 55%);
+    }
+    .diff-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 5rem; align-items: center; position: relative; z-index: 1;
+    }
+    .diff-section .section-title { color: var(--white); }
+    .diff-section .section-desc { color: rgba(255,255,255,0.65); }
+    .diff-section .section-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+
+    .diff-list { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
+    .diff-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; transition: all 0.3s;
+    }
+    .diff-item:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .diff-icon {
+      width: 38px; height: 38px;
+      background: rgba(244,180,0,0.15);
+      border: 1px solid rgba(244,180,0,0.25);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .diff-item h4 { font-size:0.95rem; font-weight:700; color:var(--white); margin-bottom:0.25rem; }
+    .diff-item p { font-size:0.84rem; color:rgba(255,255,255,0.55); line-height:1.55; }
+
+    .diff-right { display:flex; flex-direction:column; gap:1.2rem; }
+    .diff-big {
+      padding: 2rem 2.5rem; text-align:center;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+    }
+    .diff-big-num {
+      font-size: 4.2rem; font-weight: 800;
+      color: var(--white); line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .diff-big-num .accent { color: var(--gold); }
+    .diff-big-label { font-size:0.88rem; color:rgba(255,255,255,0.5); margin-top:0.4rem; }
+    .diff-small-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .diff-small {
+      padding:1.6rem; text-align:center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+    }
+    .diff-small-num {
+      font-size:2.5rem; font-weight:800;
+      color:var(--white); line-height:1;
+      letter-spacing:-0.04em;
+    }
+    .diff-small-num .accent { color:var(--gold); }
+    .diff-small-label { font-size:0.78rem; color:rgba(255,255,255,0.45); margin-top:0.35rem; }
+
+    /* ─── HOW ─── */
+    .how-section { background: var(--gray-50); }
+    .how-header { text-align:center; margin-bottom:3.5rem; }
+    .how-header .section-desc { margin:0 auto; }
+    .how-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0; position:relative;
+    }
+    .how-grid::before {
+      content:'';
+      position:absolute; top:36px; left:12.5%; right:12.5%; height:2px;
+      background: linear-gradient(90deg, var(--royal), var(--royal-light));
+      z-index:0;
+    }
+    .how-step { text-align:center; padding:0 1.5rem; position:relative; z-index:1; }
+    .how-num {
+      width:72px; height:72px; margin:0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--royal), var(--royal-light));
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; font-weight:800; color:var(--white);
+      box-shadow: 0 4px 24px rgba(41,82,227,0.35);
+      transition: all 0.3s;
+    }
+    .how-step:hover .how-num {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(41,82,227,0.45);
+    }
+    .how-step h3 { font-size:1rem; font-weight:700; color:var(--gray-900); margin-bottom:0.5rem; }
+    .how-step p { font-size:0.84rem; color:var(--gray-500); line-height:1.65; }
+
+    /* ─── FAQ ─── */
+    .faq-section { background:var(--white); }
+    .faq-layout { display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:start; }
+    .faq-list { display:flex; flex-direction:column; gap:0; }
+    .faq-item { border-bottom:1px solid var(--gray-200); overflow:hidden; }
+    .faq-q {
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      padding:1.25rem 0; cursor:pointer;
+      font-size:0.95rem; font-weight:600; color:var(--gray-900);
+      transition:color 0.2s; list-style:none; user-select:none;
+    }
+    .faq-q:hover { color:var(--royal); }
+    .faq-q::after { content:'+'; font-size:1.3rem; font-weight:300; color:var(--royal); flex-shrink:0; transition:transform 0.3s; }
+    details[open] .faq-q::after { transform:rotate(45deg); }
+    .faq-a { padding:0 0 1.25rem; font-size:0.88rem; color:var(--gray-500); line-height:1.75; }
+    .faq-cta-box {
+      padding:2.5rem;
+      background: var(--royal);
+      border-radius:20px; color:var(--white);
+      position:sticky; top:90px;
+    }
+    .faq-cta-box h3 {
+      font-size:1.55rem; font-weight:800;
+      margin-bottom:1rem; line-height:1.3; letter-spacing:-0.03em;
+    }
+    .faq-cta-box p { font-size:0.88rem; color:rgba(255,255,255,0.65); line-height:1.75; margin-bottom:2rem; }
+    .faq-cta-box .btn-gold { width:100%; justify-content:center; }
+    .faq-contacts { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.65rem; }
+    .faq-contact {
+      display:flex; align-items:center; gap:0.6rem;
+      font-size:0.84rem; color:rgba(255,255,255,0.6);
+    }
+    .faq-contact strong { color:var(--white); }
+
+    /* ─── BLOG ─── */
+    .blog-section { background:var(--gray-50); }
+    .blog-header {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      margin-bottom:3rem; flex-wrap:wrap; gap:1rem;
+    }
+    .blog-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:1.5rem; }
+    .blog-card {
+      background:var(--white); border:1.5px solid var(--gray-200);
+      border-radius:16px; overflow:hidden; transition:all 0.3s;
+      text-decoration:none; color:inherit; display:flex; flex-direction:column;
+    }
+    .blog-card:hover {
+      box-shadow:0 16px 48px rgba(41,82,227,0.09);
+      transform:translateY(-5px);
+      border-color:rgba(41,82,227,0.2);
+    }
+    .blog-thumb {
+      height:180px; background:var(--royal);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.5rem; position:relative; overflow:hidden;
+    }
+    .blog-card:first-child .blog-thumb { height:210px; background:linear-gradient(135deg,var(--royal),var(--royal-light)); }
+    .blog-body { padding:1.5rem; flex:1; }
+    .blog-tag {
+      display:inline-block;
+      font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+      color:var(--royal); background:var(--royal-pale);
+      padding:0.25rem 0.6rem; border-radius:100px; margin-bottom:0.75rem;
+    }
+    .blog-card h3 { font-size:1rem; font-weight:700; color:var(--gray-900); line-height:1.45; margin-bottom:0.5rem; }
+    .blog-card:first-child h3 { font-size:1.1rem; }
+    .blog-card p { font-size:0.84rem; color:var(--gray-500); line-height:1.65; }
+    .blog-meta { padding:0.75rem 1.5rem; border-top:1px solid var(--gray-100); font-size:0.77rem; color:var(--gray-500); }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background:var(--royal); text-align:center; padding:120px 5vw;
+      position:relative; overflow:hidden;
+    }
+    .cta-section::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 50% 80% at 25% 50%, rgba(255,255,255,0.07) 0%, transparent 50%);
+    }
+    .cta-inner { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+    .cta-section .section-tag { background:rgba(255,255,255,0.18); color:rgba(255,255,255,0.95); }
+    .cta-section .section-title { color:var(--white); margin-bottom:1rem; }
+    .cta-section .section-desc { color:rgba(255,255,255,0.7); margin:0 auto 2.5rem; }
+    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { background:var(--gray-900); color:rgba(255,255,255,0.5); padding:60px 5vw 40px; }
+    .footer-inner { max-width:1200px; margin:0 auto; }
+    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+    .footer-brand .nav-logo { margin-bottom:1rem; }
+    .footer-brand p { font-size:0.82rem; line-height:1.75; }
+    .footer-col h4 { font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:1rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:0.6rem; }
+    .footer-col a { color:rgba(255,255,255,0.42); text-decoration:none; font-size:0.84rem; transition:color 0.2s; }
+    .footer-col a:hover { color:var(--white); }
+    .footer-bottom {
+      padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:0.78rem; flex-wrap:wrap; gap:1rem;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width:768px) {
+      .nav-links { display:none; }
+      .nav-hamburger { display:flex; }
+      .hero { padding:100px 5vw 60px; }
+      .hero-inner { grid-template-columns:1fr; gap:2.5rem; }
+      .hero-stats-grid { grid-template-columns:1fr 1fr; }
+      .why-grid { grid-template-columns:1fr; }
+      .diff-inner { grid-template-columns:1fr; gap:3rem; }
+      .diff-small-row { grid-template-columns:1fr 1fr; }
+      .how-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+      .how-grid::before { display:none; }
+      .faq-layout { grid-template-columns:1fr; }
+      .faq-cta-box { position:static; }
+      .blog-grid { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+    }
+    @media (max-width:480px) {
+      .hero-actions { flex-direction:column; }
+      .btn-gold,.btn-ghost { width:100%; justify-content:center; }
+      .how-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/logo.jpg"
+    <span class="nav-logo-text">모두의 CSO</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#how">진행방식</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#blog">정보센터</a></li>
+    <li><a href="#contact" class="nav-cta">무료 상담</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- floating coins -->
+  <div class="hero-bg-deco">
+    <div class="coin" style="left:60%;width:70px;height:70px;animation-duration:9s;animation-delay:0s"></div>
+    <div class="coin" style="left:75%;width:50px;height:50px;animation-duration:12s;animation-delay:2s"></div>
+    <div class="coin" style="left:85%;width:80px;height:80px;animation-duration:10s;animation-delay:4s"></div>
+    <div class="coin" style="left:90%;width:45px;height:45px;animation-duration:14s;animation-delay:1s"></div>
+    <div class="coin" style="left:55%;width:60px;height:60px;animation-duration:11s;animation-delay:6s"></div>
+    <div class="coin" style="left:78%;width:55px;height:55px;animation-duration:8s;animation-delay:3s"></div>
+    <div class="coin" style="left:67%;width:65px;height:65px;animation-duration:13s;animation-delay:5s"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        제약 CSO 전문 파트너
+      </div>
+      <h1 class="hero-title">
+        문제는<br />
+        <span class="highlight">수수료</span>야!
+      </h1>
+      <p class="hero-sub">
+        모두의CSO는 20여년 제약영업 법인 회사,<br />
+        80여개 제약사와 제휴하여 파트너에게<br />
+        더 큰 수수료를 제공합니다.<br /><br />
+        <strong style="color:rgba(255,255,255,0.95)">기본수수료 + 제약사 프로모션 + 추가 인센티브까지!</strong>
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-gold">무료 상담 신청 →</a>
+        <a href="#about" class="btn-ghost">더 알아보기</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card-main">
+        <div class="hero-card-label">모두의CSO 현황</div>
+        <div class="hero-stats-grid">
+          <div class="stat-box">
+            <div class="stat-num">80<span class="accent">+</span></div>
+            <div class="stat-label">제휴 제약사</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">20<span class="accent">년</span></div>
+            <div class="stat-label">현장 경험</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">동일<span class="accent">↑</span></div>
+            <div class="stat-label">투명한 수수료</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">CSO<span class="accent">✓</span></div>
+            <div class="stat-label">신고제 완비</div>
+          </div>
+        </div>
+        <div class="hero-card-footer">
+          <div class="hero-card-footer-icon">🏆</div>
+          <p><strong>업계 유일</strong> — 모든 파트너에게 동일 수수료.<br />누구도 역차별 받지 않습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-check">✓</span>CSO 신고제 완비</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-check">✓</span>공정위 규정 준수</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-check">✓</span>80여개 제약사 공식 제휴</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-check">✓</span>수수료 투명 공개</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-check">✓</span>전담 정산팀 운영</div>
+  </div>
+</div>
+
+<!-- WHY CSO -->
+<section class="why-section" id="about">
+  <div class="section-inner">
+    <div class="why-header">
+      <span class="section-tag">왜 CSO인가</span>
+      <h2 class="section-title">제약 영업, 이제 CSO로 스마트하게</h2>
+      <p class="section-desc">직접고용 없이도 전국 영업망을 운영할 수 있는 가장 효율적인 방식입니다.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">💊</div>
+        <h3>CSO란 무엇인가</h3>
+        <p>Contract Sales Organization. 제약사 대신 의약품 영업을 대행하는 전문 조직입니다. 2014년 신고제 도입 이후 합법적인 영업 채널로 성장했습니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <h3>CSO 신고제란</h3>
+        <p>의약품 판매 대행 시 보건복지부에 신고를 마친 CSO만 활동 가능합니다. 모두의CSO는 신고 요건을 완비한 합법적 파트너입니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>수수료 구조</h3>
+        <p>제약사로부터 받는 판매 수수료를 파트너에게 투명하게 정산합니다. 숨은 공제 없이, 누구에게나 동일한 기준을 적용합니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏥</div>
+        <h3>80여개 제약사 라인업</h3>
+        <p>대형 제약사부터 전문의약품 특화 중견사까지. 다양한 품목 포트폴리오로 영업 기회를 극대화합니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>법인 vs 개인 딜러</h3>
+        <p>CSO 법인 설립을 원하는 분, 개인 딜러로 활동을 원하는 분 모두 환영합니다. 각 상황에 맞는 최적 방식을 안내해드립니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <h3>디지털 정산 시스템</h3>
+        <p>엑셀 수기 정산 시대 끝. 디지털 기반으로 실시간 정산 내역을 확인합니다. 매월 정확하고 빠른 정산으로 신뢰를 쌓아갑니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFF -->
+<section class="diff-section">
+  <div class="section-inner diff-inner">
+    <div>
+      <span class="section-tag">모두의CSO 차별점</span>
+      <h2 class="section-title">왜 모두의CSO인가</h2>
+      <p class="section-desc">업계 평균을 넘는 투명성과 경험으로 파트너의 수익을 극대화합니다.</p>
+      <div class="diff-list">
+        <div class="diff-item">
+          <div class="diff-icon">⚖️</div>
+          <div>
+            <h4>모두 동일한 수수료</h4>
+            <p>신규든 기존이든, 소형이든 대형이든 동일 기준 적용. 역차별 없음.</p>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-icon">🎯</div>
+          <div>
+            <h4>20년 현장 경험</h4>
+            <p>제약 영업 현장을 직접 경험한 대표가 운영. 현실적인 조언 제공.</p>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-icon">🔗</div>
+          <div>
+            <h4>80여개 제약사 네트워크</h4>
+            <p>다수의 제약사와 직접 계약 체결. 중간 단계 없이 파트너에게 직접 연결.</p>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-icon">📱</div>
+          <div>
+            <h4>디지털 정산 시스템</h4>
+            <p>온라인으로 실시간 정산 내역 확인. 빠르고 투명한 정산.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="diff-right">
+      <div class="diff-big">
+        <div class="diff-big-num">80<span class="accent">+</span></div>
+        <div class="diff-big-label">공식 제휴 제약사 수</div>
+      </div>
+      <div class="diff-small-row">
+        <div class="diff-small">
+          <div class="diff-small-num">20<span class="accent">년</span></div>
+          <div class="diff-small-label">업계 경험</div>
+        </div>
+        <div class="diff-small">
+          <div class="diff-small-num">100<span class="accent">%</span></div>
+          <div class="diff-small-label">투명한 수수료</div>
+        </div>
+      </div>
+      <div class="diff-big">
+        <div style="font-size:2.5rem;margin-bottom:0.6rem">🏆</div>
+        <div style="font-size:1rem;color:rgba(255,255,255,0.85);font-weight:700;margin-bottom:0.3rem">업계 유일 동일 수수료 정책</div>
+        <div class="diff-big-label">모든 파트너에게 동등한 기회</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how-section" id="how">
+  <div class="section-inner">
+    <div class="how-header">
+      <span class="section-tag">진행 방식</span>
+      <h2 class="section-title">시작부터 첫 정산까지</h2>
+      <p class="section-desc">4단계로 빠르게 CSO 활동을 시작할 수 있습니다.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h3>상담 신청</h3>
+        <p>온라인 또는 전화로 간단한 상담을 신청하세요. 현재 상황을 파악합니다.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h3>계약 체결</h3>
+        <p>파트너십 조건을 확인하고 공식 계약 체결. 수수료 조건 사전 공개.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h3>영업 활동</h3>
+        <p>배정된 품목으로 영업 시작. 전담 담당자가 지원합니다.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">4</div>
+        <h3>정산 수령</h3>
+        <p>매월 정확한 정산. 디지털 시스템으로 투명하게 확인.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div class="faq-layout">
+      <div class="faq-cta-box">
+        <h3>지금 바로<br />무료 상담 받으세요</h3>
+        <p>CSO 시작을 고민 중이신가요? 20년 경험의 전문가가 현재 상황에 맞는 최적의 방법을 안내해드립니다.</p>
+        <a href="#contact" class="btn-gold">무료 상담 신청</a>
+        <div class="faq-contacts">
+          <div class="faq-contact">📞 <span>전화: <strong>02-XXX-XXXX</strong></span></div>
+          <div class="faq-contact">💬 <span>카카오: <strong>@모두의CSO</strong></span></div>
+          <div class="faq-contact">⏰ <span>평일 09:00 – 18:00</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="section-tag">자주 묻는 질문</span>
+        <h2 class="section-title" style="margin-bottom:2rem">궁금한 점을<br />바로 해결하세요</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-q">CSO 신고제가 무엇인가요?</summary>
+            <p class="faq-a">2014년 도입된 의약품 판매 대행업 신고 제도입니다. 제약사를 대신해 영업하는 CSO는 보건복지부에 신고를 완료해야 합법적으로 활동할 수 있습니다. 모두의CSO는 신고 요건을 완비하고 있습니다.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">수수료는 어떻게 책정되나요?</summary>
+            <p class="faq-a">제약사별, 품목별로 수수료율이 다릅니다. 모두의CSO는 모든 파트너에게 동일한 수수료를 적용합니다. 계약 전 수수료 조건을 완전히 공개합니다.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">개인도 CSO 활동이 가능한가요?</summary>
+            <p class="faq-a">개인 딜러 형태로도 활동 가능합니다. 다만 법인 형태가 더 유리한 경우가 많습니다. 상황에 맞는 방식을 상담을 통해 안내해드립니다.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">어떤 제약사와 거래 가능한가요?</summary>
+            <p class="faq-a">80여개 제약사와 공식 제휴를 맺고 있습니다. 대형 제약사부터 전문의약품 특화 중견 제약사까지 다양합니다. 구체적인 리스트는 상담 시 안내드립니다.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">정산은 어떻게 이루어지나요?</summary>
+            <p class="faq-a">매월 정기 정산을 진행합니다. 디지털 정산 시스템을 통해 온라인으로 내역을 확인할 수 있으며, 정산 후 이의 신청 기간을 운영합니다.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">약가인하 정책이 CSO에 미치는 영향은?</summary>
+            <p class="faq-a">2026년 건정심 결정에 따라 제네릭 약가 비율이 단계적으로 조정됩니다. 모두의CSO는 약가 변동에 따른 파트너 영향을 최소화하는 방향으로 포트폴리오를 관리합니다.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="blog">
+  <div class="section-inner">
+    <div class="blog-header">
+      <div>
+        <span class="section-tag">CSO 정보센터</span>
+        <h2 class="section-title">알아야 돈 버는<br />CSO 지식</h2>
+      </div>
+      <a href="/blog" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--royal);border:1.5px solid var(--royal);padding:0.7rem 1.4rem;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--royal-pale)'" onmouseout="this.style.background='transparent'">전체 글 보기 →</a>
+    </div>
+    <div class="blog-grid">
+      <a href="/blog/cso-what-is" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#1D3DB8,#4A6FFF)"><span>📋</span></div>
+        <div class="blog-body">
+          <span class="blog-tag">CSO 기초</span>
+          <h3>CSO란 무엇인가? 제약 영업 대행의 모든 것</h3>
+          <p>CSO의 정의부터 국내 신고제 도입 배경, 합법적 활동 요건까지 총정리합니다.</p>
+        </div>
+        <div class="blog-meta">2025.03.15 · 8분 읽기</div>
+      </a>
+      <a href="/blog/cso-fee" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#2952E3,#6B8AFF)"><span>💰</span></div>
+        <div class="blog-body">
+          <span class="blog-tag">수수료</span>
+          <h3>CSO 수수료 구조 완전 이해하기</h3>
+          <p>판매 수수료, 정산 주기, 공제 항목까지 투명하게 공개합니다.</p>
+        </div>
+        <div class="blog-meta">2025.03.08 · 6분 읽기</div>
+      </a>
+      <a href="/blog/cso-corporation" class="blog-card">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#3B5FD9,#7B9BFF)"><span>🏢</span></div>
+        <div class="blog-body">
+          <span class="blog-tag">법인설립</span>
+          <h3>제약 CSO 법인 설립 완전 가이드</h3>
+          <p>법인 vs 개인, 어떤 방식이 유리한지 비교 분석합니다.</p>
+        </div>
+        <div class="blog-meta">2025.02.28 · 7분 읽기</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <span class="section-tag">지금 시작하기</span>
+    <h2 class="section-title">파트너가 될 준비가<br />되셨나요?</h2>
+    <p class="section-desc">20년 경험의 전문가와 함께 제약 영업의 새로운 가능성을 열어보세요. 첫 상담은 완전 무료입니다.</p>
+    <div class="cta-btns">
+      <a href="tel:02XXXXXXXX" class="btn-gold">📞 지금 전화하기</a>
+      <a href="#" class="btn-ghost">💬 카카오 문의</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="margin-bottom:1rem;display:flex;">
+          <img src="/logo.jpg"
+          <span class="nav-logo-text" style="margin-left:0.6rem;">모두의 CSO</span>
+        </a>
+        <p>투명한 수수료, 20년 현장 경험.<br />80여개 제약사와 함께하는<br />제약 영업 전문 파트너.</p>
+      </div>
+      <div class="footer-col">
+        <h4>서비스</h4>
+        <ul>
+          <li><a href="/about">회사 소개</a></li>
+          <li><a href="/partner">파트너 등록</a></li>
+          <li><a href="/pharma">제약사 리스트</a></li>
+          <li><a href="/fee">수수료 안내</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>정보</h4>
+        <ul>
+          <li><a href="/blog">CSO 정보센터</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/news">업계 뉴스</a></li>
+          <li><a href="/policy">약가 정책</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>연락처</h4>
+        <ul>
+          <li><a href="tel:02XXXXXXXX">📞 02-XXX-XXXX</a></li>
+          <li><a href="mailto:info@modoocso.co.kr">✉ info@modoocso.co.kr</a></li>
+          <li><a href="#">💬 카카오 채널</a></li>
+          <li><a href="#">평일 09:00–18:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 모두의CSO. All rights reserved.</span>
+      <span>사업자번호: XXX-XX-XXXXX | 서울시 XX구</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let menuOpen = false;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    const links = document.querySelector('.nav-links');
+    if (menuOpen) {
+      links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(29,61,184,0.98);padding:1.5rem 5vw;gap:0.5rem;';
+    } else {
+      links.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.height = window.scrollY > 60 ? '58px' : '68px';
+    nav.style.boxShadow = window.scrollY > 60 ? '0 4px 24px rgba(0,0,0,0.2)' : 'none';
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {threshold: 0.1});
+
+  document.querySelectorAll('.why-card,.diff-item,.how-step,.blog-card,.stat-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
