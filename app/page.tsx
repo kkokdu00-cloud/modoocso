@@ -305,8 +305,8 @@ export default function Home() {
               <p>CSO 시작을 고민 중이신가요? 20년 경험의 전문가가 현재 상황에 맞는 최적의 방법을 안내해드립니다.</p>
               <a href="#contact" className="btn-gold">무료 상담 신청</a>
               <div className="faq-contacts">
-                <div className="faq-contact">📞 <span>전화: <strong>02-XXX-XXXX</strong></span></div>
-                <div className="faq-contact">💬 <span>카카오: <strong>@모두의CSO</strong></span></div>
+                <div className="faq-contact">📞 <span>전화: <strong>010-5674-6574</strong></span></div>
+                <div className="faq-contact">💬 <span><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer" style={{color:'inherit'}}>카카오 채널 문의</a></span></div>
                 <div className="faq-contact">⏰ <span>평일 09:00 – 18:00</span></div>
               </div>
             </div>
@@ -393,8 +393,8 @@ export default function Home() {
           <h2 className="section-title">파트너가 될 준비가<br />되셨나요?</h2>
           <p className="section-desc">20년 경험의 전문가와 함께 제약 영업의 새로운 가능성을 열어보세요. 첫 상담은 완전 무료입니다.</p>
           <div className="cta-btns">
-            <a href="tel:02XXXXXXXX" className="btn-gold">📞 지금 전화하기</a>
-            <a href="#" className="btn-ghost">💬 카카오 문의</a>
+            <a href="tel:01056746574" className="btn-gold">📞 지금 전화하기</a>
+            <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer" className="btn-ghost">💬 카카오 문의</a>
           </div>
         </div>
       </section>
@@ -431,16 +431,16 @@ export default function Home() {
             <div className="footer-col">
               <h4>연락처</h4>
               <ul>
-                <li><a href="tel:02XXXXXXXX">📞 02-XXX-XXXX</a></li>
+                <li><a href="tel:01056746574">📞 010-5674-6574</a></li>
                 <li><a href="mailto:info@modoocso.co.kr">✉ info@modoocso.co.kr</a></li>
-                <li><a href="#">💬 카카오 채널</a></li>
-                <li><a href="#">평일 09:00–18:00</a></li>
+                <li><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer">💬 카카오 채널</a></li>
+                <li>평일 09:00–18:00</li>
               </ul>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2025 모두의CSO. All rights reserved.</span>
-            <span>사업자번호: XXX-XX-XXXXX | 서울시 XX구</span>
+            <span>© 2026 주식회사 우리모두. All rights reserved.</span>
+            <span>사업자등록번호: 841-88-03712 | 경기도 시흥시 은계중앙로 306번길 69, 604-11호 (대야동, 파크센트로)</span>
           </div>
         </div>
       </footer>

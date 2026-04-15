@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.modoocso.com'),
+  metadataBase: new URL('https://www.modoocso.kr'),
   title: {
     default: '모두의CSO | CSO 수수료 투명 공개, 80개 제약사 제휴',
     template: '%s | 모두의CSO',
