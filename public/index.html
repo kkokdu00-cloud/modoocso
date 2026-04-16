@@ -301,7 +301,19 @@ nav {
   padding:28px 24px;
   transition:background 0.3s;
 }
-.why-pt:hover { background:rgba(155,115,85,0.2); }
+.why-pt {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.why-pt:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+.why-pt .pt-icon {
+  transition: transform 0.3s ease;
+}
+.why-pt:hover .pt-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
 .why-pt .pt-icon { font-size:22px; margin-bottom:12px; }
 .why-pt h4 {
   font-family:'Pretendard', -apple-system, sans-serif;
@@ -804,7 +816,7 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#blog">정보센터</a></li>
   </ul>
-  <a href="#cta" class="nav-btn">상담 문의</a>
+  <a href="http://pf.kakao.com/_uxiUfn" target="_blank" class="nav-btn">상담 문의</a>
 </nav>
 
 <!-- HERO -->
@@ -822,7 +834,7 @@ footer {
       실제로 움직이는 구조를 함께 만듭니다.
     </p>
     <div class="hero-btns">
-      <a href="#cta" class="btn-p">상담 문의</a>
+      <a href="http://pf.kakao.com/_uxiUfn" target="_blank" class="btn-p">상담 문의</a>
       <a href="#process" class="btn-g">진행 방식 보기</a>
     </div>
   </div>
@@ -867,20 +879,29 @@ footer {
   </div>
 
   <div class="why-points reveal d1">
-    <div class="why-pt">
-      <div class="pt-icon">💊</div>
-      <h4>약가 정책 변화</h4>
-      <p>2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.</p>
+    <div class="why-pt" style="background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=60&fit=crop'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0;background:rgba(30,18,10,0.78);"></div>
+      <div style="position:relative;z-index:1;">
+        <div class="pt-icon">💊</div>
+        <h4>약가 정책 변화</h4>
+        <p>2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.</p>
+      </div>
     </div>
-    <div class="why-pt">
-      <div class="pt-icon">📋</div>
-      <h4>수수료보다 정산 구조</h4>
-      <p>어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.</p>
+    <div class="why-pt" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=60&fit=crop'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0;background:rgba(30,18,10,0.78);"></div>
+      <div style="position:relative;z-index:1;">
+        <div class="pt-icon">📋</div>
+        <h4>수수료보다 정산 구조</h4>
+        <p>어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.</p>
+      </div>
     </div>
-    <div class="why-pt">
-      <div class="pt-icon">⚖️</div>
-      <h4>개인 vs 법인 구조</h4>
-      <p>잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.</p>
+    <div class="why-pt" style="background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=60&fit=crop'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0;background:rgba(30,18,10,0.78);"></div>
+      <div style="position:relative;z-index:1;">
+        <div class="pt-icon">⚖️</div>
+        <h4>개인 vs 법인 구조</h4>
+        <p>잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -987,10 +1008,10 @@ footer {
       <span class="eyebrow reveal">정보센터</span>
       <h2 class="sec-title reveal d1" style="margin-bottom:0">현장에서 바로 쓸 수 있는 정보만</h2>
     </div>
-    <a href="#" class="btn-g reveal">전체 글 보기 →</a>
+    <a href="https://www.modoocso.kr/blog" target="_blank" class="btn-g reveal">전체 글 보기 →</a>
   </div>
   <div class="blog-grid">
-    <a href="#" class="blog-card reveal">
+    <a href="https://www.modoocso.kr/blog/cso-report" target="_blank" class="blog-card reveal">
       <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80&fit=crop" alt="신고제" class="blog-img">
       <div class="blog-body">
         <span class="blog-tag">신고제 · 준법</span>
@@ -998,7 +1019,7 @@ footer {
         <p>현장에서 확인해야 할 핵심 운영 요건을 정리했습니다.</p>
       </div>
     </a>
-    <a href="#" class="blog-card reveal d2">
+    <a href="https://www.modoocso.kr/blog/cso-fee" target="_blank" class="blog-card reveal d2">
       <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=80&fit=crop" alt="약가 정책" class="blog-img">
       <div class="blog-body">
         <span class="blog-tag">약가 정책</span>
@@ -1006,7 +1027,7 @@ footer {
         <p>건정심 확정안 기준 품목별 영향과 대응 방향을 분석했습니다.</p>
       </div>
     </a>
-    <a href="#" class="blog-card reveal d3">
+    <a href="https://www.modoocso.kr/blog/cso-corporation" target="_blank" class="blog-card reveal d3">
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="법인 설립" class="blog-img">
       <div class="blog-body">
         <span class="blog-tag">법인 설립</span>
@@ -1089,7 +1110,7 @@ footer {
              onerror="this.parentElement.innerHTML='<div class=\'faq-img-fallback\'>💬</div>'">
       </div>
       <p>상담 전에 궁금한 것들을<br>먼저 정리했습니다.</p>
-      <a href="#cta" class="faq-btn">직접 상담하기</a>
+      <a href="http://pf.kakao.com/_uxiUfn" target="_blank" class="faq-btn">직접 상담하기</a>
     </div>
     <div class="faq-list reveal d1">
       <div class="faq-item open">
@@ -1149,9 +1170,8 @@ footer {
     현재 조건에서 가능한 것과 어려운 것을 먼저 구분합니다.
   </p>
   <div class="cta-btns reveal d3">
-    <a href="#" class="btn-cta">상담 문의</a>
-    <a href="#" class="btn-cta-o">카카오로 문의하기</a>
-    <a href="#" class="btn-cta-o">전화 상담하기</a>
+    <a href="http://pf.kakao.com/_uxiUfn" target="_blank" class="btn-cta">카카오로 문의하기</a>
+    <a href="tel:01056746574" class="btn-cta-o">전화 상담하기</a>
   </div>
 </div>
 
