@@ -1,13 +1,15 @@
-export const dynamic = 'force-static'
-
 export default function Home() {
   return (
-    <html>
-      <body>
-        <script dangerouslySetInnerHTML={{__html: `
-          window.location.replace('/index.html');
-        `}} />
-      </body>
-    </html>
+    <main dangerouslySetInnerHTML={{__html: `
+      <script>
+        fetch('/index.html')
+          .then(r => r.text())
+          .then(html => {
+            document.open();
+            document.write(html);
+            document.close();
+          });
+      </script>
+    `}} />
   )
 }
