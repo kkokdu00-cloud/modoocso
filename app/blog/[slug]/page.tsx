@@ -28,6 +28,9 @@ export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const post = getPost(slug)
 
+  // 이미지 라인 제거
+  const contentWithoutImages = post.content.replace(/!\[.*?\]\(.*?\)\n?/g, '')
+
   return (
     <main style={{ maxWidth: 760, margin: '0 auto', padding: '100px 5vw 80px' }}>
       <Link href="/blog" style={{ color: '#1246C8', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginBottom: '2rem' }}>
@@ -49,22 +52,69 @@ export default async function PostPage({ params }: Props) {
         <p style={{ color: '#6B7280', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
           {post.description}
         </p>
-        <div style={{ display: 'flex', gap: '1rem', fontSize: '0.82rem', color: '#9CA3AF', paddingBottom: '2rem', borderBottom: '1px solid #E5E9F0' }}>
-          <span>📅 {post.date}</span>
-          <span>⏱ {post.readingTime}</span>
+        <div style={{ paddingBottom: '2rem', borderBottom: '1px solid #E5E9F0' }}>
+          <span style={{ fontSize: '0.82rem', color: '#9CA3AF' }}>⏱ {post.readingTime}</span>
         </div>
       </header>
 
       <div className="prose">
-        <MDXRemote source={post.content} />
+        <MDXRemote source={contentWithoutImages} />
       </div>
 
-      <div style={{ marginTop: '4rem', padding: '2.5rem', background: '#1246C8', borderRadius: 16, textAlign: 'center' }}>
-        <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>궁금한 점이 있으시면 언제든지 문의주세요</p>
-        <h3 style={{ color: '#fff', fontSize: '1.4rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>첫 상담은 무료입니다</h3>
-        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="tel:02XXXXXXXX" style={{ background: '#fff', color: '#1246C8', padding: '0.8rem 1.8rem', borderRadius: 10, fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>📞 전화 상담</a>
-          <a href="https://pf.kakao.com/" style={{ background: '#FEE500', color: '#1a1a1a', padding: '0.8rem 1.8rem', borderRadius: 10, fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>💬 카카오 문의</a>
+      {/* CTA 박스 */}
+      <div style={{
+        marginTop: '4rem',
+        padding: '2.5rem 2rem',
+        background: 'linear-gradient(135deg, #1246C8 0%, #2952E3 100%)',
+        borderRadius: 20,
+        textAlign: 'center',
+        boxShadow: '0 8px 32px rgba(18,70,200,0.25)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', top: -40, right: -40,
+          width: 160, height: 160,
+          background: 'rgba(255,255,255,0.06)',
+          borderRadius: '50%',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: -30, left: -30,
+          width: 120, height: 120,
+          background: 'rgba(255,255,255,0.05)',
+          borderRadius: '50%',
+        }} />
+        <p style={{
+          color: 'rgba(255,255,255,0.85)',
+          fontSize: '1.15rem',
+          fontWeight: 700,
+          marginBottom: '1.5rem',
+          letterSpacing: '-0.02em',
+          position: 'relative',
+        }}>
+          궁금한 점이 있으시면 언제든지 문의주세요
+        </p>
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
+          <a href="tel:01056746574" style={{
+            background: '#fff',
+            color: '#1246C8',
+            padding: '0.85rem 2rem',
+            borderRadius: 12,
+            fontWeight: 700,
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+          }}>📞 전화 상담</a>
+          <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer" style={{
+            background: '#FEE500',
+            color: '#1a1a1a',
+            padding: '0.85rem 2rem',
+            borderRadius: 12,
+            fontWeight: 700,
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+          }}>💬 카카오 문의</a>
         </div>
       </div>
     </main>
