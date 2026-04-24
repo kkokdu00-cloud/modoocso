@@ -115,14 +115,12 @@ export default function Home() {
         </div>
         <div className="why-points reveal d1">
           {[
-            { img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=60&fit=crop', icon: '💊', title: '약가 정책 변화', desc: '2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.' },
-            { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=60&fit=crop', icon: '📋', title: '수수료보다 정산 구조', desc: '어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.' },
-            { img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=60&fit=crop', icon: '⚖️', title: '개인 vs 법인 구조', desc: '잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.' },
+            { img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=60&fit=crop', title: '약가 정책 변화', desc: '2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.' },
+            { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=60&fit=crop', title: '수수료보다 정산 구조', desc: '어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.' },
+            { img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=60&fit=crop', title: '개인 vs 법인 구조', desc: '잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.' },
           ].map((pt, i) => (
-            <div key={i} className="why-pt" style={{ backgroundImage: `url('${pt.img}')`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'rgba(30,18,10,0.78)' }}></div>
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div className="pt-icon">{pt.icon}</div>
+            <div key={i} className="why-img-card" style={{ backgroundImage: `url('${pt.img}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+              <div className="why-img-overlay">
                 <h4>{pt.title}</h4>
                 <p>{pt.desc}</p>
               </div>
