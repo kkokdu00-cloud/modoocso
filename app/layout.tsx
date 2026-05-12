@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import type { Metadata } from 'next'
 import './home.css'
 
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ fontFamily: "'Noto Sans KR', sans-serif" }}>
         {children}
+        <Script src="https://cso-chatbot-production.up.railway.app/widget.js" strategy="afterInteractive" />
       </body>
     </html>
   )
