@@ -8,6 +8,7 @@ const config: NextConfig = {
       {
         source: '/(.*)',
         headers: [
+          { key: 'X-Frame-Options', value: 'ALLOWALL' },
           {
             key: 'Content-Security-Policy',
             value: [
@@ -17,6 +18,7 @@ const config: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https:",
               "connect-src 'self' https://cso-chatbot-production.up.railway.app",
+              "frame-ancestors *",
             ].join('; '),
           },
         ],
@@ -26,17 +28,6 @@ const config: NextConfig = {
   async redirects() {
     return [
       { source: '/index.html', destination: '/', permanent: true },
-    ]
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'X-Frame-Options', value: 'ALLOWALL' },
-          { key: 'Content-Security-Policy', value: "frame-ancestors *" },
-        ],
-      },
     ]
   },
 }
