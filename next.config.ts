@@ -18,6 +18,7 @@ const config: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https:",
               "connect-src 'self' https://cso-chatbot-production.up.railway.app",
+              "frame-src 'self' https://cso-chatbot-production.up.railway.app",
               "frame-ancestors *",
             ].join('; '),
           },
