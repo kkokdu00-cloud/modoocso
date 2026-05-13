@@ -30,7 +30,7 @@ const config: NextConfig = {
     return [
       { source: '/index.html', destination: '/', permanent: true },
       {
-        source: '/',
+        source: '/((?!searchlight).*)',
         has: [{ type: 'host', value: 'searchlight.modoocso.kr' }],
         destination: '/searchlight',
         permanent: false,
