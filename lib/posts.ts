@@ -25,6 +25,9 @@ export function getAllPosts(): Post[] {
 
 export function getPost(slug: string): Post {
   const file = path.join(postsDir, `${slug}.mdx`)
+  if (!fs.existsSync(file)) {
+    return null as unknown as Post
+  }
   const raw = fs.readFileSync(file, 'utf8')
   const { data, content } = matter(raw)
   return {

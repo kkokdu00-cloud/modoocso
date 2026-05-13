@@ -2,6 +2,7 @@ import { getAllPosts, getPost } from '@/lib/posts'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -12,6 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = getPost(slug)
+  if (!post) return {}
   return {
     title: post.title,
     description: post.description,
@@ -27,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
   const post = getPost(slug)
+  if (!post) notFound()
 
   // 이미지 라인 제거
   const contentWithoutImages = post.content.replace(/!\[.*?\]\(.*?\)\n?/g, '')
