@@ -258,6 +258,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* J써치라이트 배너 */}
+      <section style={{background:'#3d2b1f',padding:'72px 6%',textAlign:'center'}}>
+        <div style={{maxWidth:'680px',margin:'0 auto'}}>
+          <span style={{fontSize:'.75rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'#c4956a',display:'block',marginBottom:'1rem'}} className="reveal">모두의CSO 전용 시스템</span>
+          <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:800,color:'#ffffff',lineHeight:1.2,letterSpacing:'-.03em',marginBottom:'1rem'}} className="reveal d1">
+            정산 시스템, 직접 써보세요
+          </h2>
+          <p style={{fontSize:'1rem',color:'rgba(255,255,255,.5)',lineHeight:1.85,marginBottom:'2rem'}} className="reveal d2">
+            J써치라이트는 모두의CSO 파트너를 위해 직접 개발한 CSO 실무 관리 시스템입니다.<br />
+            4만 6천여 품목 검색, 자동 정산 대조, AI 문서 인식까지.
+          </p>
+          <a href="/searchlight"
+            style={{display:'inline-block',background:'#c4956a',color:'#ffffff',padding:'.9rem 2.4rem',borderRadius:'100px',fontWeight:700,fontSize:'.95rem',textDecoration:'none'}}
+            className="reveal d3">
+            J써치라이트 알아보기 →
+          </a>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="faq" id="faq">
         <div className="faq-layout">
