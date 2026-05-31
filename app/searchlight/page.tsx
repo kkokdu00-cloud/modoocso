@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'J써치라이트 | 당신이 아직 써보지 못한 CSO 시스템',
-  description: '시장은 변했습니다. 도구도 바뀌어야 합니다. J써치라이트는 기존 방식과 다르게 설계되었습니다.',
+  title: 'CSO써치라이트 | 당신이 아직 써보지 못한 CSO 시스템',
+  description: '시장은 변했습니다. 도구도 바뀌어야 합니다. CSO써치라이트는 기존 방식과 다르게 설계되었습니다.',
 }
 
 export default function SearchlightPage() {
@@ -27,6 +27,8 @@ export default function SearchlightPage() {
         #sl-wrap .nav-logo{font-weight:800;font-size:1.15rem;color:var(--brown);letter-spacing:-.02em}
         #sl-wrap .nav-slogan{position:absolute;left:50%;transform:translateX(-50%);font-size:.9rem;font-weight:700;color:var(--brown-light);letter-spacing:.04em;pointer-events:none}
         #sl-wrap .nav-logo span{color:var(--brown-light)}
+        #sl-wrap .logo-cso{color:var(--brown-light)}
+        #sl-wrap .footer-logo .logo-cso{color:var(--brown-pale)}
         #sl-wrap .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
         #sl-wrap .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
         #sl-wrap .nav-links a:hover{color:var(--brown)}
@@ -127,7 +129,7 @@ export default function SearchlightPage() {
 
       <div id="sl-wrap">
         <nav>
-          <div className="nav-logo">J<span>써치라이트</span></div>
+          <div className="nav-logo"><span className="logo-cso">CSO</span><span>써치라이트</span></div>
           <div className="nav-slogan">CSO의 방향을 제시합니다</div>
           <ul className="nav-links">
             <li><a href="#why">소개</a></li>
@@ -141,7 +143,7 @@ export default function SearchlightPage() {
           <div className="hero-bg" id="sl-heroBg"></div>
           <div className="hero-inner">
             <h1 className="hero-title">당신이 아직<br />써보지 못한<em>CSO 시스템</em></h1>
-            <p className="hero-sub">시장은 변했습니다. 도구도 바뀌어야 합니다.<br />J써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
+            <p className="hero-sub">시장은 변했습니다. 도구도 바뀌어야 합니다.<br />CSO써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
             <div className="hero-btns">
               <a href="https://www.modoocso.kr/" target="_blank" className="btn-dark">모두의CSO 파트너 문의</a>
               <a href="#why" className="btn-outline">어떻게 다른가요 →</a>
@@ -162,7 +164,7 @@ export default function SearchlightPage() {
               <img id="sl-img1" src="" alt="CSO 현장" />
             </div>
             <div className="reveal reveal-delay-1">
-              <div className="split-eyebrow">왜 J써치라이트인가</div>
+              <div className="split-eyebrow">왜 CSO써치라이트인가</div>
               <h2>반복되는 일에<br />시간을 쓰지 않아도<br />됩니다</h2>
               <p>매월 반복되는 입력, 확인, 대조 작업에 몇 시간씩 쓰고 있다면 — 그건 시스템이 없어서가 아닙니다. 맞는 시스템이 없었던 겁니다.</p>
               <a href="#pillars" className="split-link">어떻게 해결하나요 <span>→</span></a>
@@ -174,7 +176,7 @@ export default function SearchlightPage() {
           <div className="pillars-inner">
             <div className="pillars-header">
               <h2 className="reveal">다른 곳에서는<br />보기 어려운 것들</h2>
-              <p className="reveal reveal-delay-1">J써치라이트의 핵심은 기능의 수가 아닙니다. 어떻게 설계되었느냐입니다.</p>
+              <p className="reveal reveal-delay-1">CSO써치라이트의 핵심은 기능의 수가 아닙니다. 어떻게 설계되었느냐입니다.</p>
             </div>
             <div className="pillars-grid">
               <div className="pillar-card reveal"><div className="pillar-num">01</div><h3>입력이 알아서 됩니다</h3><p>파일을 올리면 시스템이 읽습니다.</p></div>
@@ -195,7 +197,7 @@ export default function SearchlightPage() {
             <div className="reveal reveal-delay-1">
               <div className="split-eyebrow">모두의CSO 패밀리</div>
               <h2>시스템이 하나로<br />연결됩니다</h2>
-              <p>J써치라이트는 단독 툴이 아닙니다. 파트너십 구조, 정산 흐름, 품목 데이터가 하나의 생태계로 연결됩니다.</p>
+              <p>CSO써치라이트는 단독 툴이 아닙니다. 파트너십 구조, 정산 흐름, 품목 데이터가 하나의 생태계로 연결됩니다.</p>
               <a href="https://www.modoocso.kr/" target="_blank" className="split-link">모두의CSO 알아보기 <span>→</span></a>
             </div>
           </div>
@@ -255,7 +257,7 @@ export default function SearchlightPage() {
           <div className="cta-inner">
             <div className="cta-eyebrow reveal">지금 시작할 수 있습니다</div>
             <h2 className="cta-title reveal"><span className="t-lg">check</span><span className="t-mid">mate</span><span className="t-sm">!</span></h2>
-            <p className="reveal reveal-delay-1">설명보다 경험이 빠릅니다.<br />모두의CSO 파트너가 되면 J써치라이트가 함께합니다.</p>
+            <p className="reveal reveal-delay-1">설명보다 경험이 빠릅니다.<br />모두의CSO 파트너가 되면 CSO써치라이트가 함께합니다.</p>
             <div className="cta-btns reveal reveal-delay-2">
               <a href="https://www.modoocso.kr/" target="_blank" className="btn-dark">모두의CSO 바로가기</a>
               <a href="http://pf.kakao.com/_uxiUfn" target="_blank" className="btn-outline">카카오로 문의하기</a>
@@ -265,7 +267,7 @@ export default function SearchlightPage() {
 
         <footer>
           <div className="footer-inner">
-            <div className="footer-logo">J<span>써치라이트</span></div>
+            <div className="footer-logo"><span className="logo-cso">CSO</span><span>써치라이트</span></div>
             <div className="footer-note"><a href="https://www.modoocso.kr/" target="_blank">모두의CSO</a>가 직접 개발·운영하는 CSO 실무 관리 시스템</div>
             <a href="https://www.modoocso.kr/" target="_blank" className="footer-link">modoocso.kr →</a>
           </div>
