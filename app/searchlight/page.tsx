@@ -26,8 +26,8 @@ export default function SearchlightPage() {
         #sl-wrap nav{position:sticky;top:0;z-index:100;background:rgba(242,236,227,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 6%;height:60px;display:flex;align-items:center;justify-content:space-between;}
         #sl-wrap .nav-logo{font-weight:800;font-size:1.15rem;color:var(--brown);letter-spacing:-.02em}
         #sl-wrap .nav-slogan{position:absolute;left:50%;transform:translateX(-50%);font-size:.9rem;font-weight:700;color:var(--brown-light);letter-spacing:.04em;pointer-events:none}
-        #sl-wrap .nav-logo span{color:var(--brown-light)}
-        #sl-wrap .logo-cso{color:var(--brown-light)}
+        #sl-wrap .nav-logo span{color:var(--brown)}
+        #sl-wrap .logo-cso{color:var(--brown-pale)}
         #sl-wrap .footer-logo .logo-cso{color:var(--brown-pale)}
         #sl-wrap .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
         #sl-wrap .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
