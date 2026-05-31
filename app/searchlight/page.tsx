@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     '정산 자동화', '수수료 자동 계산', 'AI 문서 인식',
     '의약품 유통', '의약품 영업대행', '제약 CSO',
   ],
+  verification: {
+    other: {
+      'naver-site-verification': 'fd9aaa3cb2953ebee125aaf30e7e456cd1cb0f2e',
+    },
+  },
   openGraph: {
     title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
     description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 4만 6천여 품목 실시간 검색. CSO 파트너를 위한 실무 관리 시스템.',
