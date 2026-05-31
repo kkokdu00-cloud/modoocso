@@ -1,8 +1,43 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CSO써치라이트 | 당신이 아직 써보지 못한 CSO 시스템',
-  description: '시장은 변했습니다. 도구도 바뀌어야 합니다. CSO써치라이트는 기존 방식과 다르게 설계되었습니다.',
+  title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
+  description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 4만 6천여 품목 실시간 검색. CSO 파트너를 위한 실무 관리 시스템 CSO써치라이트.',
+  keywords: [
+    'CSO', 'CSO써치라이트', 'CSO 정산', 'CSO 수수료', 'CSO 관리',
+    'CSO 시스템', 'CSO 솔루션', 'CSO 플랫폼', 'CSO EDI',
+    'CSO 자동화', 'CSO 정산 자동화', 'CSO 수수료 계산',
+    'CSO 파트너', 'CSO 업무', 'CSO 실무',
+    '의약품 CSO', '의약품 정산', '의약품 수수료',
+    'EDI 관리', 'EDI 정산', '의약품 EDI',
+    '모두의CSO', 'modoocso', 'CSO써치라이트',
+    '정산 자동화', '수수료 자동 계산', 'AI 문서 인식',
+    '의약품 유통', '의약품 영업대행', '제약 CSO',
+  ],
+  openGraph: {
+    title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
+    description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 4만 6천여 품목 실시간 검색. CSO 파트너를 위한 실무 관리 시스템.',
+    url: 'https://searchlight.modoocso.kr',
+    siteName: 'CSO써치라이트',
+    locale: 'ko_KR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
+    description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 모두의CSO 파트너 전용 실무 시스템.',
+  },
+  alternates: {
+    canonical: 'https://searchlight.modoocso.kr',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default function SearchlightPage() {
@@ -324,6 +359,14 @@ export default function SearchlightPage() {
           }, { passive: true });
         })();
       `}} />
+      {/* SEO 키워드 블록 */}
+      <div style={{position:'absolute',width:'1px',height:'1px',overflow:'hidden',clip:'rect(0,0,0,0)',whiteSpace:'nowrap'}}>
+        CSO써치라이트 CSO 정산 CSO 수수료 CSO 관리 시스템 CSO 솔루션 CSO 플랫폼 CSO EDI 관리
+        의약품 CSO 의약품 정산 의약품 수수료 계산 의약품 유통 제약 CSO 의약품 영업대행
+        CSO 자동화 CSO 정산 자동화 수수료 자동 계산 AI 문서 인식 EDI 정산 자동 대조
+        모두의CSO modoocso CSO 파트너 CSO 실무 CSO 업무 효율화
+        4만6천 품목 검색 실시간 수수료 계산 정산 오류 방지
+      </div>
     </>
   )
 }
