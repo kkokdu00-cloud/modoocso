@@ -24,7 +24,7 @@ export default function SearchlightPage() {
         #sl-wrap .reveal-delay-3{transition-delay:.3s}
 
         #sl-wrap nav{position:sticky;top:0;z-index:100;background:rgba(242,236,227,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 6%;height:60px;display:flex;align-items:center;justify-content:space-between;}
-        #sl-wrap .nav-logo{font-weight:800;font-size:1.15rem;color:var(--brown);letter-spacing:-.02em}
+        #sl-wrap .nav-logo{font-weight:800;font-size:1.15rem;color:var(--brown);letter-spacing:-.02em;text-decoration:none;display:inline-flex;align-items:center;gap:0}
         #sl-wrap .nav-slogan{position:absolute;left:50%;transform:translateX(-50%);font-size:.9rem;font-weight:700;color:var(--brown-light);letter-spacing:.04em;pointer-events:none}
         #sl-wrap .nav-logo span{color:var(--brown)}
         #sl-wrap .logo-cso{color:var(--brown-pale)}
@@ -129,7 +129,7 @@ export default function SearchlightPage() {
 
       <div id="sl-wrap">
         <nav>
-          <div className="nav-logo"><span className="logo-cso">CSO</span><span>써치라이트</span></div>
+          <a href="/searchlight" className="nav-logo"><span className="logo-cso">CSO</span><span>써치라이트</span></a>
           <div className="nav-slogan">CSO의 방향을 제시합니다</div>
           <ul className="nav-links">
             <li><a href="#why">소개</a></li>
