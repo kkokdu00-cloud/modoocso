@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="1200" height="600" fill="#F7F9FF"/>
+  <text x="80" y="90" font-size="22" font-weight="700" letter-spacing="3" fill="#1246C8">COMMISSION</text>
+  <text x="80" y="140" font-size="40" font-weight="800" fill="#1a1a1a">CSO 수수료의 3단계 구조</text>
+
+  <!-- 1 기본수수료 -->
+  <rect x="70" y="240" width="330" height="220" rx="20" fill="#ffffff" stroke="#E5E9F0" stroke-width="2"/>
+  <rect x="70" y="240" width="330" height="8" rx="4" fill="#9CB8F0"/>
+  <text x="100" y="305" font-size="44" font-weight="800" fill="#EEF3FF">01</text>
+  <text x="100" y="298" font-size="44" font-weight="800" fill="#1246C8" opacity="0.25">01</text>
+  <text x="100" y="360" font-size="26" font-weight="800" fill="#1a1a1a">기본 수수료</text>
+  <text x="100" y="395" font-size="17" fill="#6B7280">계약 시 정해지는 기본 비율</text>
+  <text x="100" y="425" font-size="20" font-weight="700" fill="#1246C8">통상 5 ~ 15%</text>
+
+  <!-- 2 프로모션 -->
+  <rect x="435" y="240" width="330" height="220" rx="20" fill="#ffffff" stroke="#E5E9F0" stroke-width="2"/>
+  <rect x="435" y="240" width="330" height="8" rx="4" fill="#4D77E0"/>
+  <text x="465" y="298" font-size="44" font-weight="800" fill="#1246C8" opacity="0.25">02</text>
+  <text x="465" y="360" font-size="26" font-weight="800" fill="#1a1a1a">프로모션</text>
+  <text x="465" y="395" font-size="17" fill="#6B7280">신제품·전략품목 한시 가산</text>
+  <text x="465" y="425" font-size="20" font-weight="700" fill="#1246C8">+ 추가 비율</text>
+
+  <!-- 3 인센티브 -->
+  <rect x="800" y="240" width="330" height="220" rx="20" fill="#1246C8"/>
+  <rect x="800" y="240" width="330" height="8" rx="4" fill="#2952E3"/>
+  <text x="830" y="298" font-size="44" font-weight="800" fill="#ffffff" opacity="0.3">03</text>
+  <text x="830" y="360" font-size="26" font-weight="800" fill="#ffffff">인센티브</text>
+  <text x="830" y="395" font-size="17" fill="rgba(255,255,255,0.75)">목표 달성·실적 기반 보너스</text>
+  <text x="830" y="425" font-size="20" font-weight="700" fill="#ffffff">성과 비례</text>
+
+  <text x="600" y="520" font-size="17" fill="#9CA3AF" text-anchor="middle">실제 수수료 = 기본 수수료 + 프로모션 + 인센티브. 단순 '판매액의 몇 %'가 아닙니다.</text>
+  <text x="1120" y="560" font-size="15" font-weight="700" fill="#1246C8" text-anchor="end">모두의CSO</text>
+</svg>

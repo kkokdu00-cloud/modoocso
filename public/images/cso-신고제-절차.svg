@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Pretendard, -apple-system, BlinkMacSystemFont, sans-serif">
+  <rect width="1200" height="600" fill="#F7F9FF"/>
+  <text x="80" y="90" font-size="22" font-weight="700" letter-spacing="3" fill="#1246C8">CSO REPORTING SYSTEM</text>
+  <text x="80" y="140" font-size="40" font-weight="800" fill="#1a1a1a">CSO 신고제 절차 한눈에</text>
+
+  <!-- 연결선 -->
+  <line x1="170" y1="330" x2="1030" y2="330" stroke="#D7E0F5" stroke-width="3"/>
+
+  <!-- 1 -->
+  <circle cx="170" cy="330" r="46" fill="#1246C8"/>
+  <text x="170" y="345" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="170" y="420" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle">사업자 등록</text>
+  <text x="170" y="448" font-size="15" fill="#6B7280" text-anchor="middle">CSO 업종코드</text>
+
+  <!-- 2 -->
+  <circle cx="385" cy="330" r="46" fill="#1246C8"/>
+  <text x="385" y="345" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="385" y="420" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle">지자체 신고</text>
+  <text x="385" y="448" font-size="15" fill="#6B7280" text-anchor="middle">판촉영업자 신고</text>
+
+  <!-- 3 -->
+  <circle cx="600" cy="330" r="46" fill="#1246C8"/>
+  <text x="600" y="345" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="600" y="420" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle">교육 이수</text>
+  <text x="600" y="448" font-size="15" fill="#6B7280" text-anchor="middle">신규·보수 교육</text>
+
+  <!-- 4 -->
+  <circle cx="815" cy="330" r="46" fill="#1246C8"/>
+  <text x="815" y="345" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="815" y="420" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle">위탁 계약</text>
+  <text x="815" y="448" font-size="15" fill="#6B7280" text-anchor="middle">수수료율 명시</text>
+
+  <!-- 5 -->
+  <circle cx="1030" cy="330" r="46" fill="#2952E3"/>
+  <text x="1030" y="345" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="1030" y="420" font-size="20" font-weight="700" fill="#1a1a1a" text-anchor="middle">지출보고서</text>
+  <text x="1030" y="448" font-size="15" fill="#6B7280" text-anchor="middle">경제적이익 제출</text>
+
+  <text x="600" y="520" font-size="17" fill="#9CA3AF" text-anchor="middle">미신고 시 위탁이 금지되며, 수수료 변경 시 재계약 의무가 있습니다.</text>
+  <text x="1120" y="560" font-size="15" font-weight="700" fill="#1246C8" text-anchor="end">모두의CSO</text>
+</svg>
