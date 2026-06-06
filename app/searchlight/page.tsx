@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     '모두의CSO', 'modoocso', 'CSO써치라이트',
     '정산 자동화', '수수료 자동 계산', 'AI 문서 인식',
     '의약품 유통', '의약품 영업대행', '제약 CSO',
+    'CSO 수수료율', 'CSO 수수료 조회', 'CSO 정산 프로그램',
+    'CSO 관리 시스템', 'CSO 프로그램', '의약품 판촉영업자',
   ],
   verification: {
     other: {
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
     description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 4만 6천여 품목 실시간 검색. CSO 파트너를 위한 실무 관리 시스템.',
-    url: 'https://searchlight.modoocso.kr',
+    url: 'https://www.modoocso.kr/searchlight',
     siteName: 'CSO써치라이트',
     locale: 'ko_KR',
     type: 'website',
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 모두의CSO 파트너 전용 실무 시스템.',
   },
   alternates: {
-    canonical: 'https://searchlight.modoocso.kr',
+    canonical: 'https://www.modoocso.kr/searchlight',
   },
   robots: {
     index: true,
