@@ -78,7 +78,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-right">
-          <img src="/images/cso-hero-meeting.svg" alt="제약 영업 현장" className="hero-photo" />
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="제약 영업 현장" className="hero-photo" />
           <div className="hero-badge">
             <div className="badge-num">20년</div>
             <div className="badge-label">제약 영업<br />현장 경험</div>
@@ -99,14 +99,14 @@ export default function Home() {
         <p className="sec-lead reveal d2">고정비는 줄이고, 현장은 넓히고, 정산과 준법은 더 명확하게 — 제약 영업 환경이 바뀌고 있습니다.</p>
         <div className="why-img-row">
           <div className="why-img-card reveal reveal-left">
-            <img src="/images/cso-meeting.svg" alt="제약사 미팅" />
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=80&fit=crop" alt="제약사 미팅" />
             <div className="why-img-overlay">
               <h3>신고제 기준 대응</h3>
               <p>의약품 판촉영업자 운영 요건,<br />기준에 맞춰 실제로 갖추고 있습니다</p>
             </div>
           </div>
           <div className="why-img-card reveal reveal-right d2">
-            <img src="/images/cso-data.svg" alt="정산 데이터" />
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&q=80&fit=crop" alt="정산 데이터" />
             <div className="why-img-overlay">
               <h3>정산 시스템 운영</h3>
               <p>수기 방식의 누락과 오해를<br />구조적으로 줄입니다</p>
@@ -115,9 +115,9 @@ export default function Home() {
         </div>
         <div className="why-points reveal d1">
           {[
-            { img: '/images/cso-pill.svg', title: '약가 정책 변화', desc: '2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.' },
-            { img: '/images/cso-compare.svg', title: '수수료보다 정산 구조', desc: '어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.' },
-            { img: '/images/cso-structure.svg', title: '개인 vs 법인 구조', desc: '잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.' },
+            { img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=60&fit=crop', title: '약가 정책 변화', desc: '2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.' },
+            { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=60&fit=crop', title: '수수료보다 정산 구조', desc: '어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.' },
+            { img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=60&fit=crop', title: '개인 vs 법인 구조', desc: '잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.' },
           ].map((pt, i) => (
             <div key={i} className="why-img-card">
               <img src={pt.img} alt={pt.title} />
@@ -134,7 +134,7 @@ export default function Home() {
       <section className="diff section" id="diff">
         <div className="diff-layout">
           <div className="diff-photo-wrap reveal reveal-left">
-            <img src="/images/cso-handshake.svg" alt="신뢰 파트너십" className="diff-photo" />
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700&q=80&fit=crop" alt="신뢰 파트너십" className="diff-photo" />
             <p className="diff-photo-caption">말이 아니라 구조로 신뢰를 만듭니다</p>
           </div>
           <div>
@@ -188,7 +188,7 @@ export default function Home() {
             </div>
           </div>
           <div className="reveal reveal-right d2">
-            <img src="/images/cso-steps.svg" alt="계약 진행" className="process-photo" />
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80&fit=crop" alt="계약 진행" className="process-photo" />
           </div>
         </div>
       </section>
@@ -204,9 +204,9 @@ export default function Home() {
         </div>
         <div className="blog-grid">
           {[
-            { href: 'https://www.modoocso.kr/blog/cso-report', img: '/images/cso-shield.svg', tag: '신고제 · 준법', title: '의약품 판촉영업자 신고제, 실제로 무엇을 준비해야 하나', desc: '현장에서 확인해야 할 핵심 운영 요건을 정리했습니다.', delay: '' },
-            { href: 'https://www.modoocso.kr/blog/cso-drug-price', img: '/images/cso-data.svg', tag: '약가 정책', title: '2026 제네릭 약가 인하, CSO 파트너에게 어떤 영향을 주나', desc: '건정심 확정안 기준 품목별 영향과 대응 방향을 분석했습니다.', delay: ' d2' },
-            { href: 'https://www.modoocso.kr/blog/cso-corporation', img: '/images/cso-structure.svg', tag: '법인 설립', title: '개인으로 시작할까, 법인으로 시작할까 — 실무 기준 비교', desc: '거래 구조와 정산 방식에 따라 적합한 형태가 다릅니다.', delay: ' d3' },
+            { href: 'https://www.modoocso.kr/blog/cso-report', img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80&fit=crop', tag: '신고제 · 준법', title: '의약품 판촉영업자 신고제, 실제로 무엇을 준비해야 하나', desc: '현장에서 확인해야 할 핵심 운영 요건을 정리했습니다.', delay: '' },
+            { href: 'https://www.modoocso.kr/blog/cso-drug-price', img: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=80&fit=crop', tag: '약가 정책', title: '2026 제네릭 약가 인하, CSO 파트너에게 어떤 영향을 주나', desc: '건정심 확정안 기준 품목별 영향과 대응 방향을 분석했습니다.', delay: ' d2' },
+            { href: 'https://www.modoocso.kr/blog/cso-corporation', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop', tag: '법인 설립', title: '개인으로 시작할까, 법인으로 시작할까 — 실무 기준 비교', desc: '거래 구조와 정산 방식에 따라 적합한 형태가 다릅니다.', delay: ' d3' },
           ].map((post, i) => (
             <a key={i} href={post.href} target="_blank" rel="noopener" className={`blog-card reveal${post.delay}`}>
               <img src={post.img} alt={post.tag} className="blog-img" />
@@ -227,7 +227,7 @@ export default function Home() {
             <span className="eyebrow">OUR DIFFERENCE</span>
             <h2 className="sec-title">왜 모두의CSO를<br />선택하는가</h2>
             <div className="diff2-img">
-              <img src="/images/cso-network.svg&crop=center" alt="파트너십" />
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&crop=center" alt="파트너십" />
             </div>
             <div className="diff2-quote">
               &ldquo;제약사 수가 많아 보이는 것보다,<br />실제로 파트너가 움직일 수 있는<br />구조인지가 더 중요합니다&rdquo;
@@ -284,7 +284,7 @@ export default function Home() {
             <span className="eyebrow">FAQ</span>
             <h2 className="sec-title">자주 묻는<br />질문들</h2>
             <div className="faq-img">
-              <img src="/images/cso-meeting.svg" alt="상담" />
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&fit=crop&crop=center" alt="상담" />
             </div>
             <p>상담 전에 궁금한 것들을<br />먼저 정리했습니다.</p>
             <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="faq-btn">직접 상담하기</a>
