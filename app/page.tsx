@@ -362,8 +362,8 @@ export default function Home() {
               <li><a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener">정보센터</a></li>
               <li><a href="https://www.modoocso.kr/blog/cso-report">신고제 안내</a></li>
               <li><a href="https://www.modoocso.kr/blog/cso-drug-price">약가 정책</a></li>
-              <li><a href="#">개인정보처리방침</a></li>
-              <li><a href="#">이용약관</a></li>
+              <li><a href="/privacy">개인정보처리방침</a></li>
+              <li><a href="/terms">이용약관</a></li>
             </ul>
           </div>
         </div>

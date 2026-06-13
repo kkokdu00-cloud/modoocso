@@ -247,8 +247,8 @@ export default function SearchlightPage() {
 
         <section className="dark-feature" id="feature">
           <div className="dark-feature-header">
-            <h2 className="reveal">공개할 수 있는<br />것들만 보여드립니다</h2>
-            <p className="reveal reveal-delay-1">현장에서 써봐야 보이는 것들이 있습니다.</p>
+            <h2 className="reveal">현장에서 매일<br />쓰는 기능들</h2>
+            <p className="reveal reveal-delay-1">AI 문서 인식부터 정산 자동 대조까지, 실무에 바로 쓰입니다.</p>
           </div>
           <div className="feat-grid">
             <div className="feat-card reveal">
@@ -286,8 +286,8 @@ export default function SearchlightPage() {
               <div className="feat-card-overlay"></div>
               <div className="feat-card-content">
                 <div className="feat-num">04 · MORE</div>
-                <h3>파트너만 아는<br />기능들</h3>
-                <p>직접 써봐야 알 수 있습니다.</p>
+                <h3>계속 늘어나는<br />기능들</h3>
+                <p>상담 시 직접 보여드립니다.</p>
                 <span className="feat-card-tag">파트너 전용</span>
               </div>
             </div>
@@ -298,7 +298,7 @@ export default function SearchlightPage() {
           <div className="cta-bg" id="sl-ctaBg"></div>
           <div className="cta-inner">
             <div className="cta-eyebrow reveal">지금 시작할 수 있습니다</div>
-            <h2 className="cta-title reveal"><span className="t-lg">check</span><span className="t-mid">mate</span><span className="t-sm">!</span></h2>
+            <h2 className="cta-title reveal"><span className="t-lg">복잡한 정산,</span><br /><span className="t-mid">여기서 끝.</span></h2>
             <p className="reveal reveal-delay-1">설명보다 경험이 빠릅니다.<br />모두의CSO 파트너가 되면 CSO써치라이트가 함께합니다.</p>
             <div className="cta-btns reveal reveal-delay-2">
               <a href="https://www.modoocso.kr/" target="_blank" className="btn-dark">모두의CSO 바로가기</a>
