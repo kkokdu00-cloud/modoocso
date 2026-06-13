@@ -247,10 +247,10 @@ nav {
 }
 
 /* ── WHY ── */
-.why { background:var(--deep); }
-.why .eyebrow { color:var(--clay); }
-.why .sec-title { color:var(--cream); }
-.why .sec-lead { color:rgba(250,248,243,0.5); margin-bottom:48px; }
+.why { background:var(--warm); }
+.why .eyebrow { color:var(--terra); }
+.why .sec-title { color:var(--deep); }
+.why .sec-lead { color:var(--muted); margin-bottom:48px; }
 
 .why-img-row {
   display:grid; grid-template-columns:1fr 1fr;
