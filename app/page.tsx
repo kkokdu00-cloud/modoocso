@@ -341,8 +341,8 @@ export default function Home() {
           <div className="foot-col">
             <h5>회사</h5>
             <ul>
-              <li><a href="#">회사소개</a></li>
-              <li><a href="#">운영 원칙</a></li>
+              <li><a href="#diff2">회사소개</a></li>
+              <li><a href="#diff2">운영 원칙</a></li>
               <li><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener">카카오 채널</a></li>
               <li><a href="mailto:wrmodoo2025@naver.com">wrmodoo2025@naver.com</a></li>
               <li><a href="tel:01056746574">010-5674-6574</a></li>
@@ -351,24 +351,24 @@ export default function Home() {
           <div className="foot-col">
             <h5>파트너 안내</h5>
             <ul>
-              <li><a href="#">진행 방식</a></li>
-              <li><a href="#">수수료 안내</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="#process">진행 방식</a></li>
+              <li><a href="#diff2">수수료 안내</a></li>
+              <li><a href="#faq">FAQ</a></li>
             </ul>
           </div>
           <div className="foot-col">
             <h5>정보</h5>
             <ul>
               <li><a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener">정보센터</a></li>
-              <li><a href="#">신고제 안내</a></li>
-              <li><a href="#">약가 정책</a></li>
+              <li><a href="https://www.modoocso.kr/blog/cso-report">신고제 안내</a></li>
+              <li><a href="https://www.modoocso.kr/blog/cso-drug-price">약가 정책</a></li>
               <li><a href="#">개인정보처리방침</a></li>
               <li><a href="#">이용약관</a></li>
             </ul>
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2025 주식회사 우리모두. All rights reserved.</span>
+          <span>© 2026 주식회사 우리모두. All rights reserved.</span>
           <span>경기도 시흥시 은계중앙로 306번길 69, 604-11호(대야동, 파크센트로) &nbsp;|&nbsp; 사업자등록번호 : 841-88-03712 &nbsp;|&nbsp; TEL : 010-5674-6574 &nbsp;|&nbsp; wrmodoo2025@naver.com</span>
         </div>
       </footer>
