@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="bg9860" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2ece3"/><stop offset="1" stop-color="#e8dfd3"/>
+    </linearGradient>
+    <pattern id="dot9860" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#c4956a" opacity=".18"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg9860)"/><rect width="800" height="600" fill="url(#dot9860)"/>
+  <path d="M36 82 V36 H82" stroke="#8b5c3e" stroke-width="3" fill="none" stroke-linecap="round" opacity=".55"/><path d="M764 518 V564 H718" stroke="#8b5c3e" stroke-width="3" fill="none" stroke-linecap="round" opacity=".55"/>
+  <g transform="translate(400.0,300.0)" stroke="#8b5c3e" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="-110" cy="0" r="34" fill="#c4956a" opacity=".22"/><circle cx="-110" cy="0" r="34"/><circle cx="-110" cy="0" r="7" fill="#8b5c3e" stroke="none"/><line x1="-72" y1="0" x2="-38" y2="0" stroke-dasharray="2 9"/><circle cx="0" cy="0" r="34" fill="#c4956a" opacity=".22"/><circle cx="0" cy="0" r="34"/><circle cx="0" cy="0" r="7" fill="#8b5c3e" stroke="none"/><line x1="38" y1="0" x2="72" y2="0" stroke-dasharray="2 9"/><circle cx="110" cy="0" r="34" fill="#c4956a" opacity=".22"/><circle cx="110" cy="0" r="34"/><circle cx="110" cy="0" r="7" fill="#8b5c3e" stroke="none"/>
+  </g>
+</svg>

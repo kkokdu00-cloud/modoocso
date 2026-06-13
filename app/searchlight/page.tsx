@@ -319,14 +319,14 @@ export default function SearchlightPage() {
       <script dangerouslySetInnerHTML={{ __html: `
         (function() {
           var U = {
-            hero:  'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80&fit=crop',
-            split1:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&fit=crop',
-            split2:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop',
-            feat1: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&fit=crop',
-            feat2: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&q=80&fit=crop',
-            feat3: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=900&q=80&fit=crop',
-            feat4: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80&fit=crop',
-            cta:   'https://images.unsplash.com/photo-1587370560942-ad2a04eabb6d?w=1400&q=80&fit=crop',
+            hero:  '/images/sl-hero.svg',
+            split1:'/images/cso-meeting.svg',
+            split2:'/images/cso-data.svg',
+            feat1: '/images/sl-document.svg',
+            feat2: '/images/sl-search.svg',
+            feat3: '/images/sl-compare.svg',
+            feat4: '/images/sl-network.svg',
+            cta:   '/images/sl-cta.svg',
           };
           function setBg(id, url) {
             var el = document.getElementById(id);
