@@ -366,7 +366,7 @@ export default function Home() {
             <h5>파트너 안내</h5>
             <ul>
               <li><a href="#process">진행 방식</a></li>
-              <li><a href="#diff2">수수료 안내</a></li>
+              <li><a href="/fee">수수료 안내</a></li>
               <li><a href="#faq">FAQ</a></li>
             </ul>
           </div>
