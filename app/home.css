@@ -145,6 +145,27 @@ nav {
   to   { opacity:1; transform:translateY(0); }
 }
 
+.hero-stats {
+  display:flex; gap:40px; margin-top:44px;
+  padding-top:32px; border-top:1px solid rgba(140,123,107,0.22);
+  opacity:0;
+  animation: fadeSlideUp 0.9s 0.8s ease forwards;
+}
+.hero-stat { display:flex; flex-direction:column; gap:4px; }
+.hs-num {
+  font-size:34px; font-weight:800; color:var(--deep);
+  letter-spacing:-0.02em; line-height:1;
+}
+.hs-num span { font-size:20px; font-weight:700; color:var(--accent); margin-left:2px; }
+.hs-label { font-size:14px; color:var(--muted); font-weight:400; }
+
+@media (max-width:640px) {
+  .hero-stats { gap:24px; margin-top:32px; padding-top:24px; }
+  .hs-num { font-size:26px; }
+  .hs-num span { font-size:16px; }
+  .hs-label { font-size:12px; }
+}
+
 /* Hero right — photo + cards */
 .hero-right {
   position:relative;

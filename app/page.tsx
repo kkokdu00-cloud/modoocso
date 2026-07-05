@@ -76,6 +76,20 @@ export default function Home() {
             <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn-p">상담 문의</a>
             <a href="#process" className="btn-g">진행 방식 보기</a>
           </div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hs-num">20<span>년</span></div>
+              <div className="hs-label">현장 경험</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hs-num">80<span>+</span></div>
+              <div className="hs-label">제휴 제약사</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hs-num">46,000<span>+</span></div>
+              <div className="hs-label">품목 DB</div>
+            </div>
+          </div>
         </div>
         <div className="hero-right">
           <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="제약 영업 현장" className="hero-photo" />
