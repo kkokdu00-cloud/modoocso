@@ -234,7 +234,7 @@ export default function SearchlightPage() {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 60% 62% at 50% 45%, rgba(242,236,227,.94) 0%, rgba(242,236,227,.72) 55%, rgba(242,236,227,.14) 100%);
     }
-    #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(760px, 94%); display: flex; flex-direction: column; align-items: center; }
+    #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(1040px, 94%); display: flex; flex-direction: column; align-items: center; }
     #sl-wrap .hero-sub {
       margin: 22px 0 30px;
       max-width: 520px;
@@ -258,9 +258,9 @@ export default function SearchlightPage() {
     #sl-wrap .hero-note-simple { position: relative; z-index: 6; font-size: 13px; color: #8a7a6b; }
     #sl-wrap h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 5.4vw, 4rem);
-      line-height: 1.18;
-      letter-spacing: -.035em;
+      font-size: clamp(2.6rem, 7.4vw, 6.4rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
       font-weight: 800;
       text-wrap: balance;
     }
@@ -442,7 +442,7 @@ export default function SearchlightPage() {
       #sl-wrap .menu-button { display:grid; }
       #sl-wrap .hero { padding: 96px var(--pad) 60px; }
       #sl-wrap .hero-eyebrow { top: 74px; font-size: 12px; }
-      #sl-wrap h1 { font-size:clamp(2.1rem,7vw,3rem); }
+      #sl-wrap h1 { font-size:clamp(2.3rem,8vw,3.6rem); }
       #sl-wrap .section-head { grid-template-columns:1fr; gap:20px; }
       #sl-wrap .project { min-height:720px; }
       #sl-wrap .phone { width:260px; }
@@ -459,7 +459,7 @@ export default function SearchlightPage() {
       #sl-wrap .nav { padding-top:18px; }
       #sl-wrap .brand { font-size:17px; }
       #sl-wrap .hero { padding: 88px var(--pad) 40px; }
-      #sl-wrap h1 { font-size:clamp(1.9rem,9vw,2.6rem); }
+      #sl-wrap h1 { font-size:clamp(2rem,10.5vw,3rem); }
       #sl-wrap .project { min-height:650px; }
       #sl-wrap .project-copy,#sl-wrap .project:nth-child(even) .project-copy { left:22px; right:22px; text-align:left; bottom:28px; }
       #sl-wrap .project:nth-child(even) .project-copy p { margin-left:0; }
