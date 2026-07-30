@@ -70,6 +70,7 @@ export default function SearchlightPage() {
     }
 
     #sl-wrap * { box-sizing: border-box; }
+    #sl-wrap * { font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important; }
     #sl-wrap {
       margin: 0;
       color: var(--ink);
@@ -80,7 +81,6 @@ export default function SearchlightPage() {
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       word-break: keep-all;
       overflow-x: clip;
-      cursor: none;
     }
 
     #sl-wrap::before {
@@ -96,29 +96,9 @@ export default function SearchlightPage() {
 
     #sl-wrap a,#sl-wrap  button { color: inherit; font: inherit; }
     #sl-wrap a { text-decoration: none; }
-    #sl-wrap button { border: 0; background: none; cursor: none; }
+    #sl-wrap button { border: 0; background: none; cursor: pointer; }
     #sl-wrap img { display: block; max-width: 100%; }
     #sl-wrap ::selection { background: var(--ink); color: white; }
-
-    #sl-wrap .cursor,#sl-wrap 
-    .cursor-dot {
-      position: fixed;
-      left: 0;
-      top: 0;
-      pointer-events: none;
-      z-index: 3000;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-    }
-    #sl-wrap .cursor {
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(42,29,20,.68);
-      transition: width .35s var(--ease), height .35s var(--ease), background .35s, border-color .35s;
-      mix-blend-mode: difference;
-    }
-    #sl-wrap .cursor-dot { width: 5px; height: 5px; background: #2A1D14; }
-    #sl-wrap .cursor.active { width: 88px; height: 88px; background: rgba(255,255,255,.82); border-color: transparent; mix-blend-mode: difference; }
 
     #sl-wrap .progress {
       position: fixed;
@@ -222,6 +202,8 @@ export default function SearchlightPage() {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: stretch;
+      gap: 0;
       overflow: hidden;
     }
     #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(1230px, 94%); }
@@ -494,8 +476,8 @@ export default function SearchlightPage() {
     #sl-wrap .giant-button { display:inline-flex; align-items:center; gap:18px; background:#2A1D14; color:white; border-radius:999px; padding:18px 22px 18px 28px; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.1em; }
     #sl-wrap .giant-button i { width:44px; height:44px; border-radius:50%; background:white; color:#2A1D14; display:grid; place-items:center; font-style:normal; transition:transform .35s var(--ease); }
     #sl-wrap .giant-button:hover i { transform:rotate(45deg); }
-    #sl-wrap footer { position:relative; z-index:3; display:grid; grid-template-columns:1fr auto 1fr; margin-top:100px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
-    #sl-wrap footer span:nth-child(2){justify-self:center} #sl-wrap footer span:last-child{justify-self:end}
+    #sl-wrap .sl-footer { position:relative; z-index:3; display:grid; grid-template-columns:1fr auto 1fr; margin-top:100px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    #sl-wrap .sl-footer span:nth-child(2){justify-self:center} #sl-wrap .sl-footer span:last-child{justify-self:end}
 
     #sl-wrap .soon { display:inline-block; margin-bottom:14px; border:1.5px solid currentColor; border-radius:999px; padding:7px 14px; font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
 
@@ -503,13 +485,10 @@ export default function SearchlightPage() {
     #sl-wrap .reveal-text.in { opacity:1; transform:none; }
 
     @media (max-width: 950px) {
-      #sl-wrap { cursor:auto; }
-      #sl-wrap a,#sl-wrap button { cursor:pointer; }
-      #sl-wrap .cursor,#sl-wrap .cursor-dot { display:none; }
       #sl-wrap .nav { grid-template-columns:1fr auto; }
       #sl-wrap .nav-links,#sl-wrap .nav-cta { display:none; }
       #sl-wrap .menu-button { display:grid; }
-      #sl-wrap .hero { padding-top:120px; min-height:900px; }
+      #sl-wrap .hero { padding: 120px var(--pad) 40px; min-height:900px; }
       #sl-wrap .hero-copy { width:100%; }
       #sl-wrap h1 { font-size:clamp(66px,14vw,124px); }
       #sl-wrap .hero-blob { width:78vw; top:35%; right:-13vw; opacity:.92; }
@@ -532,7 +511,7 @@ export default function SearchlightPage() {
       #sl-wrap .nav { padding-top:18px; }
       #sl-wrap .brand { font-size:17px; }
       #sl-wrap .brand-mark { width:30px; }
-      #sl-wrap .hero { min-height:820px; padding-bottom:24px; }
+      #sl-wrap .hero { min-height:820px; padding: 120px var(--pad) 24px; }
       #sl-wrap .kicker { margin-bottom:18px; }
       #sl-wrap h1 { font-size:clamp(57px,17.5vw,90px); }
       #sl-wrap h1 .line { overflow:visible; line-height:1; }
@@ -562,8 +541,8 @@ export default function SearchlightPage() {
       #sl-wrap .contact h2 { font-size:19vw; }
       #sl-wrap .contact-orb { width:112vw; top:26%; right:-52%; }
       #sl-wrap .contact-actions { align-items:flex-start; flex-direction:column; margin-top:auto; }
-      #sl-wrap footer { grid-template-columns:1fr; gap:10px; margin-top:60px; }
-      #sl-wrap footer span:nth-child(2),#sl-wrap footer span:last-child { justify-self:start; }
+      #sl-wrap .sl-footer { grid-template-columns:1fr; gap:10px; margin-top:60px; }
+      #sl-wrap .sl-footer span:nth-child(2),#sl-wrap .sl-footer span:last-child { justify-self:start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -575,31 +554,29 @@ export default function SearchlightPage() {
       ` }} />
       <div id="sl-wrap">
   <div className="progress" aria-hidden="true"></div>
-  <div className="cursor" aria-hidden="true"></div>
-  <div className="cursor-dot" aria-hidden="true"></div>
 
   <header className="nav">
     <a className="brand magnetic" href="#top" aria-label="모두의CSO 홈">
       <span className="brand-mark" aria-hidden="true"><i></i><i></i></span>
       <span>CSO써치라이트</span>
     </a>
-    <nav className="nav-links" aria-label="주요 메뉴">
+    <div className="nav-links" role="navigation" aria-label="주요 메뉴">
       <a href="#work">무엇이 다른가</a>
       <a href="#approach">우리 생각</a>
       <a href="#services">핵심</a>
       <a href="#contact">시작하기</a>
-    </nav>
+    </div>
     <a className="nav-cta magnetic" href="https://www.modoocso.kr/" target="_blank" rel="noopener"><span>모두의CSO 파트너 문의</span><span className="arr">↗</span></a>
     <button className="menu-button" aria-label="메뉴 열기" aria-expanded="false"><span></span></button>
   </header>
 
-  <nav className="mobile-menu" aria-label="모바일 메뉴">
+  <div className="mobile-menu" role="navigation" aria-label="모바일 메뉴">
     <a href="#work">무엇이 다른가</a>
     <a href="#approach">우리 생각</a>
     <a href="#services">핵심</a>
     <a href="#contact">시작하기</a>
     <small>CSO 실무 관리 시스템 / 2026</small>
-  </nav>
+  </div>
 
   <main>
     <section className="hero" id="top">
@@ -743,11 +720,11 @@ export default function SearchlightPage() {
         <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br /><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" style={{fontWeight: '900', borderBottom: '1.5px solid currentColor'}}>카카오로 문의하기</a></p>
         <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="giant-button magnetic">모두의CSO 바로가기 <i>↗</i></a>
       </div>
-      <footer>
+      <div className="sl-footer">
         <span>© 2026 CSO써치라이트</span>
         <span>모두의CSO가 직접 개발·운영</span>
         <span>modoocso.kr ↗</span>
-      </footer>
+      </div>
     </section>
   </main>
 
@@ -758,17 +735,6 @@ export default function SearchlightPage() {
 
     (() => {
       const body = document.body;
-      const cursor = document.querySelector('#sl-wrap .cursor');
-      const dot = document.querySelector('#sl-wrap .cursor-dot');
-      let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
-
-      window.addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)'; });
-      function cursorLoop(){ cx += (mx-cx)*.14; cy += (my-cy)*.14; cursor.style.transform='translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)'; requestAnimationFrame(cursorLoop); }
-      cursorLoop();
-      document.querySelectorAll('#sl-wrap a,#sl-wrap button,#sl-wrap .project,#sl-wrap .service-row').forEach(el=>{
-        el.addEventListener('mouseenter',()=>cursor.classList.add('active'));
-        el.addEventListener('mouseleave',()=>cursor.classList.remove('active'));
-      });
 
       const nav = document.querySelector('#sl-wrap .nav');
       const progress = document.querySelector('#sl-wrap .progress');
