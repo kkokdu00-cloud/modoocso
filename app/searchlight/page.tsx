@@ -402,7 +402,7 @@ export default function SearchlightPage() {
     #sl-wrap .service-row:hover > * { color:white; }
     #sl-wrap .service-row .no { font-size:12px; font-weight:900; letter-spacing:.12em; }
     #sl-wrap .service-row h3 { margin:0; font-size:clamp(34px,5vw,76px); letter-spacing:-.04em; line-height:1; }
-    #sl-wrap .service-row p { margin:0; max-width:360px; font-size:16px; line-height:1.55; }
+    #sl-wrap .service-row p { margin:0; max-width:640px; font-size:16px; line-height:1.55; white-space:nowrap; }
 
     #sl-wrap .numbers { background:#201711; color:#F5EEE3; }
     #sl-wrap .number-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.2); border-left:1px solid rgba(255,255,255,.2); }
