@@ -141,18 +141,19 @@ export default function SearchlightPage() {
     }
     #sl-wrap .brand-mark {
       position: relative;
-      width: 34px;
+      width: 28px;
       height: 28px;
-      transform: rotate(-6deg);
+      border-radius: 9px;
+      background: conic-gradient(from 210deg, var(--blue), #C9986E 55%, #F0DAB8);
+      flex: none;
     }
-    #sl-wrap .brand-mark i {
+    #sl-wrap .brand-mark::after {
+      content: "";
       position: absolute;
-      inset: 0;
-      border: 3px solid var(--ink);
-      border-radius: 8px 14px 8px 14px;
-      transform: skewX(-16deg) rotate(45deg) scale(.66);
+      inset: 8px;
+      border-radius: 50%;
+      background: var(--paper);
     }
-    #sl-wrap .brand-mark i:nth-child(2) { transform: translate(9px,0) skewX(-16deg) rotate(45deg) scale(.66); opacity: .55; }
     #sl-wrap .nav-links { display: flex; gap: 34px; font-size: 15px; font-weight: 700; }
     #sl-wrap .nav-links a { position: relative; padding: 8px 0; }
     #sl-wrap .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--ink); transition:right .35s var(--ease); }
@@ -466,21 +467,26 @@ export default function SearchlightPage() {
     #sl-wrap .metric strong { font-size:clamp(54px,7vw,112px); line-height:.85; letter-spacing:-.08em; font-weight:700; }
     #sl-wrap .metric span { font-size:12px; opacity:.68; line-height:1.5; }
 
-    #sl-wrap .contact { min-height:100svh; background:linear-gradient(145deg,#F0E0C8,#F6ECDD 56%,#EFE3CB); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
-    #sl-wrap .contact h2 { margin:0; font-size:clamp(54px,10vw,180px); line-height:.98; letter-spacing:-.05em; font-weight:800; position:relative; z-index:2; }
-    #sl-wrap .contact h2 em { font-style:normal; font-weight:400; color:var(--blue); }
-    #sl-wrap .contact-orb { position:absolute; width:min(57vw,860px); aspect-ratio:1; right:-7%; top:8%; border-radius:37% 63% 48% 52% / 45% 36% 64% 55%; background:radial-gradient(circle at 32% 23%,white 0 5%,#F5D9B2 22%,#C4956A 51%,#8B5C3E 73%,#2A1708); box-shadow:inset -50px -58px 90px rgba(50,28,10,.38),0 55px 130px rgba(105,72,42,.32); animation:morph 10s ease-in-out infinite alternate; }
-    #sl-wrap .contact-actions { position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; gap:30px; margin-top:70px; border-top:1px solid var(--line); padding-top:26px; }
-    #sl-wrap .contact-actions p { margin:0; max-width:480px; font-size:clamp(16px,1.5vw,23px); line-height:1.45; }
-    #sl-wrap .giant-button { display:inline-flex; align-items:center; gap:18px; background:#2A1D14; color:white; border-radius:999px; padding:18px 22px 18px 28px; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.1em; }
-    #sl-wrap .giant-button i { width:44px; height:44px; border-radius:50%; background:white; color:#2A1D14; display:grid; place-items:center; font-style:normal; transition:transform .35s var(--ease); }
-    #sl-wrap .giant-button:hover i { transform:rotate(45deg); }
-    #sl-wrap .sl-footer { position:relative; z-index:3; display:grid; grid-template-columns:1fr auto 1fr; margin-top:100px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
-    #sl-wrap .sl-footer span:nth-child(2){justify-self:center} #sl-wrap .sl-footer span:last-child{justify-self:end}
-    #sl-wrap .sl-footer-links { display:inline-flex; align-items:center; gap:14px; }
-    #sl-wrap .sl-footer-links a { opacity:.75; transition:opacity .2s; }
-    #sl-wrap .sl-footer-links a:hover { opacity:1; }
-    #sl-wrap .sl-footer-links a:first-child { border-right:1px solid var(--line); padding-right:14px; }
+    #sl-wrap .contact { background:linear-gradient(145deg,#F0E0C8,#F6ECDD 56%,#EFE3CB); overflow:hidden; }
+    #sl-wrap .cta-box { position:relative; border-radius:28px; padding:clamp(50px,9vw,96px) clamp(24px,6vw,56px); text-align:center; color:#F5EEE3; overflow:hidden; box-shadow:0 30px 80px rgba(42,29,20,.28); background-color:#33220F; }
+    #sl-wrap .cta-bg { position:absolute; inset:0; background:url("/searchlight/searchlight-cta-bg.jpg") center/cover no-repeat; z-index:0; }
+    #sl-wrap .cta-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(28,17,7,.42),rgba(28,17,7,.68)); }
+    #sl-wrap .cta-box::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 50% 120%, rgba(239,194,142,.28), transparent 70%); pointer-events:none; z-index:1; }
+    #sl-wrap .cta-box > * { position:relative; z-index:2; }
+    #sl-wrap .cta-box h2 { margin:0 0 18px; font-size:clamp(2.5rem,5.4vw,4rem); font-weight:800; letter-spacing:-.03em; line-height:1.2; }
+    #sl-wrap .cta-box p { margin:0 auto 36px; max-width:520px; font-size:1.02rem; color:rgba(245,238,227,.72); line-height:1.85; }
+    #sl-wrap .cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    #sl-wrap .btn { display:inline-flex; align-items:center; gap:8px; padding:16px 28px; border-radius:100px; font-size:15px; font-weight:700; text-decoration:none; transition:all .2s var(--ease); }
+    #sl-wrap .btn-cream { background:#F5EEE3; color:#33220F; }
+    #sl-wrap .btn-cream:hover { background:#fff; transform:translateY(-1px); }
+    #sl-wrap .btn-outline-dark { border:1.5px solid rgba(245,238,227,.35); color:rgba(245,238,227,.9); }
+    #sl-wrap .btn-outline-dark:hover { border-color:#EFC28E; color:#EFC28E; }
+    #sl-wrap .sl-footer { position:relative; z-index:3; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; margin-top:100px; padding-top:26px; border-top:1px solid var(--line); }
+    #sl-wrap .sl-footer .brand { font-size:16px; margin-bottom:10px; }
+    #sl-wrap .foot-meta { font-size:12px; letter-spacing:.02em; color:var(--ink); opacity:.5; line-height:1.8; }
+    #sl-wrap .foot-links { display:flex; align-items:center; gap:18px; font-size:13px; font-weight:700; }
+    #sl-wrap .foot-links a { opacity:.7; transition:opacity .2s; }
+    #sl-wrap .foot-links a:hover { opacity:1; }
 
     #sl-wrap .soon { display:inline-block; margin-bottom:14px; border:1.5px solid currentColor; border-radius:999px; padding:7px 14px; font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
 
@@ -506,14 +512,12 @@ export default function SearchlightPage() {
       #sl-wrap .pill-list { justify-content:flex-start; }
       #sl-wrap .service-row { grid-template-columns:50px 1fr; }
       #sl-wrap .service-row p { display:none; }
-      #sl-wrap .contact-orb { width:76vw; top:18%; right:-20%; }
     }
 
     @media (max-width: 640px) {
       #sl-wrap { --radius:24px; }
       #sl-wrap .nav { padding-top:18px; }
       #sl-wrap .brand { font-size:17px; }
-      #sl-wrap .brand-mark { width:30px; }
       #sl-wrap .hero { min-height:820px; padding: 120px var(--pad) 24px; }
       #sl-wrap .kicker { margin-bottom:18px; }
       #sl-wrap h1 { font-size:clamp(57px,17.5vw,90px); }
@@ -540,12 +544,8 @@ export default function SearchlightPage() {
       #sl-wrap .radar { width:105vw; top:38%; }
       #sl-wrap .number-grid { grid-template-columns:1fr; }
       #sl-wrap .metric { min-height:190px; }
-      #sl-wrap .contact { min-height:850px; }
-      #sl-wrap .contact h2 { font-size:19vw; }
-      #sl-wrap .contact-orb { width:112vw; top:26%; right:-52%; }
-      #sl-wrap .contact-actions { align-items:flex-start; flex-direction:column; margin-top:auto; }
-      #sl-wrap .sl-footer { grid-template-columns:1fr; gap:10px; margin-top:60px; }
-      #sl-wrap .sl-footer span:nth-child(2),#sl-wrap .sl-footer span:last-child { justify-self:start; }
+      #sl-wrap .cta-box { padding:56px 24px; border-radius:22px; }
+      #sl-wrap .sl-footer { flex-direction:column; gap:16px; margin-top:60px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -560,7 +560,7 @@ export default function SearchlightPage() {
 
   <header className="nav">
     <a className="brand magnetic" href="#top" aria-label="모두의CSO 홈">
-      <span className="brand-mark" aria-hidden="true"><i></i><i></i></span>
+      <span className="brand-mark" aria-hidden="true"></span>
       <span>CSO써치라이트</span>
     </a>
     <div className="nav-links" role="navigation" aria-label="주요 메뉴">
@@ -717,19 +717,25 @@ export default function SearchlightPage() {
 
     <section className="section contact" id="contact">
       <div className="section-index reveal-text">05 / 시작하기</div>
-      <h2 className="reveal-text" style={{marginTop: '80px'}}>설명보다<br /><em>경험이 빠릅니다.</em></h2>
-      <div className="contact-orb" aria-hidden="true"></div>
-      <div className="contact-actions reveal-text">
-        <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br /><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" style={{fontWeight: '900', borderBottom: '1.5px solid currentColor'}}>카카오로 문의하기</a></p>
-        <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="giant-button magnetic">모두의CSO 바로가기 <i>↗</i></a>
+      <div className="cta-box reveal-text" style={{marginTop: '48px'}}>
+        <div className="cta-bg" aria-hidden="true"></div>
+        <h2>설명보다 경험이 빠릅니다</h2>
+        <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br />조건이 궁금하면 지금 물어보세요. 물어본 것에만, 숫자로 답합니다.</p>
+        <div className="cta-btns">
+          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn btn-cream">모두의CSO 파트너 문의 →</a>
+          <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn btn-outline-dark">카카오로 문의하기</a>
+        </div>
       </div>
       <div className="sl-footer">
-        <span>© 2026 CSO써치라이트</span>
-        <span>모두의CSO가 직접 개발·운영</span>
-        <span className="sl-footer-links">
+        <div>
+          <a href="#top" className="brand"><span className="brand-mark" aria-hidden="true"></span><span>CSO써치라이트</span></a>
+          <div className="foot-meta">모두의CSO가 직접 개발·운영하는 CSO 실무 관리 시스템<br />© 2026 CSO써치라이트</div>
+        </div>
+        <div className="foot-links">
+          <a href="#services">핵심</a>
           <a href="/searchlight/privacy.html">개인정보처리방침</a>
-          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener">modoocso.kr ↗</a>
-        </span>
+          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener">모두의CSO ↗</a>
+        </div>
       </div>
     </section>
   </main>
