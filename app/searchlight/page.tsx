@@ -198,16 +198,48 @@ export default function SearchlightPage() {
 
     #sl-wrap .hero {
       position: relative;
-      min-height: 100svh;
-      padding: 130px var(--pad) 40px;
+      min-height: auto;
+      padding: 64px var(--pad) 96px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      align-items: stretch;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 0;
       overflow: hidden;
     }
-    #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(1230px, 94%); }
+    #sl-wrap .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url("/searchlight/searchlight-hero-bg.jpg") center/cover no-repeat;
+      pointer-events: none;
+    }
+    #sl-wrap .hero-bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 62% at 50% 45%, rgba(242,236,227,.94) 0%, rgba(242,236,227,.72) 55%, rgba(242,236,227,.14) 100%);
+    }
+    #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(760px, 94%); display: flex; flex-direction: column; align-items: center; }
+    #sl-wrap .hero-sub {
+      margin: 22px 0 30px;
+      max-width: 520px;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.75;
+      color: #5a4a3e;
+      opacity: 1;
+      animation: none;
+      font-weight: 400;
+    }
+    #sl-wrap .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; opacity: 1; animation: none; }
+    #sl-wrap .btn-dark, #sl-wrap .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 700;
+      text-decoration: none; transition: all .2s var(--ease);
+    }
+    #sl-wrap .btn-dark { background: var(--ink); color: #fff; }
+    #sl-wrap .btn-dark:hover { background: #000; transform: translateY(-1px); }
+    #sl-wrap .btn-outline { background: #fff; border: 1.5px solid var(--line); color: var(--ink); }
+    #sl-wrap .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+    #sl-wrap .hero-note-simple { position: relative; z-index: 6; font-size: 13px; color: #8a7a6b; }
     #sl-wrap .kicker {
       display: flex;
       align-items: center;
@@ -221,9 +253,9 @@ export default function SearchlightPage() {
     #sl-wrap .kicker::before { content:""; width:39px; height:1px; background:var(--ink); }
     #sl-wrap h1 {
       margin: 0;
-      font-size: clamp(50px, 8.6vw, 156px);
-      line-height: .98;
-      letter-spacing: -.05em;
+      font-size: clamp(2.4rem, 5.4vw, 4rem);
+      line-height: 1.18;
+      letter-spacing: -.035em;
       font-weight: 800;
       text-wrap: balance;
     }
@@ -233,101 +265,7 @@ export default function SearchlightPage() {
     #sl-wrap h1 em { font-style: normal; font-weight: 400; letter-spacing: -.05em; color: var(--blue); }
     @keyframes rise { to { transform: translateY(0); } }
 
-    #sl-wrap .hero-note {
-      position: relative;
-      z-index: 7;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-      margin-top: 48px;
-    }
-    #sl-wrap .hero-note p { margin:0; max-width:480px; line-height:1.55; font-size: clamp(14px,1.2vw,18px); letter-spacing:-.02em; }
-    #sl-wrap .hero-note .center { justify-self:center; text-align:center; font-size:12px; text-transform:uppercase; letter-spacing:.13em; font-weight:800; }
-    #sl-wrap .hero-note .year { justify-self:end; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800; }
 
-    #sl-wrap .hero-blob {
-      position: absolute;
-      right: -4vw;
-      top: 9vh;
-      width: min(58vw, 920px);
-      aspect-ratio: 1;
-      z-index: 3;
-      filter: drop-shadow(0 40px 90px rgba(110,70,48,.26));
-      transition: transform .5s var(--ease);
-    }
-    #sl-wrap .hero-blob::before,#sl-wrap 
-    .hero-blob::after {
-      content:"";
-      position:absolute;
-      inset: 8%;
-      border-radius: 42% 58% 63% 37% / 47% 37% 63% 53%;
-      background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.96) 0 7%, transparent 23%),
-        radial-gradient(circle at 72% 64%, rgba(245,201,168,.95), transparent 33%),
-        radial-gradient(circle at 27% 72%, rgba(139,92,62,.94), transparent 38%),
-        radial-gradient(circle at 63% 27%, rgba(240,214,166,.9), transparent 40%),
-        linear-gradient(145deg, #fff, #E0B98C 46%, #8B5C3E 70%, #F2D4B0);
-      box-shadow: inset -38px -48px 65px rgba(61,43,31,.28), inset 30px 30px 48px rgba(255,255,255,.62);
-      animation: morph 9s ease-in-out infinite alternate;
-    }
-    #sl-wrap .hero-blob::after {
-      inset: 0;
-      border: 1px solid rgba(255,255,255,.65);
-      background:
-        radial-gradient(circle at 38% 34%, rgba(255,255,255,.5), transparent 25%),
-        conic-gradient(from 30deg, rgba(255,255,255,.05), rgba(255,255,255,.34), rgba(139,92,62,.2), rgba(255,255,255,.05));
-      mix-blend-mode: screen;
-      filter: blur(.1px);
-      animation-duration: 12s;
-      animation-direction: alternate-reverse;
-    }
-    #sl-wrap .blob-ring {
-      position:absolute;
-      inset: -3%;
-      border: 1px solid rgba(42,29,20,.26);
-      border-radius: 48% 52% 45% 55% / 49% 38% 62% 51%;
-      transform: rotate(20deg);
-      animation: spin 20s linear infinite;
-    }
-    #sl-wrap .blob-ring:nth-child(2) { inset:9%; transform:rotate(-25deg); animation-direction:reverse; animation-duration:14s; border-color:rgba(255,255,255,.76); }
-    #sl-wrap .blob-core {
-      position:absolute;
-      left:50%; top:50%;
-      transform:translate(-50%,-50%);
-      width:24%; aspect-ratio:1;
-      border-radius:50%;
-      background:radial-gradient(circle at 32% 30%, white, #F3E3C8 30%, #A96F42 68%, #2A1708 100%);
-      box-shadow:0 0 70px rgba(255,255,255,.5), inset -18px -20px 30px rgba(58,33,10,.4);
-      z-index:4;
-    }
-    #sl-wrap .blob-core::after { content:"NEXT"; position:absolute; inset:0; display:grid; place-items:center; font-size:10px; letter-spacing:.2em; font-weight:900; color:white; }
-    #sl-wrap .float-label {
-      position:absolute;
-      z-index:8;
-      right:6%; top:38%;
-      width:115px; height:115px;
-      border-radius:50%;
-      background:rgba(255,255,255,.74);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(42,29,20,.15);
-      display:grid; place-items:center;
-      font-size:10px;
-      line-height:1.15;
-      font-weight:900;
-      text-align:center;
-      letter-spacing:.08em;
-      animation:float 4s ease-in-out infinite;
-    }
-    @keyframes morph {
-      0% { border-radius: 42% 58% 63% 37% / 47% 37% 63% 53%; transform: rotate(-7deg) scale(.98); }
-      50% { border-radius: 57% 43% 45% 55% / 34% 58% 42% 66%; }
-      100% { border-radius: 38% 62% 37% 63% / 63% 31% 69% 37%; transform: rotate(9deg) scale(1.04); }
-    }
-    @keyframes spin { to { transform: rotate(380deg); } }
-    @keyframes float { 50% { transform: translateY(-14px) rotate(4deg); } }
 
     #sl-wrap .section { position:relative; padding: clamp(90px, 12vw, 190px) var(--pad); }
     #sl-wrap .section-head {
@@ -467,7 +405,7 @@ export default function SearchlightPage() {
     #sl-wrap .metric strong { font-size:clamp(54px,7vw,112px); line-height:.85; letter-spacing:-.08em; font-weight:700; }
     #sl-wrap .metric span { font-size:12px; opacity:.68; line-height:1.5; }
 
-    #sl-wrap .contact { background:linear-gradient(145deg,#F0E0C8,#F6ECDD 56%,#EFE3CB); overflow:hidden; }
+    #sl-wrap .contact { background:linear-gradient(145deg,#F0E0C8,#F6ECDD 56%,#EFE3CB); overflow:hidden; padding-bottom: clamp(45px, 6vw, 95px); }
     #sl-wrap .cta-box { position:relative; border-radius:28px; padding:clamp(50px,9vw,96px) clamp(24px,6vw,56px); text-align:center; color:#F5EEE3; overflow:hidden; box-shadow:0 30px 80px rgba(42,29,20,.28); background-color:#33220F; }
     #sl-wrap .cta-bg { position:absolute; inset:0; background:url("/searchlight/searchlight-cta-bg.jpg") center/cover no-repeat; z-index:0; }
     #sl-wrap .cta-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(28,17,7,.42),rgba(28,17,7,.68)); }
@@ -497,12 +435,8 @@ export default function SearchlightPage() {
       #sl-wrap .nav { grid-template-columns:1fr auto; }
       #sl-wrap .nav-links,#sl-wrap .nav-cta { display:none; }
       #sl-wrap .menu-button { display:grid; }
-      #sl-wrap .hero { padding: 120px var(--pad) 40px; min-height:900px; }
-      #sl-wrap .hero-copy { width:100%; }
-      #sl-wrap h1 { font-size:clamp(66px,14vw,124px); }
-      #sl-wrap .hero-blob { width:78vw; top:35%; right:-13vw; opacity:.92; }
-      #sl-wrap .hero-note { grid-template-columns:1fr auto; margin-top:auto; }
-      #sl-wrap .hero-note .center { display:none; }
+      #sl-wrap .hero { padding: 96px var(--pad) 60px; }
+      #sl-wrap h1 { font-size:clamp(2.1rem,7vw,3rem); }
       #sl-wrap .section-head { grid-template-columns:1fr; gap:20px; }
       #sl-wrap .project { min-height:720px; }
       #sl-wrap .phone { width:260px; }
@@ -518,17 +452,9 @@ export default function SearchlightPage() {
       #sl-wrap { --radius:24px; }
       #sl-wrap .nav { padding-top:18px; }
       #sl-wrap .brand { font-size:17px; }
-      #sl-wrap .hero { min-height:820px; padding: 120px var(--pad) 24px; }
+      #sl-wrap .hero { padding: 88px var(--pad) 40px; }
       #sl-wrap .kicker { margin-bottom:18px; }
-      #sl-wrap h1 { font-size:clamp(57px,17.5vw,90px); }
-      #sl-wrap h1 .line { overflow:visible; line-height:1; }
-      #sl-wrap h1 .line:first-child { margin-bottom:8px; }
-      #sl-wrap h1 .line:first-child > span { font-size:12.8vw; white-space:nowrap; }
-      #sl-wrap h1 .line:nth-child(2) > span { font-size:16.5vw; white-space:nowrap; }
-      #sl-wrap .hero-blob { width:100vw; top:34%; right:-35vw; }
-      #sl-wrap .float-label { width:88px;height:88px;right:3%;top:44%;font-size:8px; }
-      #sl-wrap .hero-note { grid-template-columns:1fr; gap:15px; }
-      #sl-wrap .hero-note .year { justify-self:start; opacity:.6; }
+      #sl-wrap h1 { font-size:clamp(1.9rem,9vw,2.6rem); }
       #sl-wrap .project { min-height:650px; }
       #sl-wrap .project-copy,#sl-wrap .project:nth-child(even) .project-copy { left:22px; right:22px; text-align:left; bottom:28px; }
       #sl-wrap .project:nth-child(even) .project-copy p { margin-left:0; }
@@ -583,25 +509,19 @@ export default function SearchlightPage() {
 
   <main>
     <section className="hero" id="top">
+      <div className="hero-bg" aria-hidden="true"></div>
       <div className="hero-copy">
         <div className="kicker">CSO의 방향을 제시합니다</div>
         <h1>
           <span className="line"><span>아직 써보지 못한</span></span>
           <span className="line"><span><em>CSO 시스템.</em></span></span>
         </h1>
-      </div>
-
-      <div className="hero-blob" aria-hidden="true">
-        <span className="blob-ring"></span>
-        <span className="blob-ring"></span>
-        <span className="blob-core"></span>
-      </div>
-      <div className="float-label">SCROLL<br />TO<br />EXPLORE ↓</div>
-
-      <div className="hero-note">
-        <p>시장은 변했습니다. 도구도 바뀌어야 합니다.<br />써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
-        <div className="center">AI / Search / Verify</div>
-        <div className="year">by 모두의CSO<br />© 2026</div>
+        <p className="hero-sub">시장은 변했습니다. 도구도 바뀌어야 합니다.<br />써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
+        <div className="hero-btns">
+          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn-dark">파트너 문의하기 →</a>
+          <a href="#work" className="btn-outline">어떻게 다른가요</a>
+        </div>
+        <div className="hero-note-simple">by 모두의CSO · © 2026</div>
       </div>
     </section>
 
@@ -750,12 +670,10 @@ export default function SearchlightPage() {
 
       const nav = document.querySelector('#sl-wrap .nav');
       const progress = document.querySelector('#sl-wrap .progress');
-      const blob = document.querySelector('#sl-wrap .hero-blob');
       window.addEventListener('scroll', () => {
         const max = document.documentElement.scrollHeight - innerHeight;
         progress.style.width = (((scrollY / max) * 100) + '%');
         nav.classList.toggle('scrolled', scrollY > 30);
-        if (blob) blob.style.transform = ('translate3d(0,' + (scrollY * .09) + 'px,0) rotate(' + (scrollY*.006) + 'deg)');
       }, {passive:true});
 
       const observer = new IntersectionObserver(entries => entries.forEach(e => {
@@ -803,11 +721,6 @@ export default function SearchlightPage() {
         mobileMenu.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); body.style.overflow='';
       }));
 
-      document.querySelector('#sl-wrap .hero').addEventListener('pointermove',e=>{
-        if(innerWidth<950) return;
-        const x=(e.clientX/innerWidth-.5)*26, y=(e.clientY/innerHeight-.5)*22;
-        blob.style.transform=('translate3d(' + x + 'px,' + (y + scrollY*.09) + 'px,0) rotate(' + (x*.16) + 'deg)');
-      });
     })();
   
       ` }} />
