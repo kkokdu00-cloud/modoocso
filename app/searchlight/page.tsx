@@ -153,7 +153,7 @@ export default function SearchlightPage() {
       transform: skewX(-16deg) rotate(45deg) scale(.66);
     }
     #sl-wrap .brand-mark i:nth-child(2) { transform: translate(9px,0) skewX(-16deg) rotate(45deg) scale(.66); opacity: .55; }
-    #sl-wrap .nav-links { display: flex; gap: 34px; font-size: 13px; font-weight: 700; }
+    #sl-wrap .nav-links { display: flex; gap: 34px; font-size: 15px; font-weight: 700; }
     #sl-wrap .nav-links a { position: relative; padding: 8px 0; }
     #sl-wrap .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--ink); transition:right .35s var(--ease); }
     #sl-wrap .nav-links a:hover::after { right:0; }
@@ -165,7 +165,7 @@ export default function SearchlightPage() {
       border: 1px solid rgba(17,17,17,.5);
       border-radius: 999px;
       padding: 12px 18px 12px 20px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .08em;
@@ -211,7 +211,7 @@ export default function SearchlightPage() {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 12px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: .12em;
       font-weight: 800;
@@ -243,7 +243,7 @@ export default function SearchlightPage() {
       padding-top: 20px;
       margin-top: 48px;
     }
-    #sl-wrap .hero-note p { margin:0; max-width:390px; line-height:1.55; font-size: clamp(14px,1.2vw,18px); letter-spacing:-.02em; }
+    #sl-wrap .hero-note p { margin:0; max-width:480px; line-height:1.55; font-size: clamp(14px,1.2vw,18px); letter-spacing:-.02em; }
     #sl-wrap .hero-note .center { justify-self:center; text-align:center; font-size:12px; text-transform:uppercase; letter-spacing:.13em; font-weight:800; }
     #sl-wrap .hero-note .year { justify-self:end; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800; }
 
@@ -373,7 +373,7 @@ export default function SearchlightPage() {
       text-transform:uppercase;
     }
     #sl-wrap .project-copy { position:absolute; z-index:10; left:clamp(24px,4vw,62px); bottom:clamp(25px,4.5vw,64px); max-width:680px; }
-    #sl-wrap .project-copy h3 { margin:0 0 14px; font-size:clamp(50px,7vw,118px); line-height:.84; letter-spacing:-.08em; }
+    #sl-wrap .project-copy h3 { margin:0 0 14px; font-size:clamp(50px,7vw,118px); line-height:1.0; letter-spacing:-.08em; }
     #sl-wrap .project-copy p { margin:0; max-width:480px; font-size:clamp(14px,1.25vw,18px); line-height:1.55; }
     #sl-wrap .project-number { width:58px; height:58px; border:1px solid currentColor; border-radius:50%; display:grid; place-items:center; }
     #sl-wrap .project .view { display:inline-flex; align-items:center; gap:12px; margin-top:24px; font-size:12px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
@@ -419,11 +419,10 @@ export default function SearchlightPage() {
     #sl-wrap .sheet.s3 { transform:translate(-26%,-50%) rotate(17deg); opacity:.72; }
     #sl-wrap .factory-orb { position:absolute; right:9%; top:14%; width:190px; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 30% 25%,white,#F2CE8B 28%,#C4956A 58%,#4A2F18); box-shadow:inset -25px -28px 45px rgba(58,38,15,.25),0 24px 60px rgba(110,80,45,.22); }
 
-    #sl-wrap .scene-light { background:linear-gradient(145deg,#16100A,#2E2013 55%,#4A2E16); color:#F5EEE3; }
-    #sl-wrap .scene-light::after { background:linear-gradient(to top,rgba(22,16,10,.92),rgba(22,16,10,.08) 45%,transparent); }
-    #sl-wrap .radar { position:absolute; width:min(55vw,760px); aspect-ratio:1; left:55%; top:45%; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(255,255,255,.5); background:repeating-radial-gradient(circle,transparent 0 12%,rgba(255,255,255,.16) 12.2% 12.45%,transparent 12.7% 24%); box-shadow:0 0 110px rgba(217,162,104,.4); }
-    #sl-wrap .radar::before { content:""; position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg,transparent 0 72%,rgba(239,194,142,.65) 93%,transparent 100%); animation:radar 5s linear infinite; }
-    #sl-wrap .radar::after { content:""; position:absolute; inset:48%; border-radius:50%; background:white; box-shadow:0 0 26px white,0 0 80px #D9A268; }
+    #sl-wrap .scene-light { background:linear-gradient(145deg,#F5E9D6,#EEDFC0 55%,#E4CDA0); color:var(--ink); }
+    #sl-wrap .radar { position:absolute; width:min(47vw,650px); aspect-ratio:1; left:55%; top:45%; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(42,29,20,.3); background:repeating-radial-gradient(circle,transparent 0 12%,rgba(42,29,20,.12) 12.2% 12.45%,transparent 12.7% 24%); box-shadow:0 0 90px rgba(196,149,106,.35); }
+    #sl-wrap .radar::before { content:""; position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg,transparent 0 72%,rgba(139,92,62,.55) 93%,transparent 100%); animation:radar 5s linear infinite; }
+    #sl-wrap .radar::after { content:""; position:absolute; inset:48%; border-radius:50%; background:#2A1D14; box-shadow:0 0 20px rgba(42,29,20,.35),0 0 60px #D9A268; }
     @keyframes radar { to{transform:rotate(360deg)} }
     #sl-wrap .ping { position:absolute; width:16px;height:16px;border-radius:50%;background:#F2C879;box-shadow:0 0 0 11px rgba(242,200,121,.15),0 0 25px #F2C879;z-index:4; }
     #sl-wrap .p1{left:38%;top:28%}#sl-wrap .p2{left:68%;top:37%}#sl-wrap .p3{left:61%;top:62%}
@@ -437,7 +436,7 @@ export default function SearchlightPage() {
     #sl-wrap .statement-text span { color:#A6937D; }
     #sl-wrap .statement-text em { font-style:normal; font-weight:400; color:var(--blue); }
     #sl-wrap .statement-bottom { margin-top:clamp(56px,8vw,100px); display:grid; grid-template-columns:1fr 1fr; gap:40px; border-top:1px solid var(--line); padding-top:28px; }
-    #sl-wrap .statement-bottom p { margin:0; max-width:570px; font-size:clamp(17px,1.8vw,27px); line-height:1.45; letter-spacing:-.035em; }
+    #sl-wrap .statement-bottom p { margin:0; max-width:820px; font-size:clamp(17px,1.8vw,27px); line-height:1.45; letter-spacing:-.035em; }
     #sl-wrap .pill-list { display:flex; flex-wrap:wrap; gap:9px; justify-content:flex-end; align-content:start; }
     #sl-wrap .pill-list span { border:1px solid var(--ink); border-radius:999px; padding:12px 17px; font-size:12px; font-weight:800; }
 
@@ -459,7 +458,7 @@ export default function SearchlightPage() {
     #sl-wrap .service-row:hover > * { color:white; }
     #sl-wrap .service-row .no { font-size:12px; font-weight:900; letter-spacing:.12em; }
     #sl-wrap .service-row h3 { margin:0; font-size:clamp(34px,5vw,76px); letter-spacing:-.04em; line-height:1; }
-    #sl-wrap .service-row p { margin:0; max-width:360px; font-size:14px; line-height:1.55; }
+    #sl-wrap .service-row p { margin:0; max-width:360px; font-size:16px; line-height:1.55; }
 
     #sl-wrap .numbers { background:#201711; color:#F5EEE3; }
     #sl-wrap .number-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.2); border-left:1px solid rgba(255,255,255,.2); }
@@ -478,6 +477,10 @@ export default function SearchlightPage() {
     #sl-wrap .giant-button:hover i { transform:rotate(45deg); }
     #sl-wrap .sl-footer { position:relative; z-index:3; display:grid; grid-template-columns:1fr auto 1fr; margin-top:100px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
     #sl-wrap .sl-footer span:nth-child(2){justify-self:center} #sl-wrap .sl-footer span:last-child{justify-self:end}
+    #sl-wrap .sl-footer-links { display:inline-flex; align-items:center; gap:14px; }
+    #sl-wrap .sl-footer-links a { opacity:.75; transition:opacity .2s; }
+    #sl-wrap .sl-footer-links a:hover { opacity:1; }
+    #sl-wrap .sl-footer-links a:first-child { border-right:1px solid var(--line); padding-right:14px; }
 
     #sl-wrap .soon { display:inline-block; margin-bottom:14px; border:1.5px solid currentColor; border-radius:999px; padding:7px 14px; font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
 
@@ -605,7 +608,7 @@ export default function SearchlightPage() {
     <section className="section showcase" id="work">
       <div className="section-head reveal-text">
         <div className="section-index">01 / 무엇이 다른가</div>
-        <h2 className="section-title">공개할 수 있는<br /><em>것들만.</em></h2>
+        <h2 className="section-title">공개할 수 있는 <em>것들만.</em></h2>
       </div>
 
       <div className="projects">
@@ -664,10 +667,10 @@ export default function SearchlightPage() {
             <div className="radar"></div>
             <i className="ping p1"></i><i className="ping p2"></i><i className="ping p3"></i>
           </div>
-          <div className="project-copy" style={{color: 'white'}}>
+          <div className="project-copy">
             <h3>파트너만<br />아는 것들.</h3>
             <p>직접 써봐야 보이는 기능들이 있습니다. 모두의CSO 파트너가 되면 전부 함께 제공됩니다.</p>
-            <span className="view">파트너 되기 <i style={{background: 'white', color: '#2A1D14'}}>↗</i></span>
+            <span className="view">파트너 되기 <i>↗</i></span>
           </div>
         </article>
       </div>
@@ -708,7 +711,7 @@ export default function SearchlightPage() {
         <div className="metric"><strong data-count="20" data-suffix="년">0</strong><span>제약 영업 현장 경력<br />YEARS IN FIELD</span></div>
         <div className="metric"><strong data-count="80" data-suffix="+">0</strong><span>거래 제약사<br />PHARMA PARTNERS</span></div>
         <div className="metric"><strong data-count="46474">0</strong><span>보유 약가·품목 데이터<br />DRUG PRICE RECORDS</span></div>
-        <div className="metric"><strong data-count="12" data-suffix="회">0</strong><span>연간 시스템 정산 대조<br />SETTLEMENTS A YEAR</span></div>
+        <div className="metric"><strong data-count="12" data-suffix="회">0</strong><span>매월 자동 정산 대조<br />MONTHLY RECONCILIATION</span></div>
       </div>
     </section>
 
@@ -723,7 +726,10 @@ export default function SearchlightPage() {
       <div className="sl-footer">
         <span>© 2026 CSO써치라이트</span>
         <span>모두의CSO가 직접 개발·운영</span>
-        <span>modoocso.kr ↗</span>
+        <span className="sl-footer-links">
+          <a href="/searchlight/privacy.html">개인정보처리방침</a>
+          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener">modoocso.kr ↗</a>
+        </span>
       </div>
     </section>
   </main>
