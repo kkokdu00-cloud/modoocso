@@ -139,6 +139,7 @@ export default function SearchlightPage() {
       font-size: 20px;
       white-space: nowrap;
     }
+    #sl-wrap .brand-accent { color: var(--blue); }
     #sl-wrap .brand-mark {
       position: relative;
       width: 28px;
@@ -198,7 +199,7 @@ export default function SearchlightPage() {
 
     #sl-wrap .hero {
       position: relative;
-      min-height: auto;
+      min-height: 100svh;
       padding: 64px var(--pad) 96px;
       display: flex;
       flex-direction: column;
@@ -208,6 +209,21 @@ export default function SearchlightPage() {
       gap: 0;
       overflow: hidden;
     }
+    #sl-wrap .hero-eyebrow {
+      position: absolute;
+      top: clamp(90px, 12vh, 130px);
+      left: var(--pad);
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    #sl-wrap .hero-eyebrow::before { content:""; width:34px; height:1px; background:currentColor; }
     #sl-wrap .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background: url("/searchlight/searchlight-hero-bg.jpg") center/cover no-repeat;
@@ -240,17 +256,6 @@ export default function SearchlightPage() {
     #sl-wrap .btn-outline { background: #fff; border: 1.5px solid var(--line); color: var(--ink); }
     #sl-wrap .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
     #sl-wrap .hero-note-simple { position: relative; z-index: 6; font-size: 13px; color: #8a7a6b; }
-    #sl-wrap .kicker {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 800;
-      margin-bottom: 28px;
-    }
-    #sl-wrap .kicker::before { content:""; width:39px; height:1px; background:var(--ink); }
     #sl-wrap h1 {
       margin: 0;
       font-size: clamp(2.4rem, 5.4vw, 4rem);
@@ -275,7 +280,7 @@ export default function SearchlightPage() {
       align-items:start;
       margin-bottom: clamp(54px,8vw,110px);
     }
-    #sl-wrap .section-index { font-size:12px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
+    #sl-wrap .section-index { font-size:14px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
     #sl-wrap .section-index::before { content:""; width:34px; height:1px; background:currentColor; }
     #sl-wrap .section-title { margin:0; font-size:clamp(40px,6vw,100px); line-height:1.04; letter-spacing:-.045em; font-weight:800; }
     #sl-wrap .section-title em { font-style:normal; font-weight:400; color:var(--blue); }
@@ -306,7 +311,7 @@ export default function SearchlightPage() {
       display:flex;
       justify-content:space-between;
       align-items:center;
-      font-size:11px;
+      font-size:13px;
       font-weight:900;
       letter-spacing:.12em;
       text-transform:uppercase;
@@ -410,7 +415,7 @@ export default function SearchlightPage() {
     #sl-wrap .cta-bg { position:absolute; inset:0; background:url("/searchlight/searchlight-cta-bg.jpg") center/cover no-repeat; z-index:0; }
     #sl-wrap .cta-bg::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(28,17,7,.42),rgba(28,17,7,.68)); }
     #sl-wrap .cta-box::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 50% 120%, rgba(239,194,142,.28), transparent 70%); pointer-events:none; z-index:1; }
-    #sl-wrap .cta-box > * { position:relative; z-index:2; }
+    #sl-wrap .cta-box h2, #sl-wrap .cta-box p, #sl-wrap .cta-box .cta-btns { position:relative; z-index:2; }
     #sl-wrap .cta-box h2 { margin:0 0 18px; font-size:clamp(2.5rem,5.4vw,4rem); font-weight:800; letter-spacing:-.03em; line-height:1.2; }
     #sl-wrap .cta-box p { margin:0 auto 36px; max-width:520px; font-size:1.02rem; color:rgba(245,238,227,.72); line-height:1.85; }
     #sl-wrap .cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
@@ -436,6 +441,7 @@ export default function SearchlightPage() {
       #sl-wrap .nav-links,#sl-wrap .nav-cta { display:none; }
       #sl-wrap .menu-button { display:grid; }
       #sl-wrap .hero { padding: 96px var(--pad) 60px; }
+      #sl-wrap .hero-eyebrow { top: 74px; font-size: 12px; }
       #sl-wrap h1 { font-size:clamp(2.1rem,7vw,3rem); }
       #sl-wrap .section-head { grid-template-columns:1fr; gap:20px; }
       #sl-wrap .project { min-height:720px; }
@@ -453,7 +459,6 @@ export default function SearchlightPage() {
       #sl-wrap .nav { padding-top:18px; }
       #sl-wrap .brand { font-size:17px; }
       #sl-wrap .hero { padding: 88px var(--pad) 40px; }
-      #sl-wrap .kicker { margin-bottom:18px; }
       #sl-wrap h1 { font-size:clamp(1.9rem,9vw,2.6rem); }
       #sl-wrap .project { min-height:650px; }
       #sl-wrap .project-copy,#sl-wrap .project:nth-child(even) .project-copy { left:22px; right:22px; text-align:left; bottom:28px; }
@@ -487,7 +492,7 @@ export default function SearchlightPage() {
   <header className="nav">
     <a className="brand magnetic" href="#top" aria-label="모두의CSO 홈">
       <span className="brand-mark" aria-hidden="true"></span>
-      <span>CSO써치라이트</span>
+      <span>CSO<span className="brand-accent">써치라이트</span></span>
     </a>
     <div className="nav-links" role="navigation" aria-label="주요 메뉴">
       <a href="#work">무엇이 다른가</a>
@@ -510,8 +515,8 @@ export default function SearchlightPage() {
   <main>
     <section className="hero" id="top">
       <div className="hero-bg" aria-hidden="true"></div>
+      <div className="hero-eyebrow">CSO의 방향을 제시합니다</div>
       <div className="hero-copy">
-        <div className="kicker">CSO의 방향을 제시합니다</div>
         <h1>
           <span className="line"><span>아직 써보지 못한</span></span>
           <span className="line"><span><em>CSO 시스템.</em></span></span>
@@ -648,7 +653,7 @@ export default function SearchlightPage() {
       </div>
       <div className="sl-footer">
         <div>
-          <a href="#top" className="brand"><span className="brand-mark" aria-hidden="true"></span><span>CSO써치라이트</span></a>
+          <a href="#top" className="brand"><span className="brand-mark" aria-hidden="true"></span><span>CSO<span className="brand-accent">써치라이트</span></span></a>
           <div className="foot-meta">모두의CSO가 직접 개발·운영하는 CSO 실무 관리 시스템<br />© 2026 CSO써치라이트</div>
         </div>
         <div className="foot-links">
