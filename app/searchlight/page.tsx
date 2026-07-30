@@ -51,759 +51,344 @@ export default function SearchlightPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
+#sl-wrap * { font-family: var(--font) !important; }
 
-    #sl-wrap {
-      --ink: #2A1D14;
-      --paper: #F2ECE3;
-      --paper-2: #EFE4D3;
-      --paper-3: #F7F1E6;
-      --blue: #8B5C3E;
-      --violet: #C4956A;
-      --pink: #F0C9A2;
-      --mint: #E8D9BC;
-      --acid: #E8B04B;
-      --line: rgba(42,29,20,.2);
-      --shadow: 0 28px 90px rgba(61,43,31,.16);
-      --ease: cubic-bezier(.16,1,.3,1);
-      --radius: 34px;
-      --pad: clamp(20px, 3.3vw, 58px);
-    }
+#sl-wrap{
+  --bg:#FBF8F2; --card:#FFFFFF; --ink:#2A1D14; --soft:#8A7A6B; --faint:#B3A899;
+  --line:#EAE0D0; --line-soft:#F1EADD;
+  --brand:#8B5C3E; --brand-deep:#6E4630; --accent:#C4956A; --tint:#F5EDE0;
+  --ok:#4C7A52; --ok-bg:#EBF2EA; --warn:#A6692F; --warn-bg:#F8EEDF;
+  --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --r:18px;
+  --shadow:0 1px 2px rgba(42,29,20,.04),0 12px 32px rgba(42,29,20,.06);
+  --shadow-lg:0 2px 4px rgba(42,29,20,.05),0 24px 60px rgba(42,29,20,.1);
+}
+#sl-wrap *{margin:0;padding:0;box-sizing:border-box}
+#sl-wrap{font-family:var(--font);background:var(--bg);color:var(--ink);word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#sl-wrap a{text-decoration:none;color:inherit}
+#sl-wrap .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+#sl-wrap .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+#sl-wrap .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){#sl-wrap .reveal{transition:none;opacity:1;transform:none}}
 
-    #sl-wrap * { box-sizing: border-box; }
-    #sl-wrap * { font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important; }
-    #sl-wrap {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 86% 8%, rgba(240,201,162,.55), transparent 27%),
-        radial-gradient(circle at 10% 26%, rgba(232,217,188,.6), transparent 34%),
-        linear-gradient(145deg, var(--paper) 0%, #EFE6D4 43%, var(--paper-2) 100%);
-      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      word-break: keep-all;
-      overflow-x: clip;
-    }
+#sl-wrap .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 26px;border-radius:12px;font-weight:700;font-size:.94rem;transition:all .2s;white-space:nowrap}
+#sl-wrap .btn-dark{background:var(--ink);color:#FFF}
+#sl-wrap .btn-dark:hover{background:#000;transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+#sl-wrap .btn-soft{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+#sl-wrap .btn-soft:hover{border-color:var(--accent);color:var(--brand)}
 
-    #sl-wrap::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999;
-      opacity: .055;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
+/* ── NAV ── */
+#sl-wrap .sl-nav{position:sticky;top:0;z-index:100;background:rgba(251,248,242,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+#sl-wrap .nav-in{max-width:1200px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
+#sl-wrap .logo{font-weight:800;font-size:1.1rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:9px;color:var(--ink)}
+#sl-wrap .logo .mark{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 210deg,var(--brand),var(--accent) 55%,#EFD9BC);position:relative;flex:none}
+#sl-wrap .logo .mark::after{content:'';position:absolute;inset:8px;border-radius:50%;background:var(--bg)}
+#sl-wrap .logo em{font-style:normal;color:var(--brand)}
+#sl-wrap .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+#sl-wrap .nav-links a{font-size:.88rem;font-weight:600;color:var(--soft);transition:color .2s;min-height:44px;display:inline-flex;align-items:center}
+#sl-wrap .nav-links a:hover{color:var(--ink)}
+#sl-wrap .nav-cta{min-height:40px;padding:0 20px;font-size:.85rem;border-radius:10px}
 
-    #sl-wrap a,#sl-wrap  button { color: inherit; font: inherit; }
-    #sl-wrap a { text-decoration: none; }
-    #sl-wrap button { border: 0; background: none; cursor: pointer; }
-    #sl-wrap img { display: block; max-width: 100%; }
-    #sl-wrap ::selection { background: var(--ink); color: white; }
+/* ── HERO ── */
+#sl-wrap .hero{padding:108px 0 130px;text-align:center;position:relative;overflow:hidden;display:block;min-height:auto}
+#sl-wrap .hero-bg{position:absolute;inset:0;background:url("/searchlight/searchlight-hero-bg.jpg") center/cover no-repeat}
+#sl-wrap .hero-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 58% 62% at 50% 44%,rgba(251,248,242,.94) 0%,rgba(251,248,242,.72) 55%,rgba(251,248,242,.12) 100%)}
+#sl-wrap .hero .wrap{position:relative;z-index:2}
 
-    #sl-wrap .progress {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 3px;
-      width: 0;
-      background: var(--ink);
-      z-index: 2500;
-    }
+#sl-wrap .kicker{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.78rem;font-weight:700;color:var(--brand);margin-bottom:26px;box-shadow:var(--shadow)}
+#sl-wrap .kicker::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+#sl-wrap h1{font-size:clamp(2.3rem,5.4vw,4rem);font-weight:800;line-height:1.14;letter-spacing:-.04em;margin-bottom:20px;position:relative}
+#sl-wrap h1 em{font-style:normal;color:var(--brand)}
+#sl-wrap .hero-sub{font-size:clamp(.98rem,1.6vw,1.12rem);color:var(--soft);line-height:1.8;max-width:560px;margin:0 auto 34px;position:relative;opacity:1;animation:none;font-weight:400}
+#sl-wrap .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:18px;opacity:1;animation:none}
+#sl-wrap .hero-note{font-size:.8rem;color:var(--faint)}
 
-    #sl-wrap .nav {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      z-index: 1200;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 24px var(--pad);
-      transition: background .4s, backdrop-filter .4s, padding .4s;
-    }
-    #sl-wrap .nav.scrolled {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      background: rgba(242,236,227,.75);
-      backdrop-filter: blur(18px) saturate(130%);
-      border-bottom: 1px solid rgba(42,29,20,.1);
-    }
-    #sl-wrap .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      justify-self: start;
-      font-weight: 900;
-      letter-spacing: -.04em;
-      font-size: 20px;
-      white-space: nowrap;
-    }
-    #sl-wrap .brand-mark {
-      position: relative;
-      width: 34px;
-      height: 28px;
-      transform: rotate(-6deg);
-    }
-    #sl-wrap .brand-mark i {
-      position: absolute;
-      inset: 0;
-      border: 3px solid var(--ink);
-      border-radius: 8px 14px 8px 14px;
-      transform: skewX(-16deg) rotate(45deg) scale(.66);
-    }
-    #sl-wrap .brand-mark i:nth-child(2) { transform: translate(9px,0) skewX(-16deg) rotate(45deg) scale(.66); opacity: .55; }
-    #sl-wrap .nav-links { display: flex; gap: 34px; font-size: 15px; font-weight: 700; }
-    #sl-wrap .nav-links a { position: relative; padding: 8px 0; }
-    #sl-wrap .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--ink); transition:right .35s var(--ease); }
-    #sl-wrap .nav-links a:hover::after { right:0; }
-    #sl-wrap .nav-cta {
-      justify-self: end;
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      border: 1px solid rgba(17,17,17,.5);
-      border-radius: 999px;
-      padding: 12px 18px 12px 20px;
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      transition: background .3s, color .3s;
-    }
-    #sl-wrap .nav-cta:hover { background: var(--ink); color: white; }
-    #sl-wrap .nav-cta .arr { width: 27px; height: 27px; border-radius: 50%; background: var(--ink); color:white; display:grid; place-items:center; transition: transform .35s var(--ease); }
-    #sl-wrap .nav-cta:hover .arr { background:white; color:var(--ink); transform: rotate(45deg); }
-    #sl-wrap .menu-button { display:none; justify-self:end; width:48px; height:48px; border:1px solid rgba(17,17,17,.4); border-radius:50%; place-items:center; }
-    #sl-wrap .menu-button span,#sl-wrap  .menu-button span::before { width:18px; height:1px; background:var(--ink); display:block; content:""; transition:.35s; }
-    #sl-wrap .menu-button span::before { transform: translateY(5px); }
+/* ── 질문 카드 마퀴 ── */
+#sl-wrap .marquee-zone{padding:52px 0 26px;overflow:hidden;position:relative}
+#sl-wrap .marquee-zone::before,#sl-wrap .marquee-zone::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+#sl-wrap .marquee-zone::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+#sl-wrap .marquee-zone::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+#sl-wrap .track{display:flex;gap:16px;width:max-content;margin-bottom:16px;animation:scroll 46s linear infinite}
+#sl-wrap .track.rev{animation:scroll-rev 52s linear infinite}
+#sl-wrap .track:hover{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scroll-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){#sl-wrap .track,#sl-wrap .track.rev{animation:none;width:auto;flex-wrap:wrap;justify-content:center}}
+#sl-wrap .qcard{width:330px;flex:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);text-align:left}
+#sl-wrap .qcard .q{font-size:.95rem;font-weight:700;line-height:1.55;margin-bottom:14px;min-height:46px}
+#sl-wrap .qcard .q::before{content:'Q.';color:var(--accent);font-weight:800;margin-right:7px}
+#sl-wrap .qcard .ans{border-top:1px solid var(--line-soft);padding-top:13px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#sl-wrap .qcard .ans-label{font-size:.68rem;font-weight:800;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;width:100%;margin-bottom:2px}
+#sl-wrap .pill{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;padding:5px 11px;border-radius:100px;background:var(--tint);color:var(--brand)}
+#sl-wrap .pill.ok{background:var(--ok-bg);color:var(--ok)}
+#sl-wrap .pill.ok::before{content:'✓';font-weight:900}
+#sl-wrap .pill.warn{background:var(--warn-bg);color:var(--warn)}
+#sl-wrap .pill .up{color:var(--ok);font-weight:800}
+#sl-wrap .mask{display:inline-block;filter:blur(4px);user-select:none}
 
-    #sl-wrap .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 1150;
-      background: #101010;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 100px var(--pad) 50px;
-      transform: translateY(-105%);
-      transition: transform .7s var(--ease);
-    }
-    #sl-wrap .mobile-menu.open { transform: translateY(0); }
-    #sl-wrap .mobile-menu a { font-size: clamp(42px, 12vw, 84px); font-weight: 800; letter-spacing: -.07em; line-height: .96; border-bottom: 1px solid rgba(255,255,255,.22); padding: 10px 0 18px; }
-    #sl-wrap .mobile-menu small { margin-top: auto; opacity:.6; }
+/* ── 섹션 공통 ── */
+#sl-wrap .section{padding:96px 0}
+#sl-wrap .sec-head{max-width:660px;margin:0 auto 54px;text-align:center}
+#sl-wrap .sec-eyebrow{font-size:.76rem;font-weight:800;color:var(--brand);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+#sl-wrap .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.25;letter-spacing:-.035em;margin-bottom:14px}
+#sl-wrap .sec-head p{font-size:.98rem;color:var(--soft);line-height:1.8}
 
-    #sl-wrap .hero {
-      position: relative;
-      min-height: 100svh;
-      padding: 130px var(--pad) 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: stretch;
-      gap: 0;
-      overflow: hidden;
-    }
-    #sl-wrap .hero-copy { position: relative; z-index: 6; width: min(1230px, 94%); }
-    #sl-wrap .kicker {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 800;
-      margin-bottom: 28px;
-    }
-    #sl-wrap .kicker::before { content:""; width:39px; height:1px; background:var(--ink); }
-    #sl-wrap h1 {
-      margin: 0;
-      font-size: clamp(50px, 8.6vw, 156px);
-      line-height: .98;
-      letter-spacing: -.05em;
-      font-weight: 800;
-      text-wrap: balance;
-    }
-    #sl-wrap h1 .line { display:block; overflow:hidden; }
-    #sl-wrap h1 .line > span { display:inline-block; transform: translateY(115%); animation: rise 1.25s var(--ease) forwards; }
-    #sl-wrap h1 .line:nth-child(2) > span { animation-delay: .12s; }
-    #sl-wrap h1 em { font-style: normal; font-weight: 400; letter-spacing: -.05em; color: var(--blue); }
-    @keyframes rise { to { transform: translateY(0); } }
+/* ── 벤토 ── */
+#sl-wrap .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+#sl-wrap .feat{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow);transition:all .25s;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+#sl-wrap .feat:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+#sl-wrap .feat h3{font-size:1.14rem;font-weight:800;letter-spacing:-.02em}
+#sl-wrap .feat>p{font-size:.9rem;color:var(--soft);line-height:1.8}
+#sl-wrap .feat .ui{margin-top:14px;background:var(--bg);border:1px solid var(--line-soft);border-radius:14px;padding:16px;flex:1}
+/* 미니 UI: 검색 */
+#sl-wrap .mini-search{display:flex;gap:8px;margin-bottom:12px}
+#sl-wrap .mini-search .box{flex:1;background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:9px 13px;font-size:.83rem;color:var(--soft)}
+#sl-wrap .mini-search .go{background:var(--brand);color:#FFF;border-radius:9px;padding:0 16px;display:flex;align-items:center;font-size:.8rem;font-weight:800}
+#sl-wrap .row{display:flex;justify-content:space-between;align-items:center;padding:9px 2px;border-top:1px solid var(--line-soft);font-size:.82rem}
+#sl-wrap .row:first-of-type{border-top:none}
+#sl-wrap .row b{font-variant-numeric:tabular-nums}
+#sl-wrap .row .pct{color:var(--brand);font-weight:800}
+/* 미니 UI: 대조 */
+#sl-wrap .match{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line-soft);border-radius:10px;padding:10px 13px;font-size:.82rem;font-weight:600;margin-bottom:8px}
+#sl-wrap .match:last-child{margin-bottom:0}
+/* 미니 UI: 업로드 */
+#sl-wrap .drop{border:1.5px dashed var(--accent);border-radius:12px;background:var(--tint);padding:22px;text-align:center;font-size:.84rem;font-weight:700;color:var(--brand);margin-bottom:12px}
+#sl-wrap .drop small{display:block;font-weight:500;color:var(--soft);margin-top:5px;font-size:.74rem}
+#sl-wrap .prog{height:8px;border-radius:100px;background:var(--line-soft);overflow:hidden;margin-top:8px}
+#sl-wrap .prog i{display:block;height:100%;width:78%;border-radius:100px;background:linear-gradient(90deg,var(--accent),var(--brand))}
+#sl-wrap .prog-label{display:flex;justify-content:space-between;font-size:.74rem;color:var(--soft);margin-top:6px}
+/* 미니 UI: 바 차트 */
+#sl-wrap .bars{display:flex;align-items:flex-end;gap:9px;height:96px;margin-bottom:10px}
+#sl-wrap .bars i{flex:1;border-radius:7px 7px 3px 3px;background:var(--tint)}
+#sl-wrap .bars i.hi{background:linear-gradient(180deg,var(--accent),var(--brand))}
+#sl-wrap .bars-label{display:flex;gap:9px;font-size:.68rem;color:var(--faint)}
+#sl-wrap .bars-label span{flex:1;text-align:center}
 
-    #sl-wrap .hero-note {
-      position: relative;
-      z-index: 7;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
-      gap: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 20px;
-      margin-top: 48px;
-    }
-    #sl-wrap .hero-note p { margin:0; max-width:480px; line-height:1.55; font-size: clamp(14px,1.2vw,18px); letter-spacing:-.02em; }
-    #sl-wrap .hero-note .center { justify-self:center; text-align:center; font-size:12px; text-transform:uppercase; letter-spacing:.13em; font-weight:800; }
-    #sl-wrap .hero-note .year { justify-self:end; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800; }
+/* ── 스텝 ── */
+#sl-wrap .steps-zone{background:var(--card);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+#sl-wrap .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+#sl-wrap .step{background:var(--bg);border:1px solid var(--line-soft);border-radius:20px;padding:30px;position:relative}
+#sl-wrap .step .n{width:34px;height:34px;border-radius:10px;background:var(--ink);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;margin-bottom:18px}
+#sl-wrap .step h3{font-size:1.05rem;font-weight:800;margin-bottom:8px;letter-spacing:-.02em}
+#sl-wrap .step p{font-size:.88rem;color:var(--soft);line-height:1.8}
 
-    #sl-wrap .hero-blob {
-      position: absolute;
-      right: -4vw;
-      top: 9vh;
-      width: min(58vw, 920px);
-      aspect-ratio: 1;
-      z-index: 3;
-      filter: drop-shadow(0 40px 90px rgba(110,70,48,.26));
-      transition: transform .5s var(--ease);
-    }
-    #sl-wrap .hero-blob::before,#sl-wrap 
-    .hero-blob::after {
-      content:"";
-      position:absolute;
-      inset: 8%;
-      border-radius: 42% 58% 63% 37% / 47% 37% 63% 53%;
-      background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.96) 0 7%, transparent 23%),
-        radial-gradient(circle at 72% 64%, rgba(245,201,168,.95), transparent 33%),
-        radial-gradient(circle at 27% 72%, rgba(139,92,62,.94), transparent 38%),
-        radial-gradient(circle at 63% 27%, rgba(240,214,166,.9), transparent 40%),
-        linear-gradient(145deg, #fff, #E0B98C 46%, #8B5C3E 70%, #F2D4B0);
-      box-shadow: inset -38px -48px 65px rgba(61,43,31,.28), inset 30px 30px 48px rgba(255,255,255,.62);
-      animation: morph 9s ease-in-out infinite alternate;
-    }
-    #sl-wrap .hero-blob::after {
-      inset: 0;
-      border: 1px solid rgba(255,255,255,.65);
-      background:
-        radial-gradient(circle at 38% 34%, rgba(255,255,255,.5), transparent 25%),
-        conic-gradient(from 30deg, rgba(255,255,255,.05), rgba(255,255,255,.34), rgba(139,92,62,.2), rgba(255,255,255,.05));
-      mix-blend-mode: screen;
-      filter: blur(.1px);
-      animation-duration: 12s;
-      animation-direction: alternate-reverse;
-    }
-    #sl-wrap .blob-ring {
-      position:absolute;
-      inset: -3%;
-      border: 1px solid rgba(42,29,20,.26);
-      border-radius: 48% 52% 45% 55% / 49% 38% 62% 51%;
-      transform: rotate(20deg);
-      animation: spin 20s linear infinite;
-    }
-    #sl-wrap .blob-ring:nth-child(2) { inset:9%; transform:rotate(-25deg); animation-direction:reverse; animation-duration:14s; border-color:rgba(255,255,255,.76); }
-    #sl-wrap .blob-core {
-      position:absolute;
-      left:50%; top:50%;
-      transform:translate(-50%,-50%);
-      width:24%; aspect-ratio:1;
-      border-radius:50%;
-      background:radial-gradient(circle at 32% 30%, white, #F3E3C8 30%, #A96F42 68%, #2A1708 100%);
-      box-shadow:0 0 70px rgba(255,255,255,.5), inset -18px -20px 30px rgba(58,33,10,.4);
-      z-index:4;
-    }
-    #sl-wrap .blob-core::after { content:"NEXT"; position:absolute; inset:0; display:grid; place-items:center; font-size:10px; letter-spacing:.2em; font-weight:900; color:white; }
-    #sl-wrap .float-label {
-      position:absolute;
-      z-index:8;
-      right:6%; top:38%;
-      width:115px; height:115px;
-      border-radius:50%;
-      background:rgba(255,255,255,.74);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(42,29,20,.15);
-      display:grid; place-items:center;
-      font-size:10px;
-      line-height:1.15;
-      font-weight:900;
-      text-align:center;
-      letter-spacing:.08em;
-      animation:float 4s ease-in-out infinite;
-    }
-    @keyframes morph {
-      0% { border-radius: 42% 58% 63% 37% / 47% 37% 63% 53%; transform: rotate(-7deg) scale(.98); }
-      50% { border-radius: 57% 43% 45% 55% / 34% 58% 42% 66%; }
-      100% { border-radius: 38% 62% 37% 63% / 63% 31% 69% 37%; transform: rotate(9deg) scale(1.04); }
-    }
-    @keyframes spin { to { transform: rotate(380deg); } }
-    @keyframes float { 50% { transform: translateY(-14px) rotate(4deg); } }
+/* ── 스탯 ── */
+#sl-wrap .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+#sl-wrap .stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 22px;text-align:center;box-shadow:var(--shadow)}
+#sl-wrap .stat b{display:block;font-size:2rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--brand)}
+#sl-wrap .stat span{font-size:.8rem;color:var(--soft);margin-top:6px;display:block}
 
-    #sl-wrap .section { position:relative; padding: clamp(90px, 12vw, 190px) var(--pad); }
-    #sl-wrap .section-head {
-      display:grid;
-      grid-template-columns: .72fr 1.28fr;
-      gap:40px;
-      align-items:start;
-      margin-bottom: clamp(54px,8vw,110px);
-    }
-    #sl-wrap .section-index { font-size:12px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
-    #sl-wrap .section-index::before { content:""; width:34px; height:1px; background:currentColor; }
-    #sl-wrap .section-title { margin:0; font-size:clamp(40px,6vw,100px); line-height:1.04; letter-spacing:-.045em; font-weight:800; }
-    #sl-wrap .section-title em { font-style:normal; font-weight:400; color:var(--blue); }
+/* ── CTA ── */
+#sl-wrap .cta{padding:110px 0}
+#sl-wrap .cta-box{background:linear-gradient(180deg,rgba(28,17,7,.42),rgba(28,17,7,.68)),url("/searchlight/searchlight-cta-bg.jpg") center/cover no-repeat #33220F;border-radius:28px;padding:80px 40px;text-align:center;color:#F5EEE3;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+#sl-wrap .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 120%,rgba(239,194,142,.28),transparent 70%);pointer-events:none}
+#sl-wrap .cta-box h2{font-size:clamp(1.8rem,3.8vw,2.7rem);font-weight:800;letter-spacing:-.035em;line-height:1.25;margin-bottom:14px;position:relative}
+#sl-wrap .cta-box p{font-size:.98rem;color:rgba(245,238,227,.65);line-height:1.85;margin-bottom:34px;position:relative}
+#sl-wrap .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+#sl-wrap .btn-cream{background:#F5EEE3;color:#33220F}
+#sl-wrap .btn-cream:hover{background:#FFF;transform:translateY(-1px)}
+#sl-wrap .btn-outline{border:1.5px solid rgba(245,238,227,.35);color:rgba(245,238,227,.9)}
+#sl-wrap .btn-outline:hover{border-color:#EFC28E;color:#EFC28E}
 
-    #sl-wrap .showcase { background:#1A120C; color:#F5EEE3; overflow:hidden; }
-    #sl-wrap .showcase::before { content:""; position:absolute; width:42vw; height:42vw; background:radial-gradient(circle,rgba(217,162,104,.3),transparent 68%); top:-12vw; right:-10vw; }
-    #sl-wrap .showcase .section-head { position:relative; z-index:2; }
-    #sl-wrap .projects { display:grid; gap: clamp(22px,4vw,60px); }
-    #sl-wrap .project {
-      position:relative;
-      min-height:min(78vh,850px);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background:#F3EADA;
-      color:#2A1D14;
-      isolation:isolate;
-      transform: translateY(50px);
-      opacity:0;
-      transition: transform 1s var(--ease), opacity 1s var(--ease);
-    }
-    #sl-wrap .project.reveal { transform:translateY(0); opacity:1; }
-    #sl-wrap .project-meta {
-      position:absolute;
-      z-index:10;
-      left:clamp(22px,3vw,44px);
-      right:clamp(22px,3vw,44px);
-      top:clamp(22px,3vw,38px);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-    #sl-wrap .project-copy { position:absolute; z-index:10; left:clamp(24px,4vw,62px); bottom:clamp(25px,4.5vw,64px); max-width:680px; }
-    #sl-wrap .project-copy h3 { margin:0 0 14px; font-size:clamp(50px,7vw,118px); line-height:1.0; letter-spacing:-.08em; }
-    #sl-wrap .project-copy p { margin:0; max-width:480px; font-size:clamp(14px,1.25vw,18px); line-height:1.55; }
-    #sl-wrap .project-number { width:58px; height:58px; border:1px solid currentColor; border-radius:50%; display:grid; place-items:center; }
-    #sl-wrap .project .view { display:inline-flex; align-items:center; gap:12px; margin-top:24px; font-size:12px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
-    #sl-wrap .project .view i { width:37px; height:37px; border-radius:50%; background:#2A1D14; color:#fff; display:grid; place-items:center; font-style:normal; transition:transform .35s var(--ease); }
-    #sl-wrap .project:hover .view i { transform:rotate(45deg) scale(1.08); }
+#sl-wrap .sl-footer{border-top:1px solid var(--line-soft);padding:44px 0;background:var(--card)}
+#sl-wrap .foot-in{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+#sl-wrap .foot-meta{font-size:.78rem;color:var(--faint);line-height:1.9;margin-top:10px}
+#sl-wrap .foot-links{display:flex;gap:22px;font-size:.84rem}
+#sl-wrap .foot-links a{color:var(--soft);min-height:44px;display:inline-flex;align-items:center}
+#sl-wrap .foot-links a:hover{color:var(--ink)}
 
-    #sl-wrap .scene { position:absolute; inset:0; overflow:hidden; }
-    #sl-wrap .scene::after { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(255,255,255,.95) 0%,rgba(255,255,255,.2) 36%,transparent 64%); }
-
-    #sl-wrap .scene-core { background:linear-gradient(135deg,#F3E7D3,#E9D6BA 48%,#F6ECDC); }
-    #sl-wrap .scene-core .grid {
-      position:absolute; inset:-20%; opacity:.35;
-      background-image: linear-gradient(rgba(42,29,20,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(42,29,20,.15) 1px,transparent 1px);
-      background-size:70px 70px;
-      transform:perspective(700px) rotateX(64deg) translateY(-8%);
-      transform-origin:center bottom;
-    }
-    #sl-wrap .scene-core .globe { position:absolute; width:min(47vw,650px); aspect-ratio:1; left:52%; top:45%; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 30% 22%,white 0 5%,#F5DDB8 19%,#B9793F 52%,#8B5C3E 70%,#2A1708 100%); box-shadow:inset -70px -60px 90px rgba(46,26,8,.42),0 55px 100px rgba(90,58,32,.34); }
-    #sl-wrap .scene-core .globe::before,#sl-wrap .scene-core .globe::after { content:""; position:absolute; inset:12%; border-radius:50%; border:1px solid rgba(255,255,255,.65); transform:rotate(33deg) scaleY(.42); }
-    #sl-wrap .scene-core .globe::after { transform:rotate(-50deg) scaleX(.45); }
-    #sl-wrap .node { position:absolute; width:12px; height:12px; border:3px solid white; background:#B9793F; border-radius:50%; box-shadow:0 0 0 8px rgba(255,255,255,.15); animation:pulse 2.2s infinite; }
-    #sl-wrap .n1{left:38%;top:29%}#sl-wrap .n2{left:66%;top:38%;animation-delay:.5s}#sl-wrap .n3{left:54%;top:62%;animation-delay:1s}#sl-wrap .n4{left:29%;top:55%;animation-delay:1.5s}
-    @keyframes pulse{50%{box-shadow:0 0 0 18px rgba(255,255,255,0)}}
-
-    #sl-wrap .scene-pass { background:linear-gradient(145deg,#F8E5D0,#EFDCC4 55%,#E2CBA4); }
-    #sl-wrap .phone { position:absolute; width:min(26vw,350px); aspect-ratio:.53; border-radius:48px; background:#2A1D14; left:50%; top:46%; transform:translate(-50%,-50%) rotate(-7deg); padding:12px; box-shadow:0 40px 90px rgba(74,48,26,.32); }
-    #sl-wrap .screen { width:100%; height:100%; border-radius:38px; background:linear-gradient(#FFFDF8,#F1E6D2); padding:42px 18px 20px; position:relative; overflow:hidden; }
-    #sl-wrap .screen::before { content:""; position:absolute; top:13px; left:50%; transform:translateX(-50%); width:84px; height:22px; background:#2A1D14; border-radius:30px; }
-    #sl-wrap .screen-card { height:78px; border-radius:19px; background:white; margin-bottom:11px; box-shadow:0 10px 25px rgba(74,54,32,.1); padding:15px; display:flex; align-items:center; gap:12px; }
-    #sl-wrap .screen-card i { width:42px; height:42px; border-radius:13px; background:linear-gradient(135deg,#8B5C3E,#C4956A); }
-    #sl-wrap .screen-card span { height:8px; width:52%; background:#2A1D14; border-radius:8px; position:relative; }
-    #sl-wrap .screen-card span::after { content:""; position:absolute; top:15px; left:0; width:75%; height:5px; background:#D8C7AC; border-radius:5px; }
-    #sl-wrap .float-card { position:absolute; width:220px; padding:20px; border-radius:24px; background:rgba(255,255,255,.76); backdrop-filter:blur(16px); box-shadow:0 25px 70px rgba(101,72,44,.18); border:1px solid rgba(255,255,255,.8); }
-    #sl-wrap .fc1{left:16%;top:23%;transform:rotate(-9deg)}#sl-wrap .fc2{right:13%;top:33%;transform:rotate(8deg)}
-    #sl-wrap .float-card b{display:block;font-size:34px;letter-spacing:-.05em}#sl-wrap .float-card small{font-weight:800;opacity:.6}
-
-    #sl-wrap .scene-factory { background:linear-gradient(145deg,#F1E8D3,#F6EEDD 58%,#FBE9C4); }
-    #sl-wrap .sheet { position:absolute; width:min(30vw,420px); aspect-ratio:.76; border-radius:28px; background:rgba(255,255,255,.9); box-shadow:0 30px 90px rgba(87,64,35,.18); border:1px solid white; padding:26px; left:50%; top:44%; transform:translate(-50%,-50%) rotate(2deg); }
-    #sl-wrap .sheet::before { content:"SETTLEMENT / 06"; font-size:12px; font-weight:900; letter-spacing:.13em; }
-    #sl-wrap .rows { margin-top:30px; display:grid; gap:12px; }
-    #sl-wrap .rows i { display:block; height:36px; border-radius:10px; background:linear-gradient(90deg,#F3EDE1 0 22%,#E3C89B 22% 24%,#F3EDE1 24% 70%,#E8B04B 70%); }
-    #sl-wrap .sheet.s2 { transform:translate(-70%,-54%) rotate(-16deg); opacity:.64; }
-    #sl-wrap .sheet.s3 { transform:translate(-26%,-50%) rotate(17deg); opacity:.72; }
-    #sl-wrap .factory-orb { position:absolute; right:9%; top:14%; width:190px; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 30% 25%,white,#F2CE8B 28%,#C4956A 58%,#4A2F18); box-shadow:inset -25px -28px 45px rgba(58,38,15,.25),0 24px 60px rgba(110,80,45,.22); }
-
-    #sl-wrap .scene-light { background:linear-gradient(145deg,#F5E9D6,#EEDFC0 55%,#E4CDA0); color:var(--ink); }
-    #sl-wrap .radar { position:absolute; width:min(47vw,650px); aspect-ratio:1; left:55%; top:45%; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(42,29,20,.3); background:repeating-radial-gradient(circle,transparent 0 12%,rgba(42,29,20,.12) 12.2% 12.45%,transparent 12.7% 24%); box-shadow:0 0 90px rgba(196,149,106,.35); }
-    #sl-wrap .radar::before { content:""; position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg,transparent 0 72%,rgba(139,92,62,.55) 93%,transparent 100%); animation:radar 5s linear infinite; }
-    #sl-wrap .radar::after { content:""; position:absolute; inset:48%; border-radius:50%; background:#2A1D14; box-shadow:0 0 20px rgba(42,29,20,.35),0 0 60px #D9A268; }
-    @keyframes radar { to{transform:rotate(360deg)} }
-    #sl-wrap .ping { position:absolute; width:16px;height:16px;border-radius:50%;background:#F2C879;box-shadow:0 0 0 11px rgba(242,200,121,.15),0 0 25px #F2C879;z-index:4; }
-    #sl-wrap .p1{left:38%;top:28%}#sl-wrap .p2{left:68%;top:37%}#sl-wrap .p3{left:61%;top:62%}
-
-    #sl-wrap .project:nth-child(even) .project-copy { left:auto; right:clamp(24px,4vw,62px); text-align:right; }
-    #sl-wrap .project:nth-child(even) .project-copy p { margin-left:auto; }
-    #sl-wrap .project:nth-child(even) .view { justify-content:flex-end; }
-
-    #sl-wrap .statement { background:#F7F2E9; overflow:hidden; }
-    #sl-wrap .statement-text { margin:0; max-width:1500px; font-size:clamp(38px,6.4vw,116px); line-height:1.08; letter-spacing:-.045em; font-weight:800; }
-    #sl-wrap .statement-text span { color:#A6937D; }
-    #sl-wrap .statement-text em { font-style:normal; font-weight:400; color:var(--blue); }
-    #sl-wrap .statement-bottom { margin-top:clamp(56px,8vw,100px); display:grid; grid-template-columns:1fr 1fr; gap:40px; border-top:1px solid var(--line); padding-top:28px; }
-    #sl-wrap .statement-bottom p { margin:0; max-width:820px; font-size:clamp(17px,1.8vw,27px); line-height:1.45; letter-spacing:-.035em; }
-    #sl-wrap .pill-list { display:flex; flex-wrap:wrap; gap:9px; justify-content:flex-end; align-content:start; }
-    #sl-wrap .pill-list span { border:1px solid var(--ink); border-radius:999px; padding:12px 17px; font-size:12px; font-weight:800; }
-
-    #sl-wrap .services { background:#E8B04B; }
-    #sl-wrap .service-list { border-top:1px solid rgba(42,29,20,.34); }
-    #sl-wrap .service-row {
-      display:grid;
-      grid-template-columns:90px 1fr auto;
-      gap:25px;
-      align-items:center;
-      padding:clamp(26px,4vw,56px) 0;
-      border-bottom:1px solid rgba(42,29,20,.34);
-      position:relative;
-      overflow:hidden;
-    }
-    #sl-wrap .service-row::before { content:""; position:absolute; inset:0; background:#2A1D14; transform:translateY(101%); transition:transform .5s var(--ease); }
-    #sl-wrap .service-row:hover::before { transform:translateY(0); }
-    #sl-wrap .service-row > * { position:relative; z-index:2; transition:color .35s; }
-    #sl-wrap .service-row:hover > * { color:white; }
-    #sl-wrap .service-row .no { font-size:12px; font-weight:900; letter-spacing:.12em; }
-    #sl-wrap .service-row h3 { margin:0; font-size:clamp(34px,5vw,76px); letter-spacing:-.04em; line-height:1; }
-    #sl-wrap .service-row p { margin:0; max-width:360px; font-size:16px; line-height:1.55; }
-
-    #sl-wrap .numbers { background:#201711; color:#F5EEE3; }
-    #sl-wrap .number-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid rgba(255,255,255,.2); border-left:1px solid rgba(255,255,255,.2); }
-    #sl-wrap .metric { min-height:260px; border-right:1px solid rgba(255,255,255,.2); border-bottom:1px solid rgba(255,255,255,.2); padding:30px; display:flex; flex-direction:column; justify-content:space-between; }
-    #sl-wrap .metric strong { font-size:clamp(54px,7vw,112px); line-height:.85; letter-spacing:-.08em; font-weight:700; }
-    #sl-wrap .metric span { font-size:12px; opacity:.68; line-height:1.5; }
-
-    #sl-wrap .contact { min-height:100svh; background:linear-gradient(145deg,#F0E0C8,#F6ECDD 56%,#EFE3CB); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
-    #sl-wrap .contact h2 { margin:0; font-size:clamp(54px,10vw,180px); line-height:.98; letter-spacing:-.05em; font-weight:800; position:relative; z-index:2; }
-    #sl-wrap .contact h2 em { font-style:normal; font-weight:400; color:var(--blue); }
-    #sl-wrap .contact-orb { position:absolute; width:min(57vw,860px); aspect-ratio:1; right:-7%; top:8%; border-radius:37% 63% 48% 52% / 45% 36% 64% 55%; background:radial-gradient(circle at 32% 23%,white 0 5%,#F5D9B2 22%,#C4956A 51%,#8B5C3E 73%,#2A1708); box-shadow:inset -50px -58px 90px rgba(50,28,10,.38),0 55px 130px rgba(105,72,42,.32); animation:morph 10s ease-in-out infinite alternate; }
-    #sl-wrap .contact-actions { position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; gap:30px; margin-top:70px; border-top:1px solid var(--line); padding-top:26px; }
-    #sl-wrap .contact-actions p { margin:0; max-width:480px; font-size:clamp(16px,1.5vw,23px); line-height:1.45; }
-    #sl-wrap .giant-button { display:inline-flex; align-items:center; gap:18px; background:#2A1D14; color:white; border-radius:999px; padding:18px 22px 18px 28px; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.1em; }
-    #sl-wrap .giant-button i { width:44px; height:44px; border-radius:50%; background:white; color:#2A1D14; display:grid; place-items:center; font-style:normal; transition:transform .35s var(--ease); }
-    #sl-wrap .giant-button:hover i { transform:rotate(45deg); }
-    #sl-wrap .sl-footer { position:relative; z-index:3; display:grid; grid-template-columns:1fr auto 1fr; margin-top:100px; padding-top:20px; border-top:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
-    #sl-wrap .sl-footer span:nth-child(2){justify-self:center} #sl-wrap .sl-footer span:last-child{justify-self:end}
-    #sl-wrap .sl-footer-links { display:inline-flex; align-items:center; gap:14px; }
-    #sl-wrap .sl-footer-links a { opacity:.75; transition:opacity .2s; }
-    #sl-wrap .sl-footer-links a:hover { opacity:1; }
-    #sl-wrap .sl-footer-links a:first-child { border-right:1px solid var(--line); padding-right:14px; }
-
-    #sl-wrap .soon { display:inline-block; margin-bottom:14px; border:1.5px solid currentColor; border-radius:999px; padding:7px 14px; font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
-
-    #sl-wrap .reveal-text { opacity:0; transform:translateY(42px); transition:opacity .9s var(--ease),transform .9s var(--ease); }
-    #sl-wrap .reveal-text.in { opacity:1; transform:none; }
-
-    @media (max-width: 950px) {
-      #sl-wrap .nav { grid-template-columns:1fr auto; }
-      #sl-wrap .nav-links,#sl-wrap .nav-cta { display:none; }
-      #sl-wrap .menu-button { display:grid; }
-      #sl-wrap .hero { padding: 120px var(--pad) 40px; min-height:900px; }
-      #sl-wrap .hero-copy { width:100%; }
-      #sl-wrap h1 { font-size:clamp(66px,14vw,124px); }
-      #sl-wrap .hero-blob { width:78vw; top:35%; right:-13vw; opacity:.92; }
-      #sl-wrap .hero-note { grid-template-columns:1fr auto; margin-top:auto; }
-      #sl-wrap .hero-note .center { display:none; }
-      #sl-wrap .section-head { grid-template-columns:1fr; gap:20px; }
-      #sl-wrap .project { min-height:720px; }
-      #sl-wrap .phone { width:260px; }
-      #sl-wrap .float-card { width:170px; }
-      #sl-wrap .number-grid { grid-template-columns:1fr 1fr; }
-      #sl-wrap .statement-bottom { grid-template-columns:1fr; }
-      #sl-wrap .pill-list { justify-content:flex-start; }
-      #sl-wrap .service-row { grid-template-columns:50px 1fr; }
-      #sl-wrap .service-row p { display:none; }
-      #sl-wrap .contact-orb { width:76vw; top:18%; right:-20%; }
-    }
-
-    @media (max-width: 640px) {
-      #sl-wrap { --radius:24px; }
-      #sl-wrap .nav { padding-top:18px; }
-      #sl-wrap .brand { font-size:17px; }
-      #sl-wrap .brand-mark { width:30px; }
-      #sl-wrap .hero { min-height:820px; padding: 120px var(--pad) 24px; }
-      #sl-wrap .kicker { margin-bottom:18px; }
-      #sl-wrap h1 { font-size:clamp(57px,17.5vw,90px); }
-      #sl-wrap h1 .line { overflow:visible; line-height:1; }
-      #sl-wrap h1 .line:first-child { margin-bottom:8px; }
-      #sl-wrap h1 .line:first-child > span { font-size:12.8vw; white-space:nowrap; }
-      #sl-wrap h1 .line:nth-child(2) > span { font-size:16.5vw; white-space:nowrap; }
-      #sl-wrap .hero-blob { width:100vw; top:34%; right:-35vw; }
-      #sl-wrap .float-label { width:88px;height:88px;right:3%;top:44%;font-size:8px; }
-      #sl-wrap .hero-note { grid-template-columns:1fr; gap:15px; }
-      #sl-wrap .hero-note .year { justify-self:start; opacity:.6; }
-      #sl-wrap .project { min-height:650px; }
-      #sl-wrap .project-copy,#sl-wrap .project:nth-child(even) .project-copy { left:22px; right:22px; text-align:left; bottom:28px; }
-      #sl-wrap .project:nth-child(even) .project-copy p { margin-left:0; }
-      #sl-wrap .project:nth-child(even) .view { justify-content:flex-start; }
-      #sl-wrap .project-copy h3 { font-size:54px; }
-      #sl-wrap .scene-core .globe { width:96vw; top:39%; }
-      #sl-wrap .phone { width:215px; top:40%; }
-      #sl-wrap .float-card { width:135px; padding:14px; }
-      #sl-wrap .float-card b { font-size:25px; }
-      #sl-wrap .fc1 { left:3%;top:22% }#sl-wrap .fc2 { right:2%;top:32% }
-      #sl-wrap .sheet { width:68vw; top:38%; padding:18px; }
-      #sl-wrap .factory-orb { width:110px; right:2%; }
-      #sl-wrap .radar { width:105vw; top:38%; }
-      #sl-wrap .number-grid { grid-template-columns:1fr; }
-      #sl-wrap .metric { min-height:190px; }
-      #sl-wrap .contact { min-height:850px; }
-      #sl-wrap .contact h2 { font-size:19vw; }
-      #sl-wrap .contact-orb { width:112vw; top:26%; right:-52%; }
-      #sl-wrap .contact-actions { align-items:flex-start; flex-direction:column; margin-top:auto; }
-      #sl-wrap .sl-footer { grid-template-columns:1fr; gap:10px; margin-top:60px; }
-      #sl-wrap .sl-footer span:nth-child(2),#sl-wrap .sl-footer span:last-child { justify-self:start; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #sl-wrap *,#sl-wrap *::before,#sl-wrap *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important; transition-duration:.01ms!important; }
-    }
+@media(max-width:880px){
+  #sl-wrap .bento,#sl-wrap .steps{grid-template-columns:1fr}
+  #sl-wrap .stats{grid-template-columns:repeat(2,1fr)}
+  #sl-wrap .nav-links li:not(.keep){display:none}
+  #sl-wrap .section{padding:72px 0}
+  #sl-wrap .qcard{width:290px}
+  #sl-wrap .cta-box{padding:60px 24px;border-radius:22px}
+}
+@media(max-width:480px){}
 
     html { scroll-behavior: smooth; }
 
       ` }} />
       <div id="sl-wrap">
-  <div className="progress" aria-hidden="true"></div>
-
-  <header className="nav">
-    <a className="brand magnetic" href="#top" aria-label="모두의CSO 홈">
-      <span className="brand-mark" aria-hidden="true"><i></i><i></i></span>
-      <span>CSO써치라이트</span>
-    </a>
-    <div className="nav-links" role="navigation" aria-label="주요 메뉴">
-      <a href="#work">무엇이 다른가</a>
-      <a href="#approach">우리 생각</a>
-      <a href="#services">핵심</a>
-      <a href="#contact">시작하기</a>
-    </div>
-    <a className="nav-cta magnetic" href="https://www.modoocso.kr/" target="_blank" rel="noopener"><span>모두의CSO 파트너 문의</span><span className="arr">↗</span></a>
-    <button className="menu-button" aria-label="메뉴 열기" aria-expanded="false"><span></span></button>
-  </header>
-
-  <div className="mobile-menu" role="navigation" aria-label="모바일 메뉴">
-    <a href="#work">무엇이 다른가</a>
-    <a href="#approach">우리 생각</a>
-    <a href="#services">핵심</a>
-    <a href="#contact">시작하기</a>
-    <small>CSO 실무 관리 시스템 / 2026</small>
+<div className="sl-nav" role="navigation">
+  <div className="nav-in">
+    <a href="#" className="logo"><span className="mark"></span>CSO<em>써치라이트</em></a>
+    <ul className="nav-links">
+      <li><a href="#features">기능</a></li>
+      <li><a href="#how">진행 방식</a></li>
+      <li><a href="#numbers">숫자</a></li>
+      <li className="keep"><a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn btn-dark nav-cta">파트너 문의 →</a></li>
+    </ul>
   </div>
+</div>
 
-  <main>
-    <section className="hero" id="top">
-      <div className="hero-copy">
-        <div className="kicker">CSO의 방향을 제시합니다</div>
-        <h1>
-          <span className="line"><span>아직 써보지 못한</span></span>
-          <span className="line"><span><em>CSO 시스템.</em></span></span>
-        </h1>
-      </div>
+{/* HERO */}
+<header className="hero">
+  <div className="hero-bg" aria-hidden="true"></div>
+  <div className="wrap">
+    <div className="kicker">모두의CSO 파트너 전용 시스템</div>
+    <h1>현장의 질문에,<br /><em>시스템이 답합니다</em></h1>
+    <p className="hero-sub">수수료·약가·정산 대조까지 검색 한 번에. 매달 반복하던 확인 작업을 CSO써치라이트가 대신합니다.</p>
+    <div className="hero-btns">
+      <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn btn-dark">파트너 문의하기 →</a>
+      <a href="#features" className="btn btn-soft">어떻게 다른가요</a>
+    </div>
+    <div className="hero-note">파트너 계약과 동시에 계정이 발급됩니다 · 별도 비용 없음</div>
+  </div>
+</header>
 
-      <div className="hero-blob" aria-hidden="true">
-        <span className="blob-ring"></span>
-        <span className="blob-ring"></span>
-        <span className="blob-core"></span>
-      </div>
-      <div className="float-label">SCROLL<br />TO<br />EXPLORE ↓</div>
+{/* 질문 카드 마퀴 */}
+<div className="marquee-zone" aria-hidden="true">
+  <div className="track" id="sl-row1">
+    <div className="qcard"><div className="q">○○○정 5/50mg 수수료율이 몇이었지?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill">약가 712원</span><span className="pill">수수료 <span className="mask">00%</span></span><span className="pill ok">0.4초 조회</span></div></div>
+    <div className="qcard"><div className="q">A제약 6월 정산서, EDI 실적이랑 맞나?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill ok">대조 일치</span><span className="pill">오차 0건</span><span className="pill">자동 대조</span></div></div>
+    <div className="qcard"><div className="q">이 품목, 약가 인하 반영된 금액 맞아?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill ok">최신 고시 반영</span><span className="pill">712원 → 688원</span></div></div>
+    <div className="qcard"><div className="q">새로 받은 품목 보험코드가 뭐더라?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill">보험코드 64○○○</span><span className="pill ok">즉시 검색</span></div></div>
+    <div className="qcard"><div className="q">정산서 수기 입력, 이번 달도 밤새워야 하나?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill ok">AI 문서 인식</span><span className="pill">수기 입력 0건</span></div></div>
+  </div>
+  <div className="track rev" id="sl-row2">
+    <div className="qcard"><div className="q">C제약 정산, 품목 하나가 이상한데 어디지?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill warn">오차 1건 검출</span><span className="pill">품목 자동 표시</span></div></div>
+    <div className="qcard"><div className="q">지난달 거래처별 실적 자료 어디 갔지?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill">이력 전체 보존</span><span className="pill ok">즉시 조회</span></div></div>
+    <div className="qcard"><div className="q">고혈압 복합제 중에 조건 좋은 품목 뭐 있지?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill">46,474 품목 검색</span><span className="pill">수수료 <span className="mask">00%</span>~</span></div></div>
+    <div className="qcard"><div className="q">이 품목 생동 인정 품목인가?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill ok">생동 정보 확인</span><span className="pill">데이터 반영</span></div></div>
+    <div className="qcard"><div className="q">직원 없이 혼자서 정산 관리가 되나?</div><div className="ans"><span className="ans-label">Searchlight</span><span className="pill ok">1인 운영 가능</span><span className="pill">시스템이 대조</span></div></div>
+  </div>
+</div>
 
-      <div className="hero-note">
-        <p>시장은 변했습니다. 도구도 바뀌어야 합니다.<br />써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
-        <div className="center">AI / Search / Verify</div>
-        <div className="year">by 모두의CSO<br />© 2026</div>
-      </div>
-    </section>
-
-    <section className="section showcase" id="work">
-      <div className="section-head reveal-text">
-        <div className="section-index">01 / 무엇이 다른가</div>
-        <h2 className="section-title">공개할 수 있는 <em>것들만.</em></h2>
-      </div>
-
-      <div className="projects">
-        <article className="project">
-          <div className="project-meta"><span>AI / 문서 인식</span><span className="project-number">01</span></div>
-          <div className="scene scene-core">
-            <div className="grid"></div>
-            <div className="globe"><i className="node n1"></i><i className="node n2"></i><i className="node n3"></i><i className="node n4"></i></div>
-          </div>
-          <div className="project-copy">
-            <h3>올리면,<br />읽힙니다.</h3>
-            <p>형식을 가리지 않습니다. 어떤 파일이든 올리면 시스템이 읽고 데이터가 됩니다. 반복 입력은 이제 없습니다.</p>
-            <span className="view">AI 문서 인식 <i>↗</i></span>
-          </div>
-        </article>
-
-        <article className="project">
-          <div className="project-meta"><span>Search / 실시간</span><span className="project-number">02</span></div>
-          <div className="scene scene-pass">
-            <div className="float-card fc1"><small>DOCUMENTS</small><b>08/08</b></div>
-            <div className="phone">
-              <div className="screen">
-                <div className="screen-card"><i></i><span></span></div>
-                <div className="screen-card"><i></i><span></span></div>
-                <div className="screen-card"><i></i><span></span></div>
-                <div className="screen-card"><i></i><span></span></div>
-              </div>
-            </div>
-            <div className="float-card fc2"><small>STATUS</small><b>PASS</b></div>
-          </div>
-          <div className="project-copy">
-            <h3>찾으면,<br />바로.</h3>
-            <p>46,474개 품목, 약가와 수수료까지 검색 한 번에. 필요한 숫자가 그 자리에서 나옵니다.</p>
-            <span className="view">실시간 수수료 계산 <i>↗</i></span>
-          </div>
-        </article>
-
-        <article className="project">
-          <div className="project-meta"><span>Automation / Settlement</span><span className="project-number">03</span></div>
-          <div className="scene scene-factory">
-            <div className="factory-orb"></div>
-            <div className="sheet s2"><div className="rows"><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div className="sheet s3"><div className="rows"><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div className="sheet"><div className="rows"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-          </div>
-          <div className="project-copy">
-            <h3>오차가<br />숨을 곳 없이.</h3>
-            <p>심평원 EDI 실적과 정산서를 매월 시스템이 대조합니다. 사람이 놓치는 것을 시스템이 잡습니다.</p>
-            <span className="view">정산 자동 대조 <i>↗</i></span>
-          </div>
-        </article>
-
-        <article className="project">
-          <div className="project-meta"><span>Partner Only / 전용</span><span className="project-number">04</span></div>
-          <div className="scene scene-light">
-            <div className="radar"></div>
-            <i className="ping p1"></i><i className="ping p2"></i><i className="ping p3"></i>
-          </div>
-          <div className="project-copy">
-            <h3>파트너만<br />아는 것들.</h3>
-            <p>직접 써봐야 보이는 기능들이 있습니다. 모두의CSO 파트너가 되면 전부 함께 제공됩니다.</p>
-            <span className="view">파트너 되기 <i>↗</i></span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section className="section statement" id="approach">
-      <div className="section-index reveal-text">02 / 우리 생각</div>
-      <p className="statement-text reveal-text" style={{marginTop: '70px'}}>
-        우리는 기존 CSO 툴을 <span>개선하지 않았습니다.</span> 처음부터 <em>다시 만들었습니다.</em>
-      </p>
-      <div className="statement-bottom reveal-text">
-        <p>현장에서 20년을 보낸 사람이 직접 설계한 시스템은 다릅니다. 반복되는 입력·확인·대조에 시간을 쓰지 않도록, 처음부터 그렇게 만들었습니다.</p>
-        <div className="pill-list">
-          <span>자동 입력</span><span>자동 대조</span><span>즉시 검색</span><span>이력 보존</span><span>혼자서도 가능</span><span>계속 진화</span>
+{/* 기능 벤토 */}
+<section className="section" id="features">
+  <div className="wrap">
+    <div className="sec-head reveal">
+      <div className="sec-eyebrow">Features</div>
+      <h2>입력, 검색, 대조.<br />하나의 시스템에서.</h2>
+      <p>기능의 수가 아니라 설계가 다릅니다. 파트너가 매달 실제로 쓰는 화면입니다.</p>
+    </div>
+    <div className="bento">
+      <div className="feat reveal">
+        <h3>품목·수수료 검색</h3>
+        <p>46,474개 품목의 약가와 수수료 구조가 검색 한 번에 나옵니다.</p>
+        <div className="ui">
+          <div className="mini-search"><div className="box">고혈압 복합제</div><div className="go">검색</div></div>
+          <div className="row"><span>○○○정 5/50mg</span><b className="pct"><span className="mask">00%</span></b></div>
+          <div className="row"><span><span className="mask">△△△정 10/40mg</span></span><b className="pct"><span className="mask">00%</span></b></div>
+          <div className="row"><span><span className="mask">□□□정 5/20mg</span></span><b className="pct"><span className="mask">00%</span></b></div>
         </div>
       </div>
-    </section>
+      <div className="feat reveal">
+        <h3>정산 자동 대조</h3>
+        <p>심평원 EDI 실적과 정산서를 매월 시스템이 대조합니다. 오차는 숨을 곳이 없습니다.</p>
+        <div className="ui">
+          <div className="match"><span>A제약 6월 정산</span><span className="pill ok">일치</span></div>
+          <div className="match"><span>B제약 6월 정산</span><span className="pill ok">일치</span></div>
+          <div className="match"><span>C제약 6월 정산</span><span className="pill warn">오차 1건</span></div>
+        </div>
+      </div>
+      <div className="feat reveal">
+        <h3>AI 문서 인식</h3>
+        <p>형식을 가리지 않습니다. 파일을 올리면 시스템이 읽고 데이터가 됩니다.</p>
+        <div className="ui">
+          <div className="drop">정산서 파일을 끌어다 놓으세요<small>PDF · 엑셀 · 사진 무엇이든</small></div>
+          <div className="prog"><i></i></div>
+          <div className="prog-label"><span>인식 중…</span><span>78%</span></div>
+        </div>
+      </div>
+      <div className="feat reveal">
+        <h3>이력이 쌓이는 데이터</h3>
+        <p>모든 실적과 정산 이력이 기록됩니다. 언제든 꺼내볼 수 있습니다.</p>
+        <div className="ui">
+          <div className="bars"><i style={{height: '38%'}}></i><i style={{height: '52%'}}></i><i style={{height: '44%'}}></i><i style={{height: '66%'}}></i><i style={{height: '58%'}}></i><i className="hi" style={{height: '88%'}}></i></div>
+          <div className="bars-label"><span>1월</span><span>2월</span><span>3월</span><span>4월</span><span>5월</span><span>6월</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section className="section services" id="services">
-      <div className="section-head reveal-text">
-        <div className="section-index">03 / 핵심</div>
-        <h2 className="section-title">기능의 수가 아니라,<br /><em>설계가 다릅니다.</em></h2>
-      </div>
-      <div className="service-list">
-        <div className="service-row reveal-text"><span className="no">01</span><h3>입력이 알아서</h3><p>파일을 올리면 시스템이 읽습니다. 매월 반복되던 입력 작업이 사라집니다.</p></div>
-        <div className="service-row reveal-text"><span className="no">02</span><h3>숫자가 바로</h3><p>검색 한 번으로 품목·약가·수수료 구조가 보입니다.</p></div>
-        <div className="service-row reveal-text"><span className="no">03</span><h3>데이터가 쌓이게</h3><p>모든 이력이 기록됩니다. 언제든 꺼내볼 수 있습니다.</p></div>
-        <div className="service-row reveal-text"><span className="no">04</span><h3>혼자서도</h3><p>전담 인력 없이 전문가 수준의 정산 관리가 됩니다.</p></div>
-      </div>
-    </section>
+{/* 진행 방식 */}
+<section className="section steps-zone" id="how">
+  <div className="wrap">
+    <div className="sec-head reveal">
+      <div className="sec-eyebrow">How it works</div>
+      <h2>상담부터 정산까지, 세 단계</h2>
+    </div>
+    <div className="steps">
+      <div className="step reveal"><div className="n">1</div><h3>편하게 상담</h3><p>카카오 또는 전화로 현재 상황을 얘기합니다. 영업 전화 없습니다. 물어본 것에만 답합니다.</p></div>
+      <div className="step reveal"><div className="n">2</div><h3>계약과 계정 발급</h3><p>모두의CSO 파트너 계약과 동시에 써치라이트 계정이 발급됩니다. 기존 거래처 이관은 필요 없습니다.</p></div>
+      <div className="step reveal"><div className="n">3</div><h3>첫 달부터 확인</h3><p>첫 정산부터 EDI 실적 대비 자동 대조 결과를 직접 확인합니다.</p></div>
+    </div>
+  </div>
+</section>
 
-    <section className="section numbers">
-      <div className="section-head reveal-text">
-        <div className="section-index">04 / 숫자로 보는 시스템</div>
-        <h2 className="section-title">설명보다<br /><em>숫자가 빠릅니다.</em></h2>
-      </div>
-      <div className="number-grid reveal-text">
-        <div className="metric"><strong data-count="20" data-suffix="년">0</strong><span>제약 영업 현장 경력<br />YEARS IN FIELD</span></div>
-        <div className="metric"><strong data-count="80" data-suffix="+">0</strong><span>거래 제약사<br />PHARMA PARTNERS</span></div>
-        <div className="metric"><strong data-count="46474">0</strong><span>보유 약가·품목 데이터<br />DRUG PRICE RECORDS</span></div>
-        <div className="metric"><strong data-count="12" data-suffix="회">0</strong><span>매월 자동 정산 대조<br />MONTHLY RECONCILIATION</span></div>
-      </div>
-    </section>
+{/* 숫자 */}
+<section className="section" id="numbers">
+  <div className="wrap">
+    <div className="sec-head reveal">
+      <div className="sec-eyebrow">Numbers</div>
+      <h2>설명보다 숫자가 빠릅니다</h2>
+    </div>
+    <div className="stats">
+      <div className="stat reveal"><b data-count="46474">0</b><span>보유 약가·품목 데이터</span></div>
+      <div className="stat reveal"><b data-count="80" data-suffix="+">0</b><span>연결된 제약사</span></div>
+      <div className="stat reveal"><b data-count="20" data-suffix="년">0</b><span>현장 경력의 설계자</span></div>
+      <div className="stat reveal"><b data-count="12" data-suffix="회">0</b><span>연간 자동 정산 대조</span></div>
+    </div>
+  </div>
+</section>
 
-    <section className="section contact" id="contact">
-      <div className="section-index reveal-text">05 / 시작하기</div>
-      <h2 className="reveal-text" style={{marginTop: '80px'}}>설명보다<br /><em>경험이 빠릅니다.</em></h2>
-      <div className="contact-orb" aria-hidden="true"></div>
-      <div className="contact-actions reveal-text">
-        <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br /><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" style={{fontWeight: '900', borderBottom: '1.5px solid currentColor'}}>카카오로 문의하기</a></p>
-        <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="giant-button magnetic">모두의CSO 바로가기 <i>↗</i></a>
+{/* CTA */}
+<section className="cta">
+  <div className="wrap">
+    <div className="cta-box reveal">
+      <h2>설명보다 경험이 빠릅니다</h2>
+      <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br />조건이 궁금하면 지금 물어보세요. 물어본 것에만, 숫자로 답합니다.</p>
+      <div className="cta-btns">
+        <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn btn-cream">모두의CSO 파트너 문의 →</a>
+        <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn btn-outline">카카오로 문의하기</a>
       </div>
-      <div className="sl-footer">
-        <span>© 2026 CSO써치라이트</span>
-        <span>모두의CSO가 직접 개발·운영</span>
-        <span className="sl-footer-links">
-          <a href="/searchlight/privacy.html">개인정보처리방침</a>
-          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener">modoocso.kr ↗</a>
-        </span>
-      </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
-  
+<div className="sl-footer">
+  <div className="foot-in">
+    <div>
+      <a href="#" className="logo"><span className="mark"></span>CSO<em>써치라이트</em></a>
+      <div className="foot-meta">모두의CSO가 직접 개발·운영하는 CSO 실무 관리 시스템<br />© 2026 CSO써치라이트</div>
+    </div>
+    <div className="foot-links">
+      <a href="#features">기능</a>
+      <a href="#how">진행 방식</a>
+      <a href="https://www.modoocso.kr/" target="_blank" rel="noopener">모두의CSO ↗</a>
+    </div>
+  </div>
+</div>
       </div>
 
       <script dangerouslySetInnerHTML={{ __html: `
 
-    (() => {
-      const body = document.body;
+// 마퀴: 카드 복제로 무한 루프
+['sl-row1','sl-row2'].forEach(id=>{
+  const t=document.getElementById(id);
+  if (t) t.innerHTML+=t.innerHTML;
+});
+// 리빌
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('#sl-wrap .reveal').forEach(el=>io.observe(el));
+// 카운터
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;co.unobserve(e.target);
+  const el=e.target,target=+el.dataset.count,suffix=el.dataset.suffix||'';
+  const t0=performance.now(),dur=1400;
+  (function tick(now){
+    const p=Math.min((now-t0)/dur,1),v=target*(1-Math.pow(1-p,3));
+    el.textContent=Math.floor(v).toLocaleString('ko-KR')+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+}),{threshold:.5});
+document.querySelectorAll('#sl-wrap [data-count]').forEach(el=>co.observe(el));
 
-      const nav = document.querySelector('#sl-wrap .nav');
-      const progress = document.querySelector('#sl-wrap .progress');
-      const blob = document.querySelector('#sl-wrap .hero-blob');
-      window.addEventListener('scroll', () => {
-        const max = document.documentElement.scrollHeight - innerHeight;
-        progress.style.width = (((scrollY / max) * 100) + '%');
-        nav.classList.toggle('scrolled', scrollY > 30);
-        if (blob) blob.style.transform = ('translate3d(0,' + (scrollY * .09) + 'px,0) rotate(' + (scrollY*.006) + 'deg)');
-      }, {passive:true});
-
-      const observer = new IntersectionObserver(entries => entries.forEach(e => {
-        if(e.isIntersecting){
-          e.target.classList.add(e.target.classList.contains('project') ? 'reveal' : 'in');
-          if(e.target.classList.contains('number-grid')) animateCounters(e.target);
-          observer.unobserve(e.target);
-        }
-      }), {threshold:.14});
-      document.querySelectorAll('#sl-wrap .reveal-text,#sl-wrap .project,#sl-wrap .number-grid').forEach(el=>observer.observe(el));
-
-      function animateCounters(scope){
-        scope.querySelectorAll('[data-count]').forEach(el=>{
-          const target = +el.dataset.count;
-          const duration = 1500;
-          const start = performance.now();
-          const suffix = el.dataset.suffix || '';
-          const format = n => Math.floor(n).toLocaleString('ko-KR') + suffix;
-          function frame(now){
-            const t = Math.min(1,(now-start)/duration);
-            const eased = 1-Math.pow(1-t,4);
-            el.textContent = format(target*eased);
-            if(t<1) requestAnimationFrame(frame);
-          }
-          requestAnimationFrame(frame);
-        });
-      }
-
-      document.querySelectorAll('#sl-wrap .magnetic').forEach(el=>{
-        el.addEventListener('pointermove', e=>{
-          const r=el.getBoundingClientRect(); const x=e.clientX-r.left-r.width/2; const y=e.clientY-r.top-r.height/2;
-          el.style.transform=('translate(' + (x*.16) + 'px,' + (y*.16) + 'px)');
-        });
-        el.addEventListener('pointerleave',()=>el.style.transform='');
-      });
-
-      const menuBtn = document.querySelector('#sl-wrap .menu-button');
-      const mobileMenu = document.querySelector('#sl-wrap .mobile-menu');
-      menuBtn.addEventListener('click',()=>{
-        const open = mobileMenu.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded',open);
-        body.style.overflow = open ? 'hidden' : '';
-      });
-      mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-        mobileMenu.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); body.style.overflow='';
-      }));
-
-      document.querySelector('#sl-wrap .hero').addEventListener('pointermove',e=>{
-        if(innerWidth<950) return;
-        const x=(e.clientX/innerWidth-.5)*26, y=(e.clientY/innerHeight-.5)*22;
-        blob.style.transform=('translate3d(' + x + 'px,' + (y + scrollY*.09) + 'px,0) rotate(' + (x*.16) + 'deg)');
-      });
-    })();
-  
       ` }} />
       {/* SEO 키워드 블록 */}
       <div style={{position:'absolute',width:'1px',height:'1px',overflow:'hidden',clip:'rect(0,0,0,0)',whiteSpace:'nowrap'}}>
