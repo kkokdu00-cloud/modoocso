@@ -581,7 +581,7 @@ export default function SearchlightPage() {
           </div>
           <div className="project-copy">
             <h3>오차가<br />숨을 곳 없이.</h3>
-            <p>심평원 EDI 실적과 정산서를 매월 시스템이 대조합니다. 사람이 놓치는 것을 시스템이 잡습니다.</p>
+            <p>EDI 실적과 정산서를 매월 시스템이 대조합니다. 사람이 놓치는 것을 시스템이 잡습니다.</p>
             <span className="view">정산 자동 대조 <i>↗</i></span>
           </div>
         </article>
