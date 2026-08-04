@@ -2,6 +2,42 @@
 
 import { useEffect, useState } from 'react'
 
+const TERM_LINES = [
+  '파일 업로드 감지 · 영업활동내역.xlsx',
+  'AI 문서 인식 중...',
+  '품목 매칭 46,213건 중 대조 완료',
+  '수수료 기준 확인 중...',
+  '오차 0건 확인',
+  '정산 확정 완료',
+]
+
+function TermPanel() {
+  const [step, setStep] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStep((s) => (s + 1) % (TERM_LINES.length + 2))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="term">
+      <div className="term-bar">
+        <span className="term-dot r"></span><span className="term-dot y"></span><span className="term-dot g"></span>
+      </div>
+      <div className="term-body">
+        {TERM_LINES.slice(0, step === 0 ? 0 : step).map((line, i) => (
+          <div key={i} className="term-line">
+            <span className={i === TERM_LINES.length - 1 ? 'ok' : undefined}>{i === TERM_LINES.length - 1 ? '✓ ' : '> '}{line}</span>
+          </div>
+        ))}
+        <span className="term-cursor"></span>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const [navShadow, setNavShadow] = useState(false)
 
@@ -49,20 +85,23 @@ export default function Home() {
       <nav style={{ boxShadow: navShadow ? '0 4px 24px rgba(44,32,24,0.08)' : 'none' }}>
         <a href="/" className="logo" style={{ textDecoration: 'none' }}>모두의<b>CSO</b></a>
         <ul className="nav-links">
+          <li><a href="#system">시스템</a></li>
           <li><a href="#why">CSO란</a></li>
           <li><a href="#diff2">차별점</a></li>
           <li><a href="#process">진행방식</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener">정보센터</a></li>
         </ul>
-        <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="nav-btn">상담 문의</a>
+        <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="nav-btn">
+          상담 문의<span className="arr">→</span>
+        </a>
       </nav>
 
       {/* HERO */}
       <section className="hero">
         <div className="hero-bg"></div>
-        <div>
-          <span className="hero-handwrite">제약 영업 파트너십의 새로운 기준</span>
+        <div className="hero-inner">
+          <span className="badge-pill"><span className="badge-new">NEW</span> CSO써치라이트 정식 오픈 · 품목 46,000+</span>
           <h1>
             수수료보다 먼저<br />
             <span className="em">구조</span>를 봐야 합니다
@@ -92,16 +131,73 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-right">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="제약 영업 현장" className="hero-photo" />
+          <div className="hero-mock">
+            <div className="mock-bar">
+              <span className="mock-dot r"></span><span className="mock-dot y"></span><span className="mock-dot g"></span>
+              <span className="mock-url">searchlight.modoocso.kr</span>
+            </div>
+            <div className="mock-body">
+              <div className="mock-search">
+                <span className="mock-search-icon">⌕</span>
+                <span className="mock-search-text">아세트아미노펜 500mg</span>
+              </div>
+              <div className="mock-row"><span>아세트아미노펜 500mg</span><span className="mock-pct">12%</span></div>
+              <div className="mock-row hi"><span>로수바스타틴 10mg</span><span className="mock-pct">15%</span></div>
+              <div className="mock-row"><span>메트포르민 500mg</span><span className="mock-pct">18%</span></div>
+              <div className="mock-row"><span>암로디핀 5mg</span><span className="mock-pct">10%</span></div>
+              <div className="mock-foot">46,213건 중 검색 결과 · <b>예시 화면</b></div>
+            </div>
+          </div>
           <div className="hero-badge">
             <div className="badge-num">20년</div>
             <div className="badge-label">제약 영업<br />현장 경험</div>
           </div>
           <div className="hero-badge2">
             <div className="b2-title">정산 시스템 운영 중</div>
-            <div style={{ fontSize: '14px', color: 'var(--muted)' }}>
+            <div style={{ fontSize: '13px', color: 'var(--muted)' }}>
               <span className="b2-dot"></span>직접 개발 · 직접 운영
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <section className="marquee">
+        <div className="marquee-track">
+          {[...Array(2)].flatMap(() => [
+            '네이버 "CSO수수료" 검색 1위',
+            '제휴 제약사 80+',
+            '품목 데이터 46,000+',
+            '정산 시스템 직접 개발·운영',
+            '20년 현장 경험',
+            '카카오 채널 상담 운영',
+          ]).map((t, i) => (
+            <span key={i} className="marquee-item">{t}</span>
+          ))}
+        </div>
+      </section>
+
+      {/* BENTO — 시스템이 대신 합니다 */}
+      <section className="bento section" id="system">
+        <span className="eyebrow reveal">시스템이 대신 합니다</span>
+        <h2 className="sec-title reveal d1">사람이 하던 일을<br />구조가 대신합니다</h2>
+        <p className="sec-lead reveal d2">반복되는 입력과 대조에 시간을 쓰는 대신, 시스템이 먼저 확인합니다.</p>
+        <div className="bento-grid reveal d1">
+          <div className="bento-card lg">
+            <span className="bento-tag">AI 문서 인식</span>
+            <h3>파일을 올리면<br />정산이 시작됩니다</h3>
+            <p>형식을 가리지 않습니다. 영업활동 내역을 올리면 AI가 읽고 품목을 매칭합니다.</p>
+            <TermPanel />
+          </div>
+          <div className="bento-card">
+            <span className="bento-tag">실시간 검색</span>
+            <h3>46,000+ 품목,<br />검색 한 번</h3>
+            <p>품목명만 입력하면 수수료 구조까지 바로 확인됩니다.</p>
+          </div>
+          <div className="bento-card">
+            <span className="bento-tag">자동 대조</span>
+            <h3>오차가<br />숨을 곳이 없습니다</h3>
+            <p>제출 자료와 정산 내역을 시스템이 자동으로 대조합니다.</p>
           </div>
         </div>
       </section>
@@ -273,21 +369,35 @@ export default function Home() {
       </section>
 
       {/* CSO써치라이트 배너 */}
-      <section style={{background:'#3d2b1f',padding:'72px 6%',textAlign:'center'}}>
-        <div style={{maxWidth:'680px',margin:'0 auto'}}>
-          <span style={{fontSize:'.75rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'#c4956a',display:'block',marginBottom:'1rem'}} className="reveal">모두의CSO 전용 시스템</span>
-          <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:800,color:'#ffffff',lineHeight:1.2,letterSpacing:'-.03em',marginBottom:'1rem'}} className="reveal d1">
-            정산 시스템, 직접 써보세요
-          </h2>
-          <p style={{fontSize:'1rem',color:'rgba(255,255,255,.5)',lineHeight:1.85,marginBottom:'2rem'}} className="reveal d2">
-            CSO써치라이트는 모두의CSO 파트너를 위해 직접 개발한 CSO 실무 관리 시스템입니다.<br />
-            4만 6천여 품목 검색, 자동 정산 대조, AI 문서 인식까지.
-          </p>
-          <a href="/searchlight"
-            style={{display:'inline-block',background:'#c4956a',color:'#ffffff',padding:'.9rem 2.4rem',borderRadius:'100px',fontWeight:700,fontSize:'.95rem',textDecoration:'none'}}
-            className="reveal d3">
-            CSO써치라이트 알아보기 →
-          </a>
+      <section className="sl-feature">
+        <div className="sl-feature-inner">
+          <div className="reveal">
+            <span className="eyebrow">모두의CSO 전용 시스템</span>
+            <h2>정산 시스템,<br />직접 써보세요</h2>
+            <p>
+              CSO써치라이트는 모두의CSO 파트너를 위해 직접 개발한 CSO 실무 관리 시스템입니다.
+              4만 6천여 품목 검색, 자동 정산 대조, AI 문서 인식까지.
+            </p>
+            <a href="/searchlight" className="btn-p">CSO써치라이트 알아보기 →</a>
+          </div>
+          <div className="reveal d1">
+            <div className="hero-mock sl-mock">
+              <div className="mock-bar">
+                <span className="mock-dot r"></span><span className="mock-dot y"></span><span className="mock-dot g"></span>
+                <span className="mock-url">searchlight.modoocso.kr</span>
+              </div>
+              <div className="mock-body">
+                <div className="mock-search">
+                  <span className="mock-search-icon">⌕</span>
+                  <span className="mock-search-text">품목 검색 · 수수료 조회</span>
+                </div>
+                <div className="mock-row"><span>정산 내역 자동 대조</span><span className="mock-pct">완료</span></div>
+                <div className="mock-row hi"><span>EDI 데이터 연동</span><span className="mock-pct">완료</span></div>
+                <div className="mock-row"><span>AI 문서 인식</span><span className="mock-pct">완료</span></div>
+                <div className="mock-foot">CSO써치라이트 · <b>예시 화면</b></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
