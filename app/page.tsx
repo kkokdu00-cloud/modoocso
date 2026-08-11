@@ -1,391 +1,196 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
 export default function Home() {
-  const [navShadow, setNavShadow] = useState(false)
-
-  useEffect(() => {
-    // Nav shadow on scroll
-    const onScroll = () => setNavShadow(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('up')
-          io.unobserve(e.target)
-        }
-      })
-    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' })
-    revealEls.forEach(el => io.observe(el))
-
-    // Parallax hero bg
-    const heroBg = document.querySelector('.hero-bg') as HTMLElement
-    const onParallax = () => {
-      if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.15}px)`
-    }
-    window.addEventListener('scroll', onParallax, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('scroll', onParallax)
-      io.disconnect()
-    }
-  }, [])
-
-  const toggleFaq = (el: HTMLElement) => {
-    const item = el.parentElement!
-    const isOpen = item.classList.contains('open')
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'))
-    if (!isOpen) item.classList.add('open')
-  }
-
   return (
     <>
-      {/* NAV */}
-      <nav style={{ boxShadow: navShadow ? '0 4px 24px rgba(44,32,24,0.08)' : 'none' }}>
-        <a href="/" className="logo" style={{ textDecoration: 'none' }}>모두의<b>CSO</b></a>
-        <ul className="nav-links">
-          <li><a href="#why">CSO란</a></li>
-          <li><a href="#diff2">차별점</a></li>
-          <li><a href="#process">진행방식</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener">정보센터</a></li>
-        </ul>
-        <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="nav-btn">상담 문의</a>
-      </nav>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+#modoo-wrap{--paper:#f8f8f6;--ink:#0a0a0a;--accent:#5157f6}#modoo-wrap *{font-family:'Gothic A1',"Noto Sans KR","Apple SD Gothic Neo",sans-serif!important}#modoo-wrap *{box-sizing:border-box}#modoo-wrap{background:var(--paper);color:var(--ink);font-family:'Gothic A1', "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;margin:0;overflow-x:hidden}#modoo-wrap a{color:inherit;text-decoration:none}#modoo-wrap button,#modoo-wrap a{-webkit-tap-highlight-color:transparent}#modoo-wrap .site-shell{background:var(--paper);min-height:100vh}#modoo-wrap .site-header{z-index:50;width:100%;color:var(--ink);justify-content:space-between;align-items:center;padding:3.1rem 4.7vw;transition:color .22s;display:flex;position:fixed;top:0;left:0}#modoo-wrap .brand{letter-spacing:-.07em;align-items:baseline;font-size:1rem;font-weight:800;display:inline-flex}#modoo-wrap .brand strong{letter-spacing:-.08em;color:var(--accent);margin-left:.18rem;font-size:1.3rem;font-weight:900}#modoo-wrap .header-actions{align-items:center;gap:.8rem;display:flex}#modoo-wrap .talk-button{border:1px solid var(--accent);background:0 0;border-radius:999px;justify-content:center;align-items:center;height:2.75rem;min-width:7.6rem;padding:0 1.5rem;font-size:.95rem;font-weight:650;transition:background-color .18s,color .18s,transform .18s;display:inline-flex}#modoo-wrap .talk-button:hover{background:var(--accent);color:var(--paper)}#modoo-wrap .main-nav{align-items:center;gap:2.2rem;display:flex}#modoo-wrap .main-nav a{color:inherit;letter-spacing:-.02em;padding-bottom:.35rem;font-size:.95rem;font-weight:650;position:relative}#modoo-wrap .main-nav a:after{content:"";background:currentColor;transform-origin:0;width:100%;height:2px;transition:transform .18s;position:absolute;left:0;bottom:0;transform:scaleX(0)}#modoo-wrap .main-nav a:hover:after,#modoo-wrap .main-nav a:focus-visible:after{transform:scaleX(1)}#modoo-wrap .site-header.header-on-dark{color:var(--paper)}#modoo-wrap .talk-button:hover,#modoo-wrap .next-button:hover{transform:translateY(-2px)}#modoo-wrap .hero{grid-template-rows:1fr auto;min-height:100svh;padding:clamp(9rem,17vh,12rem) 4.7vw clamp(3.6rem,7vh,5.4rem);display:grid}#modoo-wrap .hero h1{letter-spacing:-.085em;align-self:center;margin:0;font-size:clamp(4.6rem,8.25vw,10rem);font-weight:740;line-height:.98;transform:translateY(-2vh)}#modoo-wrap .hero h1 span{display:block}#modoo-wrap .hero h1 .accent{color:var(--accent)}#modoo-wrap .hero-footer{grid-template-columns:minmax(16rem,1fr) minmax(30rem,1.15fr) auto;align-items:end;gap:3rem;display:grid;transform:translateY(-2vh)}#modoo-wrap .question-index{color:#0a0a0a94;align-items:center;gap:1.2rem;font-size:1.05rem;display:flex}#modoo-wrap .index-circle{background:var(--ink);width:4.2rem;height:4.2rem;color:var(--paper);border-radius:50%;flex:0 0 4.2rem;justify-content:center;align-items:center;font-size:1rem;font-weight:700;display:inline-flex}#modoo-wrap .answer{letter-spacing:-.035em;margin:0;font-size:clamp(1.25rem,1.55vw,1.85rem);font-weight:520;line-height:1.5}#modoo-wrap .next-button{background:var(--accent);color:#fff;border-radius:999px;justify-content:center;align-items:center;min-width:12.5rem;height:4.2rem;font-size:1rem;font-weight:760;transition:transform .18s,filter .18s;display:inline-flex}#modoo-wrap .next-button:hover{filter:brightness(.93)}#modoo-wrap .contact-anchor{height:1px}#modoo-wrap .advantage-scroll{background:var(--paper);position:relative}#modoo-wrap .advantage-sticky{height:100svh;position:sticky;top:0;overflow:hidden}#modoo-wrap .advantage-track{will-change:transform;gap:2rem;width:max-content;height:100%;padding:clamp(8.5rem,14vh,10rem) 6vw clamp(2rem,5vh,3.5rem) 4.7vw;display:flex}#modoo-wrap .advantage-intro{flex-direction:column;flex:0 0 clamp(24rem,31vw,35rem);justify-content:space-between;width:clamp(24rem,31vw,35rem);padding:2.4rem 2rem 1.2rem 0;display:flex}#modoo-wrap .section-label{align-items:center;gap:1rem;margin-bottom:2rem;font-size:1rem;font-weight:760;display:flex}#modoo-wrap .section-label b{border:1px solid #0a0a0a3d;border-radius:50%;justify-content:center;align-items:center;width:3rem;height:3rem;font-size:.82rem;display:inline-flex}#modoo-wrap .advantage-intro h2{letter-spacing:-.075em;margin:0;font-size:clamp(2.6rem,4vw,4.8rem);font-weight:740;line-height:1.04}#modoo-wrap .advantage-intro h2 .nowrap-line{white-space:nowrap;display:inline-block}#modoo-wrap .advantage-intro p{letter-spacing:-.035em;margin:2rem 0 0;font-size:clamp(1.1rem,1.3vw,1.45rem);font-weight:500;line-height:1.55}#modoo-wrap .wheel-guide{border:1px solid var(--accent);border-radius:999px;align-items:center;gap:2rem;width:fit-content;height:4.2rem;padding:0 1.8rem;font-size:.95rem;font-weight:700;display:inline-flex}#modoo-wrap .wheel-guide i{color:var(--accent);font-size:1.5rem;font-style:normal}#modoo-wrap .advantage-card{border-radius:2rem;flex-direction:column;flex:0 0 clamp(32rem,47vw,52rem);justify-content:space-between;width:clamp(32rem,47vw,52rem);padding:2rem 2.25rem 2.35rem;display:flex;position:relative;overflow:hidden}#modoo-wrap .card-dark{background:var(--ink);color:var(--paper)}#modoo-wrap .card-accent{background:var(--accent);color:var(--paper)}#modoo-wrap .card-paper{border:2px solid var(--accent);background:var(--paper);color:var(--ink)}#modoo-wrap .card-topline{z-index:2;letter-spacing:.02em;justify-content:space-between;align-items:center;font-size:.8rem;font-weight:760;display:flex;position:relative}#modoo-wrap .card-topline b{border:1px solid;border-radius:50%;justify-content:center;align-items:center;width:2.8rem;height:2.8rem;font-size:.75rem;display:inline-flex}#modoo-wrap .card-visual{justify-content:center;align-items:center;display:flex;position:absolute;inset:5.2rem 2.2rem 13rem}#modoo-wrap .open-visual{width:100%;color:var(--accent);letter-spacing:-.08em;justify-content:center;align-items:center;gap:1.2rem;font-size:clamp(3.2rem,6vw,7.5rem);font-weight:820;display:flex}#modoo-wrap .open-visual strong{color:var(--paper);font-weight:400}#modoo-wrap .process-visual{grid-template-columns:1fr 1fr;gap:.8rem;width:min(92%,35rem);display:grid;transform:rotate(-4deg)}#modoo-wrap .process-visual span{border:1px solid var(--paper);background:var(--paper);min-height:5rem;color:var(--ink);border-radius:1rem;justify-content:center;align-items:center;font-size:1.05rem;font-weight:750;display:flex}#modoo-wrap .process-visual span:nth-child(2),#modoo-wrap .process-visual span:nth-child(3){color:var(--paper);background:0 0}#modoo-wrap .split-visual{justify-content:center;align-items:center;gap:1rem;display:flex}#modoo-wrap .split-visual span{aspect-ratio:1;background:var(--accent);width:clamp(8rem,12vw,12rem);color:var(--paper);border-radius:50%;justify-content:center;align-items:center;font-size:clamp(1.6rem,2.4vw,2.6rem);font-weight:760;display:inline-flex}#modoo-wrap .split-visual span:last-child{background:var(--ink)}#modoo-wrap .split-visual i{color:var(--accent);font-size:2.2rem;font-style:normal}#modoo-wrap .timeline-visual{width:90%;color:var(--paper);grid-template-columns:auto 1fr auto;align-items:center;gap:1.2rem;display:grid}#modoo-wrap .timeline-visual strong{letter-spacing:-.06em;font-size:clamp(2rem,3vw,3.8rem)}#modoo-wrap .timeline-visual span{background:var(--accent);height:2px;position:relative}#modoo-wrap .timeline-visual span:before,#modoo-wrap .timeline-visual span:after{background:var(--accent);content:"";border-radius:50%;width:.8rem;height:.8rem;position:absolute;top:50%;transform:translateY(-50%)}#modoo-wrap .timeline-visual span:before{left:0}#modoo-wrap .timeline-visual span:after{right:0}#modoo-wrap .status-visual{gap:1rem;width:min(92%,33rem);display:grid}#modoo-wrap .status-visual span{border:1px solid var(--paper);border-radius:1.2rem;align-items:center;gap:1.2rem;height:6rem;padding:0 2rem;font-size:clamp(1.3rem,2vw,2rem);font-weight:750;display:flex}#modoo-wrap .status-visual span:first-child{background:var(--paper);color:var(--ink)}#modoo-wrap .status-dot{border-radius:50%;width:1rem;height:1rem;display:inline-block}#modoo-wrap .status-dot.solid{background:var(--accent)}#modoo-wrap .status-dot.ring{border:2px solid var(--paper)}#modoo-wrap .card-copy{z-index:2;margin-top:auto;position:relative}#modoo-wrap .card-copy h3{letter-spacing:-.065em;max-width:90%;margin:0;font-size:clamp(2rem,2.8vw,3.35rem);font-weight:760;line-height:1.07}#modoo-wrap .card-copy p{letter-spacing:-.025em;opacity:.78;max-width:38rem;margin:1rem 0 1.45rem;font-size:clamp(.98rem,1.1vw,1.18rem);line-height:1.55}#modoo-wrap .card-tags{flex-wrap:wrap;gap:.65rem;display:flex}#modoo-wrap .card-tags span{border:1px solid;border-radius:999px;justify-content:center;align-items:center;min-width:7.5rem;height:2.5rem;padding:0 1rem;font-size:.78rem;font-weight:720;display:inline-flex}#modoo-wrap .scroll-progress{background:#0a0a0a1f;height:2px;position:absolute;bottom:1.1rem;left:4.7vw;right:4.7vw;overflow:hidden}#modoo-wrap .scroll-progress span{background:var(--accent);transform-origin:0;will-change:transform;width:100%;height:100%;display:block;transform:scaleX(0)}#modoo-wrap .services-section,#modoo-wrap .about-section{background:var(--ink);color:var(--paper);position:relative}#modoo-wrap .services-section{min-height:100svh;padding:clamp(8rem,15vh,10rem) 4.7vw clamp(4rem,8vh,6rem)}#modoo-wrap .services-kicker{letter-spacing:-.035em;margin:0 0 clamp(2.4rem,5vh,4rem);font-size:clamp(1.15rem,1.6vw,1.8rem);font-weight:500}#modoo-wrap .services-layout{border-bottom:1px solid #f8f8f633;grid-template-columns:minmax(34rem,1.45fr) minmax(25rem,.85fr);align-items:center;gap:6vw;min-height:66vh;display:grid}#modoo-wrap .service-list{display:grid}#modoo-wrap .service-list button{width:100%;color:var(--paper);cursor:pointer;font:inherit;text-align:left;background:0 0;border:0;justify-content:space-between;align-items:center;transition:color .16s,padding-left .22s;display:flex}#modoo-wrap .service-list button span{letter-spacing:-.07em;font-size:clamp(3rem,4.8vw,6.2rem);font-weight:720;line-height:1.28}#modoo-wrap .service-list button i{color:var(--accent);opacity:0;font-size:clamp(1.8rem,2.5vw,3rem);font-style:normal;transition:opacity .16s,transform .18s;transform:translate(-1rem)}#modoo-wrap .service-list button:hover,#modoo-wrap .service-list button:focus-visible,#modoo-wrap .service-list button.is-active{color:var(--accent);outline:none;padding-left:.35rem}#modoo-wrap .service-list button:hover i,#modoo-wrap .service-list button:focus-visible i,#modoo-wrap .service-list button.is-active i{opacity:1;transform:translate(0)}#modoo-wrap .service-preview{align-self:center}#modoo-wrap .service-preview-head{grid-template-columns:1fr auto auto;align-items:center;gap:1.2rem;display:grid}#modoo-wrap .service-preview small{color:#f8f8f685;font-size:.88rem}#modoo-wrap .service-preview h3{letter-spacing:-.045em;max-width:26rem;margin:.35rem 0 0;font-size:clamp(1.35rem,2vw,2.15rem);font-weight:620;line-height:1.2}#modoo-wrap .service-code{background:var(--accent);border-radius:50%;justify-content:center;align-items:center;width:4.4rem;height:4.4rem;font-size:.9rem;font-weight:740;display:inline-flex}#modoo-wrap .service-arrow{font-size:3.4rem;font-style:normal;font-weight:300}#modoo-wrap .service-detail{background:#5157f614;border:1px solid #5157f6b3;border-radius:1.5rem;margin-top:2rem;padding:1.7rem;animation:.24s both detail-in}#modoo-wrap .service-detail p{color:#f8f8f6c7;letter-spacing:-.025em;margin:0 0 1.6rem;font-size:1rem;line-height:1.65}#modoo-wrap .service-steps{grid-template-columns:1fr 1fr;gap:.65rem;display:grid}#modoo-wrap .service-steps span{background:var(--paper);min-height:3.5rem;color:var(--ink);border-radius:.75rem;align-items:center;gap:.75rem;padding:0 .9rem;font-size:.86rem;font-weight:680;display:flex}#modoo-wrap .service-steps b{color:var(--accent);font-size:.7rem}#modoo-wrap .service-link{color:var(--accent);align-items:center;gap:.5rem;margin-top:1.4rem;font-size:.92rem;font-weight:720;display:inline-flex}#modoo-wrap .service-link i{font-style:normal;transition:transform .18s}#modoo-wrap .service-link:hover i,#modoo-wrap .service-link:focus-visible i{transform:translate(.3rem)}@keyframes detail-in{0%{opacity:0;transform:translateY(.5rem)}to{opacity:1;transform:translateY(0)}}#modoo-wrap .about-section{grid-template-rows:auto 1fr;min-height:78svh;padding:clamp(8rem,14vh,10rem) 4.7vw clamp(4.5rem,9vh,6.5rem);display:grid;overflow:hidden}#modoo-wrap .about-section:after{content:"";pointer-events:none;background:radial-gradient(at 100% 100%,#5157f685,#5157f600 68%);width:72%;height:78%;position:absolute;bottom:-28%;right:0}#modoo-wrap .about-section h2{z-index:1;color:var(--accent);letter-spacing:-.075em;margin:0;font-size:clamp(3.8rem,6.3vw,8.2rem);font-weight:730;line-height:1;position:relative}#modoo-wrap .about-bottom{z-index:1;grid-template-columns:minmax(28rem,.9fr) 1.2fr;align-items:end;gap:5vw;display:grid;position:relative}#modoo-wrap .about-bottom p{letter-spacing:-.035em;margin:0;font-size:clamp(1.2rem,1.55vw,1.75rem);line-height:1.55}#modoo-wrap .about-badges{justify-content:flex-end;gap:1rem;display:flex}#modoo-wrap .about-badges span{border:1px solid var(--accent);border-radius:999px;justify-content:center;align-items:center;min-width:14rem;height:4.8rem;padding:0 1.8rem;font-size:1.05rem;font-weight:720;display:inline-flex}#modoo-wrap .marquee-scroll{background:var(--paper);position:relative}#modoo-wrap .marquee-sticky{align-items:center;height:100svh;display:flex;position:sticky;top:0;overflow:hidden}#modoo-wrap .marquee-text{color:var(--ink);letter-spacing:-.075em;white-space:nowrap;will-change:transform;flex:none;margin:0;font-size:clamp(6rem,10.6vw,13rem);font-weight:680;line-height:.96}#modoo-wrap .outcome-section{background:var(--paper);min-height:88svh;color:var(--ink);grid-template-rows:auto 1fr;padding:clamp(8rem,14vh,10rem) 4.7vw clamp(4.5rem,8vh,6rem);display:grid}#modoo-wrap .outcome-section h2{letter-spacing:-.07em;margin:0;font-size:clamp(3.2rem,5.6vw,7.2rem);font-weight:690;line-height:1.12}#modoo-wrap .outcome-bottom{grid-template-columns:minmax(10rem,.55fr) minmax(12rem,.7fr) minmax(30rem,1.35fr);align-items:end;gap:3vw;display:grid}#modoo-wrap .outcome-stat{gap:1.1rem;display:grid}#modoo-wrap .outcome-stat strong{letter-spacing:-.06em;font-size:clamp(4rem,5.7vw,7.4rem);font-weight:670;line-height:.9}#modoo-wrap .outcome-stat span{letter-spacing:-.035em;font-size:clamp(1rem,1.25vw,1.4rem)}#modoo-wrap .outcome-bottom>p{letter-spacing:-.035em;margin:0;font-size:clamp(1.15rem,1.5vw,1.7rem);line-height:1.55}#modoo-wrap .insight-section{background:var(--ink);color:var(--paper);padding:clamp(8rem,14vh,11rem) 4.7vw clamp(5rem,9vh,7rem);position:relative;overflow:hidden}#modoo-wrap .insight-section:before{background:var(--accent);content:"";filter:blur(10vw);opacity:.38;pointer-events:none;border-radius:50%;width:72vw;height:72vw;position:absolute;bottom:-28vw;right:-16vw}#modoo-wrap .insight-heading{z-index:1;justify-content:space-between;align-items:end;gap:4rem;display:flex;position:relative}#modoo-wrap .insight-heading p{color:var(--accent);margin:0 0 1.4rem;font-size:1rem;font-weight:720}#modoo-wrap .insight-heading h2{letter-spacing:-.07em;margin:0;font-size:clamp(3rem,5.2vw,6.7rem);font-weight:680;line-height:1.08}#modoo-wrap .all-posts-button{border:1px solid var(--accent);border-radius:999px;flex:none;justify-content:space-between;align-items:center;gap:2rem;min-width:16rem;height:4.8rem;padding:0 1.8rem;font-size:1rem;font-weight:720;transition:background-color .18s,transform .18s;display:inline-flex}#modoo-wrap .all-posts-button i{color:var(--accent);font-size:1.45rem;font-style:normal}#modoo-wrap .all-posts-button:hover,#modoo-wrap .all-posts-button:focus-visible{background:var(--accent);transform:translateY(-3px)}#modoo-wrap .all-posts-button:hover i,#modoo-wrap .all-posts-button:focus-visible i{color:var(--paper)}#modoo-wrap .insight-grid{z-index:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:clamp(4.5rem,8vh,7rem);display:grid;position:relative}#modoo-wrap .insight-card{background:#0a0a0a8c;border:1px solid #f8f8f633;border-radius:1.8rem;min-height:clamp(29rem,40vw,39rem);position:relative;overflow:hidden}#modoo-wrap .insight-card:after{background:var(--accent);content:"";filter:blur(5rem);opacity:.24;pointer-events:none;border-radius:50%;width:115%;height:80%;transition:opacity .22s,transform .32s;position:absolute;bottom:-36%;right:-45%}#modoo-wrap .insight-card>a{z-index:1;height:100%;min-height:inherit;flex-direction:column;justify-content:space-between;padding:2rem;display:flex;position:relative}#modoo-wrap .insight-card-top,#modoo-wrap .insight-card-foot{justify-content:space-between;align-items:center;display:flex}#modoo-wrap .insight-card-top span,#modoo-wrap .insight-card-foot span{color:#f8f8f6a8;font-size:.9rem}#modoo-wrap .insight-card-top b{border:1px solid #f8f8f659;border-radius:50%;justify-content:center;align-items:center;width:2.8rem;height:2.8rem;font-size:.75rem;display:inline-flex}#modoo-wrap .insight-card-copy{margin-top:auto;padding:5rem 0 3rem}#modoo-wrap .insight-card-copy h3{letter-spacing:-.06em;margin:0;font-size:clamp(2rem,2.6vw,3.35rem);font-weight:670;line-height:1.16}#modoo-wrap .insight-card-copy p{color:#f8f8f6b3;letter-spacing:-.025em;margin:1.5rem 0 0;font-size:1rem;line-height:1.6}#modoo-wrap .insight-card-foot{border-top:1px solid #f8f8f62e;padding-top:1.35rem}#modoo-wrap .insight-card-foot i{color:var(--accent);font-size:1.6rem;font-style:normal;transition:transform .18s}#modoo-wrap .insight-card:hover:after,#modoo-wrap .insight-card:focus-within:after{opacity:.48;transform:translate(-8%,-8%)scale(1.12)}#modoo-wrap .insight-card:hover .insight-card-foot i,#modoo-wrap .insight-card:focus-within .insight-card-foot i{transform:translate(.25rem,-.25rem)}#modoo-wrap .insight-note{z-index:1;color:#f8f8f694;text-align:right;max-width:38rem;margin:2rem 0 0 auto;font-size:.92rem;position:relative}#modoo-wrap .faq-section{background:var(--paper);color:var(--ink);padding:clamp(8rem,14vh,10rem) 12vw clamp(6rem,11vh,8rem)}#modoo-wrap .faq-heading{grid-template-columns:minmax(10rem,.32fr) 1fr;align-items:end;gap:3rem;margin-bottom:clamp(3.5rem,7vh,5.5rem);display:grid}#modoo-wrap .faq-heading>p{color:var(--accent);margin:0;font-size:1rem;font-weight:720}#modoo-wrap .faq-heading h2{letter-spacing:-.055em;margin:0;font-size:clamp(2rem,3vw,3.8rem);font-weight:620;line-height:1.25}#modoo-wrap .faq-list{gap:1rem;display:grid}#modoo-wrap .faq-item{background:var(--paper);border:1px solid #0a0a0a7a;border-radius:1.15rem;transition:border-color .18s,border-width .18s;overflow:hidden}#modoo-wrap .faq-item.is-open{border:3px solid var(--accent)}#modoo-wrap .faq-item>button{width:100%;color:inherit;font:inherit;text-align:left;cursor:pointer;background:0 0;border:0;grid-template-columns:1fr auto;align-items:center;gap:2rem;padding:1.7rem 1.8rem;display:grid}#modoo-wrap .faq-item>button span{letter-spacing:-.045em;font-size:clamp(1.3rem,1.85vw,2.15rem);font-weight:680;line-height:1.3}#modoo-wrap .faq-item>button i{justify-content:center;align-items:center;width:2.2rem;height:2.2rem;font-size:1.65rem;font-style:normal;font-weight:450;line-height:1;display:inline-flex}#modoo-wrap .faq-item>button:focus-visible{outline:2px solid var(--accent);outline-offset:-6px}#modoo-wrap .faq-answer{padding:0 5.5rem 2.1rem 1.8rem;animation:.22s both faq-reveal}#modoo-wrap .faq-answer p{letter-spacing:-.025em;max-width:76rem;margin:0;font-size:clamp(1rem,1.2vw,1.3rem);line-height:1.72}@keyframes faq-reveal{0%{opacity:0;transform:translateY(-.5rem)}to{opacity:1;transform:translateY(0)}}#modoo-wrap .closing-section{background:var(--ink);min-height:100svh;color:var(--paper);isolation:isolate;grid-template-rows:1fr auto auto;padding:clamp(9rem,16vh,12rem) 4.7vw 2.5rem;display:grid;position:relative;overflow:hidden}#modoo-wrap .closing-glow{z-index:-1;background:var(--accent);filter:blur(8vw);opacity:.52;border-radius:50%;width:72vw;height:72vw;position:absolute;bottom:-28vw;right:-11vw}#modoo-wrap .closing-copy{align-self:center}#modoo-wrap .closing-copy>p{color:var(--accent);margin:0 0 1.8rem;font-size:1rem;font-weight:720}#modoo-wrap .closing-copy h2{letter-spacing:-.085em;max-width:90rem;margin:0;font-size:clamp(4.5rem,8.2vw,10rem);font-weight:680;line-height:.98}#modoo-wrap .closing-copy h2 span{display:block}#modoo-wrap .closing-copy h2 .accent{color:var(--accent)}#modoo-wrap .closing-action{grid-template-columns:1fr auto;align-items:end;gap:3rem;padding:2rem 0 clamp(3.5rem,7vh,5.5rem);display:grid}#modoo-wrap .closing-action>p{letter-spacing:-.035em;margin:0;font-size:clamp(1.2rem,1.55vw,1.75rem);line-height:1.55}#modoo-wrap .closing-button{background:var(--accent);width:clamp(18rem,23vw,27rem);height:clamp(5rem,7vw,6.5rem);color:var(--paper);border-radius:999px;justify-content:space-between;align-items:center;gap:2rem;padding:0 2.3rem;font-size:clamp(1.1rem,1.3vw,1.4rem);font-weight:720;transition:background-color .18s,color .18s,transform .18s;display:inline-flex}#modoo-wrap .closing-button i{font-size:1.8rem;font-style:normal;transition:transform .18s}#modoo-wrap .closing-button:hover,#modoo-wrap .closing-button:focus-visible{background:var(--paper);color:var(--ink);transform:translateY(-4px)}#modoo-wrap .closing-button:hover i,#modoo-wrap .closing-button:focus-visible i{transform:translate(.35rem)}#modoo-wrap .closing-cta-group{flex-direction:column;align-items:flex-end;gap:1rem;display:flex}#modoo-wrap .closing-phone{color:var(--paper);opacity:.72;letter-spacing:-.02em;font-size:.95rem;font-weight:600;transition:opacity .18s}#modoo-wrap .closing-phone:hover,#modoo-wrap .closing-phone:focus-visible{opacity:1;text-decoration:underline}@media (width<=900px){#modoo-wrap .closing-cta-group{align-items:stretch;width:100%}#modoo-wrap .closing-phone{text-align:center}}#modoo-wrap .site-footer{border-top:1px solid #f8f8f640;padding-top:1.8rem;font-size:.85rem;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;overflow-x:auto;display:flex}#modoo-wrap .footer-main{flex-direction:column;gap:.55rem;display:flex}#modoo-wrap .footer-brand{letter-spacing:-.06em;font-size:1rem;font-weight:760}#modoo-wrap .footer-brand strong{color:var(--accent);margin-left:.2rem;font-size:1.2rem}#modoo-wrap .footer-biz{color:#f8f8f670;white-space:nowrap;margin:0;font-size:.8rem;line-height:1.6}#modoo-wrap .footer-biz a{color:#f8f8f694;text-underline-offset:2px;text-decoration:underline}#modoo-wrap .footer-biz a:hover{color:var(--paper)}#modoo-wrap .footer-links{align-items:center;flex-shrink:0;gap:1.6rem;display:flex}#modoo-wrap .footer-links a{color:#f8f8f68f;font-size:.8rem}#modoo-wrap .footer-links a:hover{color:var(--paper);text-decoration:underline}#modoo-wrap .footer-links a:last-child{color:#f8f8f6bf;font-weight:600}@media (width<=900px){#modoo-wrap .site-header{padding:1.7rem 1.25rem}#modoo-wrap .talk-button{min-width:auto;height:2.5rem;padding:0 1.15rem;font-size:.82rem}#modoo-wrap .main-nav{display:none}#modoo-wrap .hero{padding:8.5rem 1.25rem 2rem}#modoo-wrap .hero h1{align-self:start;padding-top:10vh;font-size:clamp(3.6rem,16vw,6.5rem);line-height:1.01}#modoo-wrap .hero-footer{grid-template-columns:1fr auto;gap:1.8rem 1rem}#modoo-wrap .question-index{grid-column:1/-1}#modoo-wrap .answer{font-size:1.08rem;line-height:1.55}#modoo-wrap .next-button{min-width:9.5rem;height:3.7rem;padding:0 1.2rem;font-size:.9rem}#modoo-wrap .advantage-scroll{padding:6.5rem 0 2rem;height:auto!important}#modoo-wrap .advantage-sticky{height:auto;position:relative;overflow:visible}#modoo-wrap .advantage-track{scroll-snap-type:x mandatory;scrollbar-width:none;gap:1rem;width:100%;height:auto;padding:0 1.25rem 1.5rem;scroll-padding-inline:1.25rem;overflow-x:auto}#modoo-wrap .advantage-track::-webkit-scrollbar{display:none}#modoo-wrap .advantage-intro,#modoo-wrap .advantage-card{scroll-snap-align:start;flex-basis:calc(100vw - 2.5rem);width:calc(100vw - 2.5rem);min-height:74svh}#modoo-wrap .advantage-intro{padding:1rem 0}#modoo-wrap .advantage-intro h2{font-size:clamp(2.9rem,12vw,5.4rem)}#modoo-wrap .advantage-intro h2 .nowrap-line{font-size:.82em}#modoo-wrap .wheel-guide span{font-size:0}#modoo-wrap .wheel-guide span:after{content:"옆으로 밀어 확인하기";font-size:.9rem}#modoo-wrap .card-visual{inset:5rem 1.5rem 13rem}#modoo-wrap .scroll-progress{display:none}#modoo-wrap .services-section{min-height:auto;padding:7rem 1.25rem 4rem}#modoo-wrap .services-layout{grid-template-columns:1fr;gap:3rem;min-height:auto;padding-bottom:3rem}#modoo-wrap .service-list button{padding:.25rem 0}#modoo-wrap .service-list button span{font-size:clamp(2.5rem,9vw,4.8rem)}#modoo-wrap .service-preview{max-width:40rem}#modoo-wrap .about-section{min-height:72svh;padding:7rem 1.25rem 4rem}#modoo-wrap .about-bottom{grid-template-columns:1fr;align-content:end;gap:3rem}#modoo-wrap .about-badges{flex-wrap:wrap;justify-content:flex-start}#modoo-wrap .marquee-text{font-size:clamp(5.5rem,18vw,9rem)}#modoo-wrap .outcome-section{min-height:90svh;padding:7rem 1.25rem 4rem}#modoo-wrap .outcome-section h2{font-size:clamp(3rem,10vw,5.4rem)}#modoo-wrap .outcome-bottom{grid-template-columns:1fr 1fr;gap:3rem 1.5rem}#modoo-wrap .outcome-bottom>p{grid-column:1/-1}#modoo-wrap .insight-section{padding:7rem 1.25rem 4rem}#modoo-wrap .insight-heading{flex-direction:column;align-items:flex-start;gap:2.5rem}#modoo-wrap .insight-grid{grid-template-columns:1fr}#modoo-wrap .insight-card{min-height:32rem}#modoo-wrap .faq-section{padding:7rem 1.25rem 4rem}#modoo-wrap .faq-heading{grid-template-columns:1fr;gap:1.2rem}#modoo-wrap .closing-section{padding:8rem 1.25rem 2rem}#modoo-wrap .closing-copy h2{font-size:clamp(4.4rem,14vw,7rem)}#modoo-wrap .closing-action{grid-template-columns:1fr;align-items:start}#modoo-wrap .closing-button{width:min(100%,28rem)}}@media (width<=520px){#modoo-wrap .brand span{display:none}#modoo-wrap .brand strong{margin:0}#modoo-wrap .hero h1{font-size:clamp(3.1rem,15vw,4.7rem)}#modoo-wrap .hero-footer{flex-direction:column;align-items:stretch;gap:1.2rem;display:flex}#modoo-wrap .index-circle{flex-basis:3.3rem;width:3.3rem;height:3.3rem}#modoo-wrap .answer br{display:none}#modoo-wrap .next-button{width:100%}#modoo-wrap .advantage-intro p br{display:none}#modoo-wrap .advantage-card{border-radius:1.5rem;min-height:72svh;padding:1.5rem}#modoo-wrap .card-copy h3{max-width:100%}#modoo-wrap .card-tags span{min-width:auto}#modoo-wrap .services-kicker{max-width:18rem;line-height:1.4}#modoo-wrap .service-list button span{font-size:clamp(2.25rem,10vw,3.4rem)}#modoo-wrap .service-preview-head{grid-template-columns:1fr auto}#modoo-wrap .service-arrow{display:none}#modoo-wrap .service-code{width:3.5rem;height:3.5rem}#modoo-wrap .service-steps{grid-template-columns:1fr}#modoo-wrap .about-section{min-height:78svh}#modoo-wrap .about-section h2{font-size:clamp(3.4rem,16vw,5.8rem)}#modoo-wrap .about-bottom p br{display:none}#modoo-wrap .about-badges{display:grid}#modoo-wrap .about-badges span{width:100%;min-width:0;height:4rem}#modoo-wrap .outcome-section{min-height:100svh}#modoo-wrap .outcome-section h2 br{display:none}#modoo-wrap .outcome-bottom{align-content:end}#modoo-wrap .outcome-stat strong{font-size:4.6rem}#modoo-wrap .outcome-bottom>p br,#modoo-wrap .insight-heading h2 br{display:none}#modoo-wrap .all-posts-button{width:100%;min-width:0;height:4.2rem}#modoo-wrap .insight-card{border-radius:1.5rem;min-height:29rem}#modoo-wrap .insight-card>a{padding:1.5rem}#modoo-wrap .insight-card-copy h3{font-size:clamp(2rem,9vw,2.8rem)}#modoo-wrap .insight-note{text-align:left}#modoo-wrap .faq-heading h2{font-size:2.2rem}#modoo-wrap .faq-item>button{gap:1rem;padding:1.35rem 1.2rem}#modoo-wrap .faq-item>button span{font-size:1.2rem}#modoo-wrap .faq-answer{padding:0 3.8rem 1.5rem 1.2rem}#modoo-wrap .closing-copy h2{font-size:clamp(3.6rem,16vw,5.2rem);line-height:1.02}#modoo-wrap .closing-action>p br{display:none}#modoo-wrap .closing-button{width:100%;height:4.8rem;padding:0 1.7rem}#modoo-wrap .site-footer{flex-direction:column;align-items:flex-start;overflow-x:visible}#modoo-wrap .footer-biz{white-space:normal}#modoo-wrap .footer-links{flex-wrap:wrap}}@media (prefers-reduced-motion:reduce){#modoo-wrap *{transition-duration:.01ms!important}#modoo-wrap .advantage-track,#modoo-wrap .marquee-text{will-change:auto}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}
+`,
+        }}
+      />
+      <div id="modoo-wrap"><main className="site-shell"><header className="site-header" aria-label="주요 메뉴"><a className="brand" href="#top" aria-label="모두의CSO 홈"><span>모두의</span><strong>CSO</strong></a><div className="main-nav" role="navigation" aria-label="주요 링크"><a href="#services">서비스</a><a href="#insights">정보센터</a><a href="#faq">FAQ</a><a href="#contact">문의하기</a></div><div className="header-actions"><a className="talk-button" href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer">상담하기</a></div></header><section className="hero" id="top" aria-labelledby="hero-title"><h1 id="hero-title"><span className="accent">추가수수료,</span><span>진짜 다 주나요?</span></h1><div className="hero-footer"><div className="question-index" aria-label="Question 01"><span>Question</span><span className="index-circle">01</span></div><p className="answer">네. 계약된 조건을 숨기지 않고,<br/>정산 내역까지 확인할 수 있게 운영합니다.</p><a className="next-button" href="#next-question">답변 계속 보기</a></div></section><section className="advantage-scroll" id="next-question" aria-labelledby="advantage-title"><div className="advantage-sticky"><div className="advantage-track"><div className="advantage-intro"><div><div className="section-label"><span>Question</span><b>02</b></div><h2 id="advantage-title"><span className="nowrap-line">수수료만 더 주면,</span><br/>다 같은 CSO 아닌가요?</h2><p>아닙니다. 차이는 수수료 뒤의 운영에서 생깁니다.</p></div><div className="wheel-guide" aria-hidden="true"><span>휠을 내려 확인하기</span><i>→</i></div></div><article className="advantage-card card-dark"><div className="card-topline"><span>모두의CSO</span><b>01</b></div><div className="card-visual"><div className="open-visual" aria-hidden="true"><span>조건</span><strong>=</strong><span>공개</span></div></div><div className="card-copy"><h3>조건을 숨기지 않습니다</h3><p>제약사별 수수료와 지급일, 정산 조건을 같은 기준표 안에서 관리합니다.</p><div className="card-tags" aria-label="핵심 키워드"><span>CSO수수료</span><span>정산조건</span></div></div></article><article className="advantage-card card-accent"><div className="card-topline"><span>모두의CSO</span><b>02</b></div><div className="card-visual"><div className="process-visual" aria-hidden="true"><span>자료 수신</span><span>분리·발송</span><span>계산서 확인</span><span>입금·송금</span></div></div><div className="card-copy"><h3>정산을 직접 관리합니다</h3><p>자료 수신부터 입금 확인과 송금까지, 직접 만든 관제 화면으로 관리합니다.</p><div className="card-tags" aria-label="핵심 키워드"><span>정산관제</span><span>입금·송금</span></div></div></article><article className="advantage-card card-paper"><div className="card-topline"><span>모두의CSO</span><b>03</b></div><div className="card-visual"><div className="split-visual" aria-hidden="true"><span>영업</span><i>+</i><span>관리</span></div></div><div className="card-copy"><h3>영업과 관리를 나눕니다</h3><p>영업자는 거래처에 집중하고, 계약·서류·정산 흐름은 운영 시스템이 받칩니다.</p><div className="card-tags" aria-label="핵심 키워드"><span>영업 집중</span><span>백오피스</span></div></div></article><article className="advantage-card card-dark"><div className="card-topline"><span>모두의CSO</span><b>04</b></div><div className="card-visual"><div className="timeline-visual" aria-hidden="true"><strong>2007</strong><span></span><strong>2026</strong></div></div><div className="card-copy"><h3>18년 현장에서 만들었습니다</h3><p>2007년 제약 영업부터 도매·총판·CSO까지 직접 겪은 운영 경험을 담았습니다.</p><div className="card-tags" aria-label="핵심 키워드"><span>2007—2026</span><span>현장 설계</span></div></div></article><article className="advantage-card card-accent"><div className="card-topline"><span>모두의CSO</span><b>05</b></div><div className="card-visual"><div className="status-visual" aria-hidden="true"><span><i className="status-dot solid"></i>운영 중</span><span><i className="status-dot ring"></i>개발 중</span></div></div><div className="card-copy"><h3>안 되는 걸 된다고 팔지 않습니다</h3><p>직원 테스트 중인 기능과 아직 개발 중인 기능을 구분해서 이야기합니다.</p><div className="card-tags" aria-label="핵심 키워드"><span>현재 기능</span><span>개발 중</span></div></div></article></div><div className="scroll-progress" aria-hidden="true"><span></span></div></div></section><section className="services-section dark-zone" id="services" aria-labelledby="services-title"><p className="services-kicker" id="services-title">복잡한 CSO수수료·운영, 어디까지 도와주나요?</p><div className="services-layout"><div className="service-list" aria-label="모두의CSO 운영 지원 영역"><button type="button" className="is-active" aria-pressed="true"><span>계약 관리</span><i>↗</i></button><button type="button" className="" aria-pressed="false"><span>정산 관리</span><i>↗</i></button><button type="button" className="" aria-pressed="false"><span>증빙·재위탁 관리</span><i>↗</i></button><button type="button" className="" aria-pressed="false"><span>CSO써치라이트</span><i>↗</i></button></div><aside className="service-preview" aria-live="polite"><div className="service-preview-head"><div><small>선택한 운영 영역</small><h3>계약 생성부터 보관까지</h3></div><span className="service-code">01</span><i className="service-arrow" aria-hidden="true">→</i></div><div className="service-detail"><p>계약 조건과 필수서류를 한 흐름으로 정리해, 누가 무엇을 제출했는지 확인합니다.</p><div className="service-steps"><span><b>01</b>계약 생성</span><span><b>02</b>서명</span><span><b>03</b>서류 확인</span><span><b>04</b>보관</span></div></div></aside></div></section><section className="about-section dark-zone" aria-labelledby="about-title"><h2 id="about-title">이걸, 누가 운영하나요?</h2><div className="about-bottom"><p>2007년 제약 영업을 시작으로<br/>도매·총판·CSO까지 직접 경험했습니다.<br/>현장을 경험한 사람이 운영합니다.</p><div className="about-badges" aria-label="모두의CSO 운영 경험"><span>18년 현장 경험</span><span>운영 시스템 직접 개발</span></div></div></section><section className="marquee-scroll" aria-label="운영 방향 전환 문구"><div className="marquee-sticky"><p className="marquee-text">영업은 관계에, 관리는 시스템에.</p></div></section><section className="outcome-section" aria-labelledby="outcome-title"><h2 id="outcome-title">영업에 집중할 수 있도록<br/>운영은 한 흐름으로</h2><div className="outcome-bottom"><div className="outcome-stat"><strong>4</strong><span>핵심 관리영역</span></div><div className="outcome-stat"><strong>1</strong><span>연결된 운영흐름</span></div><p>계약, 정산, 증빙·재위탁, 제약사별 운영 기준을<br/>한 흐름으로 정리합니다. 영업자는 거래처와 실적에<br/>집중하고, 모두의CSO가 뒤의 운영을 받칩니다.</p></div></section><section className="insight-section dark-zone" id="insights" aria-labelledby="insight-title"><div className="insight-heading"><div><p>모두의CSO 정보센터</p><h2 id="insight-title">현장에서 바로 쓸 수 있는<br/>정보만 전합니다.</h2></div><a className="all-posts-button" href="https://modoocso.kr/blog" target="_blank" rel="noopener noreferrer"><span>53개 글 전체 보기</span><i aria-hidden="true">→</i></a></div><div className="insight-grid"><article className="insight-card"><a href="https://modoocso.kr/blog/cso-report" target="_blank" rel="noopener noreferrer" aria-label="의약품 판촉영업자 신고제, 실제로 무엇을 준비해야 하나 읽기"><div className="insight-card-top"><span>신고제 · 준법</span><b>01</b></div><div className="insight-card-copy"><h3>의약품 판촉영업자 신고제, 실제로 무엇을 준비해야 하나</h3><p>현장에서 먼저 확인해야 할 핵심 운영 요건을 정리했습니다.</p></div><div className="insight-card-foot"><span>6분 읽기</span><i aria-hidden="true">↗</i></div></a></article><article className="insight-card"><a href="https://modoocso.kr/blog/cso-drug-price" target="_blank" rel="noopener noreferrer" aria-label="2026 제네릭 약가 인하, CSO 파트너에게 어떤 영향을 주나 읽기"><div className="insight-card-top"><span>약가 정책</span><b>02</b></div><div className="insight-card-copy"><h3>2026 제네릭 약가 인하, CSO 파트너에게 어떤 영향을 주나</h3><p>품목별 영향과 CSO 운영에서 살펴볼 대응 기준을 다룹니다.</p></div><div className="insight-card-foot"><span>5분 읽기</span><i aria-hidden="true">↗</i></div></a></article><article className="insight-card"><a href="https://modoocso.kr/blog/cso-corporation" target="_blank" rel="noopener noreferrer" aria-label="개인으로 시작할까, 법인으로 시작할까 — 실무 기준 비교 읽기"><div className="insight-card-top"><span>법인 설립</span><b>03</b></div><div className="insight-card-copy"><h3>개인으로 시작할까, 법인으로 시작할까 — 실무 기준 비교</h3><p>거래 구조와 정산 방식에 따라 달라지는 선택 기준을 비교합니다.</p></div><div className="insight-card-foot"><span>7분 읽기</span><i aria-hidden="true">↗</i></div></a></article></div><p className="insight-note">현장 실무를 기록한 53개의 글이 검색과 새로운 질문의 출발점이 됩니다.</p></section><section className="faq-section" id="faq" aria-labelledby="faq-title"><div className="faq-heading"><p>자주 묻는 질문</p><h2 id="faq-title">계약 전에 가장 많이 묻는 내용입니다.</h2></div><div className="faq-list"><article className="faq-item"><button type="button" aria-expanded="false" aria-controls="faq-answer-1"><span>CSO수수료(추가수수료)는 정말 다 지급되나요?</span><i aria-hidden="true">+</i></button></article><article className="faq-item"><button type="button" aria-expanded="false" aria-controls="faq-answer-2"><span>정산 내역을 직접 확인할 수 있나요?</span><i aria-hidden="true">+</i></button></article><article className="faq-item"><button type="button" aria-expanded="false" aria-controls="faq-answer-3"><span>개인사업자와 법인 모두 계약할 수 있나요?</span><i aria-hidden="true">+</i></button></article><article className="faq-item"><button type="button" aria-expanded="false" aria-controls="faq-answer-4"><span>재위탁 관계와 증빙서류도 관리해주나요?</span><i aria-hidden="true">+</i></button></article><article className="faq-item"><button type="button" aria-expanded="false" aria-controls="faq-answer-5"><span>정산 과정이 모두 자동으로 처리되나요?</span><i aria-hidden="true">+</i></button></article></div></section><section className="closing-section dark-zone" id="contact" aria-labelledby="closing-title"><div className="closing-glow" aria-hidden="true"></div><div className="closing-copy"><p>마지막 질문</p><h2 id="closing-title"><span>이제, 영업에만</span><span className="accent">집중하시겠습니까?</span></h2></div><div className="closing-action"><p>계약·정산·증빙과 제약사별 운영 기준은<br/>모두의CSO가 한 흐름으로 관리합니다.</p><div className="closing-cta-group"><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener noreferrer" className="closing-button"><span>카카오톡 상담 시작하기</span><i aria-hidden="true">→</i></a><a href="tel:01056746574" className="closing-phone">전화 상담 010-5674-6574</a></div></div><div className="site-footer" role="contentinfo"><div className="footer-main"><a className="footer-brand" href="#top" aria-label="처음으로 이동">모두의<strong>CSO</strong></a><p className="footer-biz">주식회사 우리모두&nbsp;·&nbsp;경기도 시흥시 은계중앙로 306번길 69, 604-11호&nbsp;·&nbsp;사업자등록번호 841-88-03712&nbsp;·&nbsp;전화 <a href="tel:01056746574">010-5674-6574</a>&nbsp;·&nbsp;이메일 <a href="mailto:wrmodoo2025@naver.com">wrmodoo2025@naver.com</a></p></div><div className="footer-links"><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="#top">처음으로  ↑</a></div></div></section></main>
+</div>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-bg"></div>
-        <div>
-          <span className="hero-handwrite">제약 영업 파트너십의 새로운 기준</span>
-          <h1>
-            수수료보다 먼저<br />
-            <span className="em">구조</span>를 봐야 합니다
-          </h1>
-          <p className="hero-sub">
-            20년 현장 경험과 직접 개발한 정산 시스템을 바탕으로
-            계약, 영업, 정산, 신고제 대응까지
-            실제로 움직이는 구조를 함께 만듭니다.
-          </p>
-          <div className="hero-btns">
-            <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn-p">상담 문의</a>
-            <a href="#process" className="btn-g">진행 방식 보기</a>
-          </div>
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="hs-num">20<span>년</span></div>
-              <div className="hs-label">현장 경험</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hs-num">80<span>+</span></div>
-              <div className="hs-label">제휴 제약사</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hs-num">46,000<span>+</span></div>
-              <div className="hs-label">품목 DB</div>
-            </div>
-          </div>
-        </div>
-        <div className="hero-right">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="제약 영업 현장" className="hero-photo" />
-          <div className="hero-badge">
-            <div className="badge-num">20년</div>
-            <div className="badge-label">제약 영업<br />현장 경험</div>
-          </div>
-          <div className="hero-badge2">
-            <div className="b2-title">정산 시스템 운영 중</div>
-            <div style={{ fontSize: '14px', color: 'var(--muted)' }}>
-              <span className="b2-dot"></span>직접 개발 · 직접 운영
-            </div>
-          </div>
-        </div>
-      </section>
+(() => {
+  const services = [
+    {
+      id: "contract",
+      title: "계약 생성부터 보관까지",
+      description: "계약 조건과 필수서류를 한 흐름으로 정리해, 누가 무엇을 제출했는지 확인합니다.",
+      steps: ["계약 생성", "서명", "서류 확인", "보관"],
+      code: "01",
+    },
+    {
+      id: "settlement",
+      title: "자료 수신부터 송금까지",
+      description: "제약사 정산자료 수신, 계산서 확인, 입금 확인과 송금 상태를 한 화면에서 관리합니다.",
+      steps: ["자료 수신", "계산서", "입금 확인", "송금"],
+      code: "02",
+    },
+    {
+      id: "evidence",
+      title: "관계와 서류를 함께 봅니다",
+      description: "사업자등록증, 교육이수증, 계약 관계와 보고자료를 재위탁 구조에 맞춰 정리합니다.",
+      steps: ["계약 관계", "교육증", "사업자등록", "보고자료"],
+      code: "03",
+    },
+    {
+      id: "searchlight",
+      title: "수수료 계산, 이제 직접 조회하세요",
+      description: "모두의CSO가 만든 정산 관리 ERP, CSO써치라이트입니다. 제약사별 수수료를 자동으로 계산하고, EDI 데이터를 그 자리에서 조회할 수 있습니다.",
+      steps: ["수수료 자동계산", "EDI 정산 조회", "의약품 마스터 검색", "정산 원장 관리"],
+      code: "04",
+      link: "https://modoocso.kr/searchlight",
+    },
+  ];
 
-      {/* WHY CSO */}
-      <section className="why section" id="why">
-        <span className="eyebrow reveal">왜 지금 CSO인가</span>
-        <h2 className="sec-title reveal d1">시장은 이미<br />그 방향으로 움직이고 있습니다</h2>
-        <p className="sec-lead reveal d2">고정비는 줄이고, 현장은 넓히고, 정산과 준법은 더 명확하게 — 제약 영업 환경이 바뀌고 있습니다.</p>
-        <div className="why-img-row">
-          <div className="why-img-card reveal reveal-left">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=80&fit=crop" alt="제약사 미팅" />
-            <div className="why-img-overlay">
-              <h3>신고제 기준 대응</h3>
-              <p>의약품 판촉영업자 운영 요건,<br />기준에 맞춰 실제로 갖추고 있습니다</p>
-            </div>
-          </div>
-          <div className="why-img-card reveal reveal-right d2">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&q=80&fit=crop" alt="정산 데이터" />
-            <div className="why-img-overlay">
-              <h3>정산 시스템 운영</h3>
-              <p>수기 방식의 누락과 오해를<br />구조적으로 줄입니다</p>
-            </div>
-          </div>
-        </div>
-        <div className="why-points reveal d1">
-          {[
-            { img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=60&fit=crop', title: '약가 정책 변화', desc: '2026년부터 제네릭 약가가 단계적으로 조정됩니다. 품목 의존 구조는 지금 점검이 필요합니다.' },
-            { img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=60&fit=crop', title: '수수료보다 정산 구조', desc: '어떻게 계산되고, 언제 지급되고, 무엇이 공제되는지가 명확한가가 장기 파트너십의 핵심입니다.' },
-            { img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=60&fit=crop', title: '개인 vs 법인 구조', desc: '잘못된 구조로 시작하면 나중에 고치기 어렵습니다. 현재 조건에 맞는 형태를 먼저 확인해야 합니다.' },
-          ].map((pt, i) => (
-            <div key={i} className="why-img-card">
-              <img src={pt.img} alt={pt.title} />
-              <div className="why-img-overlay">
-                <h4 style={{ color: '#ffffff' }}>{pt.title}</h4>
-                <p style={{ color: '#ffffff' }}>{pt.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+  const faqAnswers = [
+    "제약사별 계약 조건과 지급 기준을 먼저 안내하고, 계약된 수수료와 확인된 정산 내역을 기준으로 지급합니다. 지급일과 세부 조건은 제약사마다 다를 수 있어 계약 전에 함께 확인합니다.",
+    "자료 수신, 계산서 확인, 입금 확인과 송금 상태를 같은 흐름에서 관리합니다. 실제로 제공되는 조회 범위와 방식은 계약 후 안내합니다.",
+    "사업자 형태만으로 계약 가능 여부가 결정되지는 않습니다. 판촉영업자 신고, 교육 이수, 필수서류와 제약사별 계약 기준을 확인한 뒤 진행합니다.",
+    "계약 관계와 사업자등록증, 교육이수증 등 운영에 필요한 서류를 정리하고 누락 여부를 확인합니다. 신고나 제출을 포함한 실제 지원 범위는 계약 조건에 따라 달라집니다.",
+    "현재는 내부 관제 화면으로 정산 흐름을 관리하고 담당자가 직접 확인합니다. OCR, 파일 분류와 자동 매칭 같은 일부 기능은 개발 중이며 완전 자동화된 상태는 아닙니다.",
+  ];
 
-      {/* DIFFERENCE */}
-      <section className="diff section" id="diff">
-        <div className="diff-layout">
-          <div className="diff-photo-wrap reveal reveal-left">
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700&q=80&fit=crop" alt="신뢰 파트너십" className="diff-photo" />
-            <p className="diff-photo-caption">말이 아니라 구조로 신뢰를 만듭니다</p>
-          </div>
-          <div>
-            <span className="eyebrow reveal">왜 모두의CSO인가</span>
-            <h2 className="sec-title reveal d1">처음부터<br />큰 말을 하지 않습니다</h2>
-            <div className="diff-items">
-              {[
-                { n: '01', title: '정산을 시스템으로 운영합니다', desc: '직접 개발한 정산 시스템으로 내역·제출 자료·확인 흐름을 관리합니다.' },
-                { n: '02', title: '수수료를 숫자가 아닌 구조로 설명합니다', desc: '품목별 기준, 공제 여부, 지급 시점까지 계약 전에 설명합니다.' },
-                { n: '03', title: '약가 정책 변화를 함께 분석합니다', desc: '약가 인하가 품목별로 어떤 영향을 주는지 실제로 분석해 안내합니다.' },
-                { n: '04', title: '현재 조건에서 가능한 것을 먼저 말합니다', desc: '다 된다고 말하지 않습니다. 가능한 것과 어려운 것을 먼저 구분합니다.' },
-              ].map((item, i) => (
-                <div key={i} className={`diff-item reveal d${i + 1}`}>
-                  <div className="diff-item-head">
-                    <span className="diff-n">{item.n}</span>
-                    <h4>{item.title}</h4>
-                  </div>
-                  <p>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+  const horizontalSection = document.querySelector("#modoo-wrap .advantage-scroll");
+  const horizontalTrack = document.querySelector("#modoo-wrap .advantage-track");
+  const progress = document.querySelector("#modoo-wrap .scroll-progress span");
+  const marqueeSection = document.querySelector("#modoo-wrap .marquee-scroll");
+  const marqueeText = document.querySelector("#modoo-wrap .marquee-text");
+  const header = document.querySelector("#modoo-wrap .site-header");
+  let horizontalFrame = 0;
+  let headerFrame = 0;
+  let maxTravel = 0;
+  let marqueeTravel = 0;
+  let marqueeStart = 0;
 
-      {/* PROCESS */}
-      <section className="process section" id="process">
-        <div className="process-wrap">
-          <div>
-            <span className="eyebrow reveal">어떻게 진행되나요</span>
-            <h2 className="sec-title reveal d1">상담부터 첫 정산까지</h2>
-            <div className="process-steps">
-              {[
-                { n: '1', title: '상담 및 조건 확인', desc: '활동 이력, 지역, 거래처, 희망 품목군을 확인합니다. 가능한 것과 어려운 것을 솔직하게 안내합니다.' },
-                { n: '2', title: '구조 및 수수료 안내', desc: '연결 범위, 활동 구조, 수수료 기준, 정산 흐름, 신고제 기준을 함께 설명합니다.' },
-                { n: '3', title: '계약 및 시작 준비', desc: '조건 확인 후 계약을 진행하고 실제 활동 방향을 설정합니다.' },
-                { n: '4', title: '영업 활동 및 정산', desc: '자료 제출과 확인 절차를 거쳐 월 정산이 진행됩니다. 정산 내역은 시스템으로 확인합니다.' },
-              ].map((step, i) => (
-                <div key={i} className={`p-step reveal d${i + 1}`}>
-                  <div className="p-num">{step.n}</div>
-                  <div>
-                    <h4>{step.title}</h4>
-                    <p>{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="process-note reveal">
-              모든 제약사·품목이 동일하게 연결되는 것은 아닙니다.<br />
-              현재 조건에 따라 가능한 범위를 안내드립니다.
-            </div>
-          </div>
-          <div className="reveal reveal-right d2">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80&fit=crop" alt="계약 진행" className="process-photo" />
-          </div>
-        </div>
-      </section>
+  const updateHorizontal = () => {
+    if (innerWidth <= 900) return;
+    const travelled = Math.min(
+      maxTravel,
+      Math.max(0, scrollY - horizontalSection.offsetTop),
+    );
+    const ratio = maxTravel ? travelled / maxTravel : 0;
+    horizontalTrack.style.transform = "translate3d(" + (-travelled) + "px, 0, 0)";
+    progress.style.transform = "scaleX(" + ratio + ")";
+  };
 
-      {/* BLOG */}
-      <section className="blog section" id="blog">
-        <div className="blog-header">
-          <div>
-            <span className="eyebrow reveal">정보센터</span>
-            <h2 className="sec-title reveal d1" style={{ marginBottom: 0 }}>현장에서 바로 쓸 수 있는 정보만</h2>
-          </div>
-          <a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener" className="btn-g reveal">전체 글 보기 →</a>
-        </div>
-        <div className="blog-grid">
-          {[
-            { href: 'https://www.modoocso.kr/blog/cso-report', img: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80&fit=crop', tag: '신고제 · 준법', title: '의약품 판촉영업자 신고제, 실제로 무엇을 준비해야 하나', desc: '현장에서 확인해야 할 핵심 운영 요건을 정리했습니다.', delay: '' },
-            { href: 'https://www.modoocso.kr/blog/cso-drug-price', img: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=80&fit=crop', tag: '약가 정책', title: '2026 제네릭 약가 인하, CSO 파트너에게 어떤 영향을 주나', desc: '건정심 확정안 기준 품목별 영향과 대응 방향을 분석했습니다.', delay: ' d2' },
-            { href: 'https://www.modoocso.kr/blog/cso-corporation', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop', tag: '법인 설립', title: '개인으로 시작할까, 법인으로 시작할까 — 실무 기준 비교', desc: '거래 구조와 정산 방식에 따라 적합한 형태가 다릅니다.', delay: ' d3' },
-          ].map((post, i) => (
-            <a key={i} href={post.href} target="_blank" rel="noopener" className={`blog-card reveal${post.delay}`}>
-              <img src={post.img} alt={post.tag} className="blog-img" />
-              <div className="blog-body">
-                <span className="blog-tag">{post.tag}</span>
-                <h3>{post.title}</h3>
-                <p>{post.desc}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+  const updateMarquee = () => {
+    const travelled = Math.min(
+      marqueeTravel,
+      Math.max(0, scrollY - marqueeSection.offsetTop),
+    );
+    marqueeText.style.transform = "translate3d(" + (marqueeStart - travelled) + "px, 0, 0)";
+  };
 
-      {/* DIFF2 */}
-      <section className="diff2" id="diff2">
-        <div className="diff2-layout">
-          <div className="diff2-sticky reveal reveal-left">
-            <span className="eyebrow">OUR DIFFERENCE</span>
-            <h2 className="sec-title">왜 모두의CSO를<br />선택하는가</h2>
-            <div className="diff2-img">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&crop=center" alt="파트너십" />
-            </div>
-            <div className="diff2-quote">
-              &ldquo;제약사 수가 많아 보이는 것보다,<br />실제로 파트너가 움직일 수 있는<br />구조인지가 더 중요합니다&rdquo;
-            </div>
-            <p className="diff2-body">
-              우리는 단순 소개로 끝내지 않습니다.<br />
-              처음부터 큰 말을 하지 않는 것이 우리의 방식입니다.<br />
-              가능한 것과 어려운 것을 먼저 구분하고,<br />실제로 실행되는 방향을 함께 설계합니다.
-            </p>
-          </div>
-          <div className="diff2-items">
-            {[
-              { n: '01', title: '현장 기준으로 설명합니다', desc: '20년 영업 실무를 아는 기준에서 가능한 것과 어려운 것을 구분해 상담합니다. 들어보기 좋은 말보다 실제 현장 기준으로 말합니다.' },
-              { n: '02', title: '정산을 시스템으로 운영합니다', desc: '직접 개발한 정산 시스템으로 내역, 제출 자료, 확인 흐름을 관리합니다. 수기 전달 방식의 누락과 오해를 구조적으로 줄입니다.' },
-              { n: '03', title: '수수료를 구조로 설명합니다', desc: '품목별 기준, 공제 여부, 지급 시점, 확인 방식까지 계약 전에 설명합니다. 숫자만 크게 보이는 방식을 지양합니다.' },
-              { n: '04', title: '약가 정책 변화를 함께 봅니다', desc: '단순 연결에 끝나지 않고, 약가 인하 정책이 품목별로 어떤 영향을 주는지 분석해 안내합니다. 장기 운영 관점으로 접근합니다.' },
-              { n: '05', title: '처음부터 다 된다고 말하지 않습니다', desc: '현재 조건에서 가능한 범위를 먼저 정리합니다. 과장된 기대보다 현실적인 시작이 더 오래 갑니다.' },
-            ].map((item, i) => (
-              <div key={i} className={`diff2-row reveal d${Math.min(i + 1, 4)}`}>
-                <div className="diff2-n">{item.n}</div>
-                <div>
-                  <h4>{item.title}</h4>
-                  <p>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  const updateHeader = () => {
+    const headerLine = innerWidth <= 900 ? 36 : 58;
+    const onDark = [...document.querySelectorAll("#modoo-wrap .dark-zone")].some((zone) => {
+      const rect = zone.getBoundingClientRect();
+      return rect.top <= headerLine && rect.bottom > headerLine;
+    });
+    header.classList.toggle("header-on-dark", onDark);
+  };
 
-      {/* CSO써치라이트 배너 */}
-      <section style={{background:'#3d2b1f',padding:'72px 6%',textAlign:'center'}}>
-        <div style={{maxWidth:'680px',margin:'0 auto'}}>
-          <span style={{fontSize:'.75rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'#c4956a',display:'block',marginBottom:'1rem'}} className="reveal">모두의CSO 전용 시스템</span>
-          <h2 style={{fontSize:'clamp(1.8rem,3.5vw,2.6rem)',fontWeight:800,color:'#ffffff',lineHeight:1.2,letterSpacing:'-.03em',marginBottom:'1rem'}} className="reveal d1">
-            정산 시스템, 직접 써보세요
-          </h2>
-          <p style={{fontSize:'1rem',color:'rgba(255,255,255,.5)',lineHeight:1.85,marginBottom:'2rem'}} className="reveal d2">
-            CSO써치라이트는 모두의CSO 파트너를 위해 직접 개발한 CSO 실무 관리 시스템입니다.<br />
-            4만 6천여 품목 검색, 자동 정산 대조, AI 문서 인식까지.
-          </p>
-          <a href="/searchlight"
-            style={{display:'inline-block',background:'#c4956a',color:'#ffffff',padding:'.9rem 2.4rem',borderRadius:'100px',fontWeight:700,fontSize:'.95rem',textDecoration:'none'}}
-            className="reveal d3">
-            CSO써치라이트 알아보기 →
-          </a>
-        </div>
-      </section>
+  const measure = () => {
+    if (innerWidth <= 900) {
+      horizontalSection.style.height = "auto";
+      horizontalTrack.style.transform = "none";
+      progress.style.transform = "scaleX(0)";
+    } else {
+      maxTravel = Math.max(0, horizontalTrack.scrollWidth - innerWidth);
+      horizontalSection.style.height = (innerHeight + maxTravel) + "px";
+      updateHorizontal();
+    }
 
-      {/* FAQ */}
-      <section className="faq" id="faq">
-        <div className="faq-layout">
-          <div className="faq-sticky reveal reveal-left">
-            <span className="eyebrow">FAQ</span>
-            <h2 className="sec-title">자주 묻는<br />질문들</h2>
-            <div className="faq-img">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&fit=crop&crop=center" alt="상담" />
-            </div>
-            <p>상담 전에 궁금한 것들을<br />먼저 정리했습니다.</p>
-            <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="faq-btn">직접 상담하기</a>
-          </div>
-          <div className="faq-list reveal d1">
-            {[
-              { q: 'CSO 신고제가 무엇인가요?', a: '의약품 판촉영업자는 관련 법령에 따라 신고 및 교육 기준을 갖춰 운영해야 합니다. 세부 기준은 시기와 상황에 따라 달라질 수 있어 상담 시 현재 기준에 맞춰 안내드립니다.' },
-              { q: '수수료는 모두 동일한가요?', a: '제약사·품목·조건에 따라 달라질 수 있습니다. 숫자보다 정산 기준과 확인 방식이 명확한지가 더 중요합니다. 계약 전 관련 조건을 사전에 설명하는 방식으로 진행합니다.' },
-              { q: '개인도 시작할 수 있나요?', a: '가능한 경우가 있습니다. 다만 거래 구조와 향후 운영 계획에 따라 법인 형태가 더 적합할 수 있습니다. 상담 시 현재 상황에 맞는 구조를 안내드립니다.' },
-              { q: '약가 정책 변화가 영향을 주나요?', a: '2026년부터 단계적으로 적용되는 제네릭 약가 조정은 품목 수익 구조에 실질적인 영향을 줄 수 있습니다. 특정 품목 의존도가 높은 경우 상담 시 함께 검토합니다.' },
-              { q: '정산은 어떻게 확인하나요?', a: '월 단위 정산을 기본으로 하며 자료 제출 → 확인 → 정산 안내 흐름으로 운영됩니다. 정산 내역은 직접 개발·운영 중인 시스템을 통해 확인할 수 있습니다.' },
-              { q: '상담 비용이 있나요?', a: '기본 상담은 무료로 진행합니다.' },
-            ].map((faq, i) => (
-              <div key={i} className={`faq-item${i === 0 ? ' open' : ''}`}>
-                <div className="faq-q" onClick={(e) => toggleFaq(e.currentTarget)}>
-                  {faq.q}
-                  <div className="faq-toggle">+</div>
-                </div>
-                <div className="faq-a">{faq.a}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    marqueeStart = innerWidth * 0.055;
+    marqueeTravel = marqueeText.scrollWidth + innerWidth * 0.12;
+    marqueeSection.style.height = (innerHeight + marqueeTravel) + "px";
+    updateMarquee();
+    updateHeader();
+  };
 
-      {/* CTA */}
-      <div className="cta-wrap" id="cta">
-        <span className="eyebrow reveal">시작하기</span>
-        <h2 className="sec-title reveal d1">
-          지금 필요한 것부터<br />함께 보겠습니다
-        </h2>
-        <p className="cta-sub reveal d2">
-          파트너 연결인지, 운영 정리인지, 법인 설계인지 —<br />
-          현재 조건에서 가능한 것과 어려운 것을 먼저 구분합니다.
-        </p>
-        <div className="cta-btns reveal d3">
-          <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn-cta">카카오로 문의하기</a>
-          <a href="tel:01056746574" className="btn-cta-o">전화 상담하기</a>
-        </div>
-      </div>
+  addEventListener(
+    "scroll",
+    () => {
+      cancelAnimationFrame(horizontalFrame);
+      horizontalFrame = requestAnimationFrame(() => {
+        updateHorizontal();
+        updateMarquee();
+      });
+      cancelAnimationFrame(headerFrame);
+      headerFrame = requestAnimationFrame(updateHeader);
+    },
+    { passive: true },
+  );
+  addEventListener("resize", measure);
 
-      {/* FOOTER */}
-      <footer>
-        <div className="foot-top">
-          <div>
-            <span className="foot-logo">모두의<b>CSO</b></span>
-            <p className="foot-desc">
-              제약 영업 파트너 연결과 운영을 지원합니다.<br />
-              20년 현장 경험, 정산 시스템 직접 운영,<br />
-              신고제 기준 대응을 바탕으로<br />
-              지속 가능한 파트너십을 지향합니다.
-            </p>
-          </div>
-          <div className="foot-col">
-            <h5>회사</h5>
-            <ul>
-              <li><a href="#diff2">회사소개</a></li>
-              <li><a href="#diff2">운영 원칙</a></li>
-              <li><a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener">카카오 채널</a></li>
-              <li><a href="mailto:wrmodoo2025@naver.com">wrmodoo2025@naver.com</a></li>
-              <li><a href="tel:01056746574">010-5674-6574</a></li>
-            </ul>
-          </div>
-          <div className="foot-col">
-            <h5>파트너 안내</h5>
-            <ul>
-              <li><a href="#process">진행 방식</a></li>
-              <li><a href="/fee">수수료 안내</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
-          <div className="foot-col">
-            <h5>정보</h5>
-            <ul>
-              <li><a href="https://www.modoocso.kr/blog" target="_blank" rel="noopener">정보센터</a></li>
-              <li><a href="https://www.modoocso.kr/blog/cso-report">신고제 안내</a></li>
-              <li><a href="https://www.modoocso.kr/blog/cso-drug-price">약가 정책</a></li>
-              <li><a href="/privacy">개인정보처리방침</a></li>
-              <li><a href="/terms">이용약관</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="foot-bottom">
-          <span>© 2026 주식회사 우리모두. All rights reserved.</span>
-          <span>경기도 시흥시 은계중앙로 306번길 69, 604-11호(대야동, 파크센트로) &nbsp;|&nbsp; 사업자등록번호 : 841-88-03712 &nbsp;|&nbsp; TEL : 010-5674-6574 &nbsp;|&nbsp; wrmodoo2025@naver.com</span>
-        </div>
-      </footer>
+  const serviceButtons = [...document.querySelectorAll("#modoo-wrap .service-list button")];
+  const servicePreview = document.querySelector("#modoo-wrap .service-preview");
+
+  const activateService = (index) => {
+    const service = services[index];
+    serviceButtons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === index;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+    servicePreview.innerHTML =
+      '<div class="service-preview-head">' +
+        '<div><small>선택한 운영 영역</small><h3>' + service.title + '</h3></div>' +
+        '<span class="service-code">' + service.code + '</span>' +
+        '<i class="service-arrow" aria-hidden="true">→</i>' +
+      '</div>' +
+      '<div class="service-detail">' +
+        '<p>' + service.description + '</p>' +
+        '<div class="service-steps">' +
+          service.steps.map((step, stepIndex) => '<span><b>' + String(stepIndex + 1).padStart(2, "0") + '</b>' + step + '</span>').join("") +
+        '</div>' +
+        (service.link ? '<a class="service-link" href="' + service.link + '" target="_blank" rel="noopener noreferrer">CSO써치라이트 바로가기 <i aria-hidden="true">→</i></a>' : "") +
+      '</div>';
+  };
+
+  serviceButtons.forEach((button, index) => {
+    button.addEventListener("mouseenter", () => activateService(index));
+    button.addEventListener("focus", () => activateService(index));
+    button.addEventListener("click", () => activateService(index));
+  });
+
+  const faqItems = [...document.querySelectorAll("#modoo-wrap .faq-item")];
+  faqItems.forEach((item, index) => {
+    const button = item.querySelector("button");
+    button.addEventListener("click", () => {
+      const wasOpen = item.classList.contains("is-open");
+      faqItems.forEach((otherItem) => {
+        otherItem.classList.remove("is-open");
+        otherItem.querySelector("button").setAttribute("aria-expanded", "false");
+        otherItem.querySelector("button i").textContent = "+";
+        otherItem.querySelector(".faq-answer")?.remove();
+      });
+
+      if (!wasOpen) {
+        item.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+        button.querySelector("i").textContent = "×";
+        const answer = document.createElement("div");
+        answer.className = "faq-answer";
+        answer.id = "faq-answer-" + (index + 1);
+        answer.setAttribute("role", "region");
+        answer.innerHTML = "<p>" + faqAnswers[index] + "</p>";
+        item.appendChild(answer);
+      }
+    });
+  });
+
+  measure();
+})();
+
+`,
+        }}
+      />
     </>
   )
 }
