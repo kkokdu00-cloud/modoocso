@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     description: '20년 현장 경험, 80여개 제약사 제휴. 모든 파트너에게 동일한 수수료.',
     images: ['/og-image.png'],
   },
+  alternates: {
+    canonical: 'https://www.modoocso.kr',
+  },
   robots: {
     index: true,
     follow: true,
