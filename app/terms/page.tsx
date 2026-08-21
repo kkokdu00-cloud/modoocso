@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: '이용약관',
   description: '모두의CSO 웹사이트 이용약관.',
+  alternates: { canonical: 'https://www.modoocso.kr/terms' },
   robots: { index: true, follow: true },
 }
 

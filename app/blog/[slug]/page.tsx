@@ -17,10 +17,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `https://www.modoocso.kr/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
+      url: `https://www.modoocso.kr/blog/${slug}`,
       publishedTime: post.date,
     },
   }

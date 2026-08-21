@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: '개인정보처리방침',
   description: '모두의CSO 개인정보처리방침. 본 웹사이트는 별도의 개인정보를 수집·저장하지 않습니다.',
+  alternates: { canonical: 'https://www.modoocso.kr/privacy' },
   robots: { index: true, follow: true },
 }
 

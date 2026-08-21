@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'CSO 정보센터 — 블로그',
   description: 'CSO 수수료, CSO 신고제, CSO 법인 설립 등 제약 CSO 실전 정보를 모아놓은 블로그입니다.',
+  alternates: { canonical: 'https://www.modoocso.kr/blog' },
 }
 
 export default function BlogPage() {
