@@ -887,14 +887,6 @@ export default function SearchlightPage() {
     })();
   
       ` }} />
-      {/* SEO 키워드 블록 */}
-      <div style={{position:'absolute',width:'1px',height:'1px',overflow:'hidden',clip:'rect(0,0,0,0)',whiteSpace:'nowrap'}}>
-        CSO써치라이트 CSO 정산 CSO 수수료 CSO 관리 시스템 CSO 솔루션 CSO 플랫폼 CSO EDI 관리
-        의약품 CSO 의약품 정산 의약품 수수료 계산 의약품 유통 제약 CSO 의약품 영업대행
-        CSO 자동화 CSO 정산 자동화 수수료 자동 계산 AI 문서 인식 EDI 정산 자동 대조
-        모두의CSO modoocso CSO 파트너 CSO 실무 CSO 업무 효율화
-        4만6천 품목 검색 실시간 수수료 계산 정산 오류 방지
-      </div>
     </>
   )
 }
