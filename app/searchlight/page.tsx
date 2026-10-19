@@ -133,7 +133,7 @@ export default function SearchlightPage() {
       background: rgba(8,9,12,.72);
       border-bottom-color: rgba(255,255,255,.08);
     }
-    #sl-wrap .nav.on-dark .brand-accent, #sl-wrap .nav.menu-open .brand-accent { color: var(--blue-light); }
+    #sl-wrap .nav.on-dark .brand-accent, #sl-wrap .nav.menu-open .brand-accent { color: var(--blue); }
     #sl-wrap .nav.menu-open { color: #FFFFFF !important; background: transparent !important; backdrop-filter: none !important; border-bottom-color: transparent !important; }
     #sl-wrap .brand {
       display: inline-flex;
@@ -279,7 +279,7 @@ export default function SearchlightPage() {
       -webkit-mask-image: radial-gradient(circle var(--r, 0px) at var(--sx, 50%) var(--sy, 50%), #000 50%, transparent 100%);
       mask-image: radial-gradient(circle var(--r, 0px) at var(--sx, 50%) var(--sy, 50%), #000 50%, transparent 100%);
     }
-    #sl-wrap .hl-reveal em { color: #C9CBFD !important; }
+    #sl-wrap .hl-reveal em { color: var(--blue) !important; }
     #sl-wrap .scroll-hint {
       position: absolute;
       left: 50%;
@@ -350,7 +350,7 @@ export default function SearchlightPage() {
     #sl-wrap .hl .line { display:block; overflow:hidden; }
     #sl-wrap .hl .line > span { display:inline-block; transform: translateY(115%); animation: rise 1.25s var(--ease) forwards; }
     #sl-wrap .hl .line:nth-child(2) > span { animation-delay: .12s; }
-    #sl-wrap .hl em { font-style: normal; font-weight: 400; letter-spacing: -.05em; color: #6E73C9; }
+    #sl-wrap .hl em { font-style: normal; font-weight: inherit; letter-spacing: inherit; color: var(--blue); }
     @keyframes rise { to { transform: translateY(0); } }
 
 
@@ -366,9 +366,8 @@ export default function SearchlightPage() {
     #sl-wrap .section-index { font-size:14px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; display:flex; align-items:center; gap:12px; }
     #sl-wrap .section-index::before { content:""; width:34px; height:1px; background:currentColor; }
     #sl-wrap .section-title { margin:0; font-size:clamp(40px,6vw,100px); line-height:1.04; letter-spacing:-.045em; font-weight:800; }
-    #sl-wrap .section-title em { font-style:normal; font-weight:400; color:var(--blue); }
-    #sl-wrap .showcase .section-title em, #sl-wrap .numbers .section-title em { color:var(--blue-light); }
-
+    #sl-wrap .section-title em { font-style:normal; font-weight:inherit; color:var(--blue); }
+    
     #sl-wrap .showcase { background:var(--night-2); color:#FFFFFF; overflow:hidden; }
     #sl-wrap .showcase::before { content:""; position:absolute; width:42vw; height:42vw; background:radial-gradient(circle,rgba(163,167,251,.16),transparent 68%); top:-12vw; right:-10vw; }
     #sl-wrap .showcase .section-head { position:relative; z-index:2; }
@@ -462,7 +461,7 @@ export default function SearchlightPage() {
     #sl-wrap .statement { background:var(--paper); overflow:hidden; }
     #sl-wrap .statement-text { margin:0; max-width:1500px; font-size:clamp(38px,6.4vw,116px); line-height:1.08; letter-spacing:-.045em; font-weight:800; }
     #sl-wrap .statement-text span { color:#9AA1AE; }
-    #sl-wrap .statement-text em { font-style:normal; font-weight:400; color:var(--blue); }
+    #sl-wrap .statement-text em { font-style:normal; font-weight:inherit; color:var(--blue); }
     #sl-wrap .statement-bottom { margin-top:clamp(56px,8vw,100px); display:grid; grid-template-columns:1fr 1fr; gap:40px; border-top:1px solid var(--line); padding-top:28px; }
     #sl-wrap .statement-bottom p { margin:0; max-width:820px; font-size:clamp(17px,1.8vw,27px); line-height:1.45; letter-spacing:-.035em; }
     #sl-wrap .pill-list { display:flex; flex-wrap:wrap; gap:9px; justify-content:flex-end; align-content:start; }
