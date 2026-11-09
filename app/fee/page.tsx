@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'CSO 수수료, 어떻게 정해지나 — 구조로 공개합니다',
     description: '숫자 하나가 아니라 구조를 봅니다. 실수령을 정하는 요소와 계약 전 체크리스트.',
     url: 'https://www.modoocso.kr/fee',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-home.png', width: 1200, height: 630 }],
   },
   robots: { index: true, follow: true },
 }

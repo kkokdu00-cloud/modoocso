@@ -28,11 +28,13 @@ export const metadata: Metadata = {
     siteName: 'CSO써치라이트',
     locale: 'ko_KR',
     type: 'website',
+    images: [{ url: '/og-searchlight.png', width: 1200, height: 630, alt: 'CSO써치라이트 — 아직 써보지 못한 CSO 시스템' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CSO써치라이트 | CSO 정산·수수료·EDI 관리 시스템',
     description: 'CSO 정산 자동화, 수수료 계산, EDI 관리, AI 문서 인식까지. 모두의CSO 파트너 전용 실무 시스템.',
+    images: ['/og-searchlight.png'],
   },
   alternates: {
     canonical: 'https://www.modoocso.kr/searchlight',
@@ -573,7 +575,14 @@ export default function SearchlightPage() {
 
     html { scroll-behavior: smooth; }
 
-      ` }} />
+      
+    @media (min-width: 951px) {
+      #sl-wrap .scene-pass .phone { left:32%; }
+      #sl-wrap .scene-pass .fc1 { left:5%; }
+      #sl-wrap .scene-pass .fc2 { right:auto; left:44%; top:16%; }
+      #sl-wrap .project:nth-child(even) .project-copy { max-width:44%; }
+    }
+` }} />
       <div id="sl-wrap">
   <div className="progress" aria-hidden="true"></div>
 
@@ -588,7 +597,7 @@ export default function SearchlightPage() {
       <a href="#services">핵심</a>
       <a href="#contact">시작하기</a>
     </div>
-    <a className="nav-cta magnetic" href="https://www.modoocso.kr/" target="_blank" rel="noopener"><span>모두의CSO 파트너 문의</span><span className="arr">↗</span></a>
+    <a className="nav-cta magnetic" href="/#contact"><span>모두의CSO 파트너 문의</span><span className="arr">↗</span></a>
     <button className="menu-button" aria-label="메뉴 열기" aria-expanded="false"><span></span></button>
   </header>
 
@@ -620,7 +629,7 @@ export default function SearchlightPage() {
           </div>
           <p className="hero-sub">시장은 변했습니다. 도구도 바뀌어야 합니다.<br />써치라이트는 기존 방식과 다르게 설계되었습니다.</p>
           <div className="hero-btns">
-            <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn-dark">파트너 문의하기 →</a>
+            <a href="/#contact" className="btn-dark">파트너 문의하기 →</a>
             <a href="#work" className="btn-outline">어떻게 다른가요</a>
           </div>
           <div className="hero-note-simple">by 모두의CSO · © 2026</div>
@@ -746,7 +755,7 @@ export default function SearchlightPage() {
         <h2>설명보다 경험이 빠릅니다</h2>
         <p>모두의CSO 파트너가 되면 써치라이트가 함께합니다.<br />조건이 궁금하면 지금 물어보세요. 물어본 것에만, 숫자로 답합니다.</p>
         <div className="cta-btns">
-          <a href="https://www.modoocso.kr/" target="_blank" rel="noopener" className="btn btn-cream">모두의CSO 파트너 문의 →</a>
+          <a href="/#contact" className="btn btn-cream">모두의CSO 파트너 문의 →</a>
           <a href="http://pf.kakao.com/_uxiUfn" target="_blank" rel="noopener" className="btn btn-outline-dark">카카오로 문의하기</a>
         </div>
       </div>

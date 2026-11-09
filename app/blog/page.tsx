@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: 'CSO 정보센터 — 블로그',
   description: 'CSO 수수료, CSO 신고제, CSO 법인 설립 등 제약 CSO 실전 정보를 모아놓은 블로그입니다.',
   alternates: { canonical: 'https://www.modoocso.kr/blog' },
+  openGraph: {
+    title: 'CSO 정보센터 — 블로그 | 모두의CSO',
+    description: 'CSO 수수료, CSO 신고제, CSO 법인 설립 등 제약 CSO 실전 정보를 모아놓은 블로그입니다.',
+    url: 'https://www.modoocso.kr/blog',
+    siteName: '모두의CSO',
+    locale: 'ko_KR',
+    type: 'website',
+    images: [{ url: '/og-home.png', width: 1200, height: 630 }],
+  },
 }
 
 export default function BlogPage() {

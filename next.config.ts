@@ -29,6 +29,7 @@ const config: NextConfig = {
   async redirects() {
     return [
       { source: '/index.html', destination: '/', permanent: true },
+      { source: '/searchlight/index.html', destination: '/searchlight', permanent: true },
       {
         source: '/((?!searchlight).*)',
         has: [{ type: 'host', value: 'searchlight.modoocso.kr' }],
